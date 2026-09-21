@@ -138,18 +138,15 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/fc-risc-core/layout.webp",
-    "cap": "Finished layout — four SRAM macros and the routed core",
-    "full": "assets/img/fc-risc-core/layout.png"
+    "cap": "Finished layout — four SRAM macros and the routed core"
    },
    {
     "src": "assets/img/fc-risc-core/placement.webp",
-    "cap": "Placement",
-    "full": "assets/img/fc-risc-core/placement.png"
+    "cap": "Placement"
    },
    {
     "src": "assets/img/fc-risc-core/floorplan.webp",
-    "cap": "Floorplan with macro placement",
-    "full": "assets/img/fc-risc-core/floorplan.png"
+    "cap": "Floorplan with macro placement"
    }
   ],
   "searchText": "risc core with embedded sram a risc processor core hardened in fusion compiler with four sram macros placed around a central logic region. the finished layout shows the memories in the upper and right quadrants and the random logic packed into the lower-left. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module risc_core chip area 104,385.648 µm² core area 91,862.128 µm² site-row area 91,862.128 µm² total leaf cells 8,286 — 70,608.401 µm² standard cells 4,308 — 15,887.812 µm² hard macros 4 — 51,184.683 µm² (sram) sequential cells 490 — 55,341.971 µm² buffers / inverters 1,034 — 2,986.446 µm² clock-gating cells 19 physical-only cells 3,974 — 3,535.905 µm² flat nets 5,147 ports 149 design masters 171 placement blockages 9 — 2,801.459 µm² clocks 1 master clock, no generated clocks modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) path groups 7 (1 non-default) power domains 1 domain, 1 voltage area total wire length 135,460.53 µm wires 51,792 contacts 54,010 metal layers available 71 tech layers in the technology file report date 23 march 2026"
@@ -281,23 +278,19 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/fc-jpeg-encoder/layout.webp",
-    "cap": "Finished routed layout",
-    "full": "assets/img/fc-jpeg-encoder/layout.png"
+    "cap": "Finished routed layout"
    },
    {
     "src": "assets/img/fc-jpeg-encoder/merged.webp",
-    "cap": "Side-by-side flow stages",
-    "full": "assets/img/fc-jpeg-encoder/merged.png"
+    "cap": "Side-by-side flow stages"
    },
    {
     "src": "assets/img/fc-jpeg-encoder/placement.webp",
-    "cap": "Placement",
-    "full": "assets/img/fc-jpeg-encoder/placement.png"
+    "cap": "Placement"
    },
    {
     "src": "assets/img/fc-jpeg-encoder/floorplan.webp",
-    "cap": "Floorplan",
-    "full": "assets/img/fc-jpeg-encoder/floorplan.png"
+    "cap": "Floorplan"
    }
   ],
   "searchText": "jpeg encoder a baseline jpeg encoder — the largest all-standard-cell design in the fusion compiler set at just over 25,000 leaf cells and 607 mm of routed wire. closes timing at the slow corner; the fast corner still shows a small setup and hold residue. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module jpeg_encoder chip area 124,899.574 µm² core area 111,163.094 µm² total leaf cells 25,461 — 97,293.185 µm² standard cells 20,891 — 94,173.313 µm² hard macros none — fully standard-cell sequential cells 4,335 — 36,770.062 µm² buffers / inverters 5,762 — 20,775.255 µm² clock-gating cells 76 physical-only cells 4,570 — 3,119.872 µm² flat nets 25,338 (25,336 detail-routed) ports 49 design masters 162 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns −0.30 ns / −8.74 ns at ff_m40c (143 violating endpoints); +0.26 ns clean at ss_125c hold wns / tns −0.45 ns / −5.42 ns (102 violating endpoints) total wire length 607,456.06 µm wires 238,606 contacts 241,808 cell area (netlist) 94,173.31 µm² peak memory 978 mb report date 16 april 2026"
@@ -425,18 +418,15 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/fc-aes-cipher/layout.webp",
-    "cap": "Finished routed layout",
-    "full": "assets/img/fc-aes-cipher/layout.png"
+    "cap": "Finished routed layout"
    },
    {
     "src": "assets/img/fc-aes-cipher/placement.webp",
-    "cap": "Placement",
-    "full": "assets/img/fc-aes-cipher/placement.png"
+    "cap": "Placement"
    },
    {
     "src": "assets/img/fc-aes-cipher/floorplan.webp",
-    "cap": "Floorplan",
-    "full": "assets/img/fc-aes-cipher/floorplan.png"
+    "cap": "Floorplan"
    }
   ],
   "searchText": "aes-128 cipher an aes cipher top hardened in fusion compiler. setup timing closes at both corners with positive slack; only a handful of hold endpoints remain, and the 390-port interface dominates the pin ring around the core. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module aes_cipher_top chip area 40,352.682 µm² core area 32,717.482 µm² total leaf cells 9,999 — 24,395.537 µm² standard cells 8,437 — 23,332.706 µm² hard macros none — fully standard-cell sequential cells 537 — 4,735.973 µm² buffers / inverters 972 — 1,751.306 µm² clock-gating cells 7 physical-only cells 1,562 — 1,062.830 µm² flat nets 8,920 (8,918 detail-routed) ports 390 design masters 89 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.07 ns / 0.00 ns — timing met at both corners hold wns / tns −0.03 ns / −0.09 ns (7 violating endpoints) total wire length 245,624.94 µm wires 109,287 contacts 101,383 peak memory 804 mb report date 16 april 2026"
@@ -500,18 +490,15 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/fc-cortex-m0/layout.webp",
-    "cap": "Routed core inside the I/O pad ring",
-    "full": "assets/img/fc-cortex-m0/layout.png"
+    "cap": "Routed core inside the I/O pad ring"
    },
    {
     "src": "assets/img/fc-cortex-m0/floorplan.webp",
-    "cap": "Floorplan",
-    "full": "assets/img/fc-cortex-m0/floorplan.png"
+    "cap": "Floorplan"
    },
    {
     "src": "assets/img/fc-cortex-m0/gui.webp",
-    "cap": "The Fusion Compiler session that produced it",
-    "full": "assets/img/fc-cortex-m0/gui.png"
+    "cap": "The Fusion Compiler session that produced it"
    }
   ],
   "searchText": "arm cortex-m0 designstart an arm cortex-m0 designstart core (cortexm0ds) taken through fusion compiler design planning to a signed-off, fully routed block complete with an i/o pad ring and corner cells — the most complete full-chip floorplan in the collection. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm design library cortexm0ds.dlib — block cortexm0ds/signoff.design tool synopsys fusion compiler, design planning / blockwindow core ip arm cortex-m0 designstart — a 32-bit armv6-m processor flow stage reached sign-off design view: placed, clock-tree-synthesised and fully routed physical features peripheral i/o pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block technology not recorded in this design's source files. the other fusion compiler projects in this set target the synopsys saed32/28 nm edk. captured april 2026"
@@ -699,8 +686,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/fc-dual-ram/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/fc-dual-ram/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    }
   ],
   "searchText": "dual-port ram — 256 × 8 a 256-word by 8-bit dual-port ram built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. setup closes at both corners; the critical path runs from the read address pins straight to the output register. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros threshold flavours predominantly hvt, with rvt and lvt where timing needed it top module dual_ram memory organisation 256 words × 8 bits — 2 kbit, register-based, no sram macro ports clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0] architecture independent read and write addresses, synchronous reset clearing the whole array clock clk, 5.000 ns period — 200 mhz, waveform {0 2.5} die size 222.31 × 222.31 µm chip area 49,422.625 µm² core area 40,930.145 µm² total cell area 26,803.30 µm² cell area with physical-only 31,383.99 µm² core utilisation 65.5 % (cell area over core area) cells 4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter hard macros none — the array is built from flip-flops combinational area 7,146.53 µm² noncombinational area 19,656.77 µm² buffer/inverter area 2,891.90 µm² placed instances incl. fill 11,207 nets 4,902 ports 38 cell references 60 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners hold wns / tns −0.01 ns / −0.01 ns (2 violating endpoints) critical path rd_addr[3] input port → data_out_reg[5], slack +0.29 ns clock tree (post-cts) 2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire clock latency / skew 2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c routing layers m1 – m9 open nets 0 of 4,902 detailed-route drc 0 after route_opt; 26 reported at sign-off, after metal fill lvs m1 shorts reported among shfill3_hvt filler cells; the check stops after 20 total power 8.85 mw — 1.71 mw dynamic, 7.13 mw leakage at the slow 125 °c corner power by group registers 80.5 %, clock network 13.0 %, combinational 6.6 % gds-ii size 7.1 mb run date 21 september 2026"
@@ -800,13 +786,11 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/ol-risc-core/layout.webp",
-    "cap": "Full die — power straps and the register-file block outline",
-    "full": "assets/img/ol-risc-core/layout.png"
+    "cap": "Full die — power straps and the register-file block outline"
    },
    {
     "src": "assets/img/ol-risc-core/zoom.webp",
-    "cap": "Zoomed into the standard-cell rows and local interconnect",
-    "full": "assets/img/ol-risc-core/zoom.png"
+    "cap": "Zoomed into the standard-cell rows and local interconnect"
    }
   ],
   "searchText": "risc core a risc processor built from fourteen verilog modules — alu, control fsm, datapath, program counter, decoder, register file, hardware stack and a 128 × 16 sram — pushed through openlane to gds-ii. the power straps and the block outline of the register file are clearly visible in the layout. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module risc_core clock 25 ns period — 40 mhz, port <code>clk</code> instruction width 32 bits datapath width 64 bits (widened from the original 16-bit design) program counter 8-bit status word 11-bit psw with zero, negative and carry flags alu opcode 6-bit register file 7-bit addressing, three ports (a, b, c), optionally ram-backed memory sram128x16 — 128 words × 16 bits stack hardware stack with its own fsm and full flag dft ports scan_en, test_mode source modules risc_core, alu, control, data_path, instrn_lat, prgrm_cnt, prgrm_cnt_top, prgrm_decode, prgrm_fsm, reg_file, stack_fsm, stack_mem, stack_top, sram128x16 output risc_core.gds, inspected in klayout run date february 2026"
@@ -890,8 +874,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/ol-pm32/layout.webp",
-    "cap": "Routed layout in KLayout",
-    "full": "assets/img/ol-pm32/layout.png"
+    "cap": "Routed layout in KLayout"
    }
   ],
   "searchText": "32 × 32 signed multiplier a signed 32 × 32 multiplier built on a serial-parallel multiplier core (spm), modelled on atmel's at6000 fpga application notes. a three-state fsm sequences the shift-and-add iterations and raises <code>done</code> when the 64-bit product is ready. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module pm32 (instantiates spm) clock 25 ns period — 40 mhz, port <code>clk</code> operands mc[31:0] × mp[31:0], signed product p[63:0] handshake start input, done output architecture serial-parallel multiplier (spm), parameterised size = 32 control three-state fsm — idle, running, done — with an 8-bit iteration counter provenance spm core after the atmel at6000 application notes doc0529 / doc0716, implemented by mshalan@aucegypt.edu (2016) source files pm32.v, spm.v run date february 2026"
@@ -987,8 +970,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/ol-cnn-3x3/layout.webp",
-    "cap": "Routed layout in KLayout",
-    "full": "assets/img/ol-cnn-3x3/layout.png"
+    "cap": "Routed layout in KLayout"
    }
   ],
   "searchText": "cnn layer — 3 × 3 convolution one complete convolutional-neural-network layer in hardware: a 3 × 3 convolution with a hard-coded sobel-style kernel, followed by relu activation and 2 × 2 max pooling. line buffers hold two image rows so a sliding 3 × 3 window can stream over the input one pixel per cycle. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module cnn_layer clock 25 ns period — 40 mhz, port <code>clk</code> data width 8-bit fixed point (data_width = 8) image width 8 pixels (img_width = 8, parameterised) stage 1 3 × 3 convolution with two line buffers and a sliding-window register array kernel hard-coded [[1,0,−1],[2,0,−2],[1,0,−1]] — a sobel vertical-edge operator mac accumulator 2·data_width + 4 bits, signed stage 2 relu activation stage 3 2 × 2 max pooling interface pixel_in / valid_in streaming in, pool_out / valid_out streaming out reset active-low asynchronous (rst_n) variants two configurations were run: one_cnn_layer3x3.v (shown) and a second one_cnn_layer.v build with no layout captured run date february 2026"
@@ -1076,8 +1058,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/ol-riscv-alu/layout.webp",
-    "cap": "Routed layout with the pin ring fanning out to the die edge",
-    "full": "assets/img/ol-riscv-alu/layout.png"
+    "cap": "Routed layout with the pin ring fanning out to the die edge"
    }
   ],
   "searchText": "risc-v 32-bit alu a single-cycle 32-bit arithmetic-logic unit covering the rv32i integer operations — add, subtract, the three shifts, signed and unsigned set-less-than, and the bitwise logic — with zero, overflow and carry-out flags. the layout shows a dense cell array with the 64 operand and result pins fanning out to the die edge. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module riscv_alu_32bit clock 25 ns period — 40 mhz, port <code>clk</code> operand width 32 bits — operand_a, operand_b result width 32 bits opcode 4-bit alu_op, encoded from the risc-v funct3 / funct7 fields operations add, sub, sll, slt, sltu, xor, srl, sra, or, and flags zero, overflow (signed), carry_out arithmetic 33-bit internal add and subtract paths for carry and borrow capture overflow detection sign-comparison logic on the operands and the result output riscv_alu_32bit.gds, inspected in klayout run date february 2026"
@@ -1229,8 +1210,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-aes-block/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-aes-block/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-aes-block/final_all.webp",
@@ -1410,8 +1390,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-aes-block_aes_rcon/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-aes-block_aes_rcon/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-aes-block_aes_rcon/final_all.webp",
@@ -1591,8 +1570,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-aes-block_aes_sbox/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-aes-block_aes_sbox/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-aes-block_aes_sbox/final_all.webp",
@@ -1768,8 +1746,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-aes-mbff/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-aes-mbff/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-aes-mbff/final_all.webp",
@@ -1949,8 +1926,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-aes_lvt/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-aes_lvt/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-aes_lvt/final_all.webp",
@@ -2138,8 +2114,7 @@ window.DESIGNS = [
    },
    {
     "src": "assets/img/orfs-asap7-ethmac/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-ethmac/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-ethmac/final_routing.webp",
@@ -2331,8 +2306,7 @@ window.DESIGNS = [
    },
    {
     "src": "assets/img/orfs-asap7-ethmac_lvt/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-ethmac_lvt/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-ethmac_lvt/final_routing.webp",
@@ -2516,8 +2490,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-gcd-ccs/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-gcd-ccs/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-gcd-ccs/final_all.webp",
@@ -2697,8 +2670,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-gcd/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-gcd/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-gcd/final_all.webp",
@@ -2882,8 +2854,7 @@ window.DESIGNS = [
    },
    {
     "src": "assets/img/orfs-asap7-jpeg_lvt/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-jpeg_lvt/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-jpeg_lvt/final_routing.webp",
@@ -3058,13 +3029,12 @@ window.DESIGNS = [
   ],
   "images": [
    {
-    "src": "assets/img/orfs-asap7-mock-cpu/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-mock-cpu/gds.png"
-   },
-   {
     "src": "assets/img/orfs-asap7-mock-cpu/final_all.webp",
     "cap": "Final layout — every mask layer"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mock-cpu/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-mock-cpu/final_routing.webp",
@@ -3244,8 +3214,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-asap7-riscv32i-mock-sram_fakeram7_256x32/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-asap7-riscv32i-mock-sram_fakeram7_256x32/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-asap7-riscv32i-mock-sram_fakeram7_256x32/final_all.webp",
@@ -3421,8 +3390,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-gf180-aes-hybrid/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-gf180-aes-hybrid/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-gf180-aes-hybrid/final_all.webp",
@@ -3602,8 +3570,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-gf180-aes/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-gf180-aes/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-gf180-aes/final_all.webp",
@@ -3783,8 +3750,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-gf180-ibex/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-gf180-ibex/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-gf180-ibex/final_all.webp",
@@ -3968,8 +3934,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-gf180-uart-blocks/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-gf180-uart-blocks/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-gf180-uart-blocks/final_all.webp",
@@ -4149,8 +4114,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-gf180-uart-blocks_uart_rx/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-gf180-uart-blocks_uart_rx/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-gf180-uart-blocks_uart_rx/final_all.webp",
@@ -4330,8 +4294,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-nangate45-aes/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-nangate45-aes/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-nangate45-aes/final_all.webp",
@@ -4511,8 +4474,7 @@ window.DESIGNS = [
   "images": [
    {
     "src": "assets/img/orfs-nangate45-gcd/gds.webp",
-    "cap": "GDS-II tape-out database, rendered in KLayout",
-    "full": "assets/img/orfs-nangate45-gcd/gds.png"
+    "cap": "GDS-II tape-out database, rendered in KLayout"
    },
    {
     "src": "assets/img/orfs-nangate45-gcd/final_all.webp",

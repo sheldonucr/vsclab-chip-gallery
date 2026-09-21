@@ -30,10 +30,11 @@ assets/img/<slug>/    layout images, one folder per design
 tools/                the scripts that regenerate everything
 ```
 
-Each design folder holds a `.webp` display copy of every view. Where the original was a
-full-resolution PNG — the KLayout GDS renderings, and the Synopsys and OpenLane GUI
-captures — the PNG is kept beside it and linked from the detail view as
-"full resolution".
+Each design folder holds one `.webp` per view, 1280 px on the long edge. That is what
+the repository ships. The KLayout renderings are produced as full-resolution PNGs first,
+but those are local intermediates and are gitignored — `tools/render_all_gds.sh`
+regenerates them from the GDS-II. The Synopsys and OpenLane originals are screenshots
+kept in the design directories, outside this repository.
 
 ## Where the content comes from
 

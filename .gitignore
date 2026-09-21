@@ -3,3 +3,7 @@
 .Spotlight-V100
 .Trashes
 Thumbs.db
+
+# Local render intermediates. The site serves the WebP copies beside them;
+# tools/render_all_gds.sh regenerates these from the GDS-II when needed.
+assets/img/**/*.png

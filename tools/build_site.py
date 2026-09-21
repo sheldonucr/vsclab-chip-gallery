@@ -30,21 +30,24 @@ def area(v):
     return "%.3f mm² (%s µm²)" % (v / 1e6, a) if v >= 1e6 else "%s µm²" % a
 
 def imgset(slug, files):
-    """files: list of (basename, caption). Prefers the .webp display copy,
-    links the .png original as the full-resolution download when present."""
+    """files: list of (basename, caption) -> the records the page renders.
+
+    Only the .webp display copies are emitted. The PNGs beside them are local
+    render intermediates and are not in the repository, so linking them as
+    "full resolution" would give a clone a dead link. To ship the originals
+    again, commit the PNGs and add:
+        rec["full"] = "assets/img/%s/%s" % (slug, base)
+    for records whose base name ends in .png -- app.js already renders the link
+    when the field is there and hides it when it is not."""
     d = os.path.join(IMG, slug)
     have = set(os.listdir(d)) if os.path.isdir(d) else set()
     out = []
     for base, cap in files:
-        stem, ext = os.path.splitext(base)
-        disp = stem + ".webp"
+        disp = os.path.splitext(base)[0] + ".webp"
         if disp not in have:
             if base not in have: continue
             disp = base
-        rec = dict(src="assets/img/%s/%s" % (slug, disp), cap=cap)
-        if ext == ".png" and base in have:
-            rec["full"] = "assets/img/%s/%s" % (slug, base)
-        out.append(rec)
+        out.append(dict(src="assets/img/%s/%s" % (slug, disp), cap=cap))
     return out
 
 
@@ -76,7 +79,11 @@ def order_cover(slug, wanted, threshold=6.5):
     """Keep the GDS rendering first unless it is too flat to read as a thumbnail."""
     if not wanted or wanted[0][0] != "gds.png":
         return wanted
-    sc = detail_score(os.path.join(IMG, slug, "gds.png"))
+    # Score the committed WebP: the PNG is a local render intermediate and is
+    # not in the repository, so it may not be here at all.
+    disp = os.path.join(IMG, slug, "gds.webp")
+    sc = detail_score(disp if os.path.exists(disp)
+                      else os.path.join(IMG, slug, "gds.png"))
     if sc is None or sc >= threshold:
         return wanted
     rest = wanted[1:]

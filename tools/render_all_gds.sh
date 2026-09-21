@@ -1,6 +1,11 @@
 #!/bin/zsh
 # Render every finished ORFS GDS-II to assets/img/<slug>/gds.png with KLayout,
 # then make a 1280 px WebP display copy of every PNG in the asset tree.
+#
+# The WebP copies are what the site serves and what the repository ships. The
+# PNGs are local intermediates: cwebp input, and the marker this script uses to
+# skip work it has already done. They are gitignored. Delete a gds.png to force
+# that design to render again.
 set -e
 KL=${KLAYOUT:-/Applications/KLayout/klayout.app/Contents/MacOS/klayout}
 HERE=${0:a:h}
