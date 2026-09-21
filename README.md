@@ -1,7 +1,7 @@
 # The VLSI chips designed by VSCLAB @ UC Riverside
 
-A static gallery of the lab's physical designs — 27 designs across five technology nodes,
-hardened with Synopsys Fusion Compiler, OpenLane and the OpenROAD flow, with 211
+A static gallery of the lab's physical designs — 28 designs across five technology nodes,
+hardened with Synopsys Fusion Compiler, OpenLane and the OpenROAD flow, with 212
 layout views.
 
 ## Viewing it
@@ -39,8 +39,7 @@ captures — the PNG is kept beside it and linked from the detail view as
 
 | Section | Source |
 | --- | --- |
-| Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports |
-| Synopsys Design Compiler | `chip_design_work_desk/dual_ram_project_icc` — **not currently shown.** The `dual_ram` record is written up in `tools/build_site.py` but held back from the gallery; add `dc` to the `designs` list there to bring it back |
+| Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports; and `dual_ram_project_icc` — a full RTL-to-GDSII run, read from `reports/*.rpt`, `outputs/dual_ram.def` and `outputs/dual_ram.sdc`, with the layout rendered from `outputs/dual_ram.gds` |
 | OpenLane | `chip_design_work_desk/openlane_designs/*` — `config.json`, RTL and KLayout captures |
 | OpenROAD Flow Scripts | `OpenROAD-flow-scripts-Darwin/flow` — `results/`, `reports/` and `logs/` for each `<pdk>/<design>/base` run |
 
@@ -78,7 +77,7 @@ repository, so regeneration only works on a machine that has them.
   then re-run both scripts. Give it a title and a description in the `TITLES` table in
   `build_site.py`; without one it falls back to the directory name.
 - **Anything else:** drop the images in `assets/img/<slug>/`, add a record to the
-  `synopsys`, `dc` or `openlane` list in `build_site.py`, and re-run it.
+  `synopsys` or `openlane` list in `build_site.py`, and re-run it.
 
 ## License
 

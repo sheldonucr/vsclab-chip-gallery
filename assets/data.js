@@ -517,6 +517,195 @@ window.DESIGNS = [
   "searchText": "arm cortex-m0 designstart an arm cortex-m0 designstart core (cortexm0ds) taken through fusion compiler design planning to a signed-off, fully routed block complete with an i/o pad ring and corner cells — the most complete full-chip floorplan in the collection. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm design library cortexm0ds.dlib — block cortexm0ds/signoff.design tool synopsys fusion compiler, design planning / blockwindow core ip arm cortex-m0 designstart — a 32-bit armv6-m processor flow stage reached sign-off design view: placed, clock-tree-synthesised and fully routed physical features peripheral i/o pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block technology not recorded in this design's source files. the other fusion compiler projects in this set target the synopsys saed32/28 nm edk. captured april 2026"
  },
  {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-dual-ram",
+  "name": "Dual-port RAM — 256 × 8",
+  "blurb": "A 256-word by 8-bit dual-port RAM built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. Independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. Setup closes at both corners; the critical path runs from the read address pins straight to the output register.",
+  "head": [
+   [
+    "Memory",
+    "256 × 8"
+   ],
+   [
+    "Clock",
+    "200 MHz"
+   ],
+   [
+    "Die",
+    "222 × 222 µm"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "32 nm — Synopsys SAED32/28 nm EDK"
+   ],
+   [
+    "Technology file",
+    "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
+   ],
+   [
+    "Cell libraries",
+    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
+   ],
+   [
+    "Threshold flavours",
+    "Predominantly HVT, with RVT and LVT where timing needed it"
+   ],
+   [
+    "Top module",
+    "dual_ram"
+   ],
+   [
+    "Memory organisation",
+    "256 words × 8 bits — 2 kbit, register-based, no SRAM macro"
+   ],
+   [
+    "Ports",
+    "clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0]"
+   ],
+   [
+    "Architecture",
+    "Independent read and write addresses, synchronous reset clearing the whole array"
+   ],
+   [
+    "Clock",
+    "clk, 5.000 ns period — 200 MHz, waveform {0 2.5}"
+   ],
+   [
+    "Die size",
+    "222.31 × 222.31 µm"
+   ],
+   [
+    "Chip area",
+    "49,422.625 µm²"
+   ],
+   [
+    "Core area",
+    "40,930.145 µm²"
+   ],
+   [
+    "Total cell area",
+    "26,803.30 µm²"
+   ],
+   [
+    "Cell area with physical-only",
+    "31,383.99 µm²"
+   ],
+   [
+    "Core utilisation",
+    "65.5 % (cell area over core area)"
+   ],
+   [
+    "Cells",
+    "4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter"
+   ],
+   [
+    "Hard macros",
+    "None — the array is built from flip-flops"
+   ],
+   [
+    "Combinational area",
+    "7,146.53 µm²"
+   ],
+   [
+    "Noncombinational area",
+    "19,656.77 µm²"
+   ],
+   [
+    "Buffer/inverter area",
+    "2,891.90 µm²"
+   ],
+   [
+    "Placed instances incl. fill",
+    "11,207"
+   ],
+   [
+    "Nets",
+    "4,902"
+   ],
+   [
+    "Ports",
+    "38"
+   ],
+   [
+    "Cell references",
+    "60"
+   ],
+   [
+    "Modes / corners",
+    "func mode; corners ss_125c and ff_m40c (two scenarios)"
+   ],
+   [
+    "Setup WNS / TNS",
+    "+0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners"
+   ],
+   [
+    "Hold WNS / TNS",
+    "−0.01 ns / −0.01 ns (2 violating endpoints)"
+   ],
+   [
+    "Critical path",
+    "rd_addr[3] input port → data_out_reg[5], slack +0.29 ns"
+   ],
+   [
+    "Clock tree (post-CTS)",
+    "2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire"
+   ],
+   [
+    "Clock latency / skew",
+    "2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c"
+   ],
+   [
+    "Routing layers",
+    "M1 – M9"
+   ],
+   [
+    "Open nets",
+    "0 of 4,902"
+   ],
+   [
+    "Detailed-route DRC",
+    "0 after route_opt; 26 reported at sign-off, after metal fill"
+   ],
+   [
+    "LVS",
+    "M1 shorts reported among SHFILL3_HVT filler cells; the check stops after 20"
+   ],
+   [
+    "Total power",
+    "8.85 mW — 1.71 mW dynamic, 7.13 mW leakage at the slow 125 °C corner"
+   ],
+   [
+    "Power by group",
+    "Registers 80.5 %, clock network 13.0 %, combinational 6.6 %"
+   ],
+   [
+    "GDS-II size",
+    "7.1 MB"
+   ],
+   [
+    "Run date",
+    "21 September 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-dual-ram/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout",
+    "full": "assets/img/fc-dual-ram/gds.png"
+   }
+  ],
+  "searchText": "dual-port ram — 256 × 8 a 256-word by 8-bit dual-port ram built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. setup closes at both corners; the critical path runs from the read address pins straight to the output register. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros threshold flavours predominantly hvt, with rvt and lvt where timing needed it top module dual_ram memory organisation 256 words × 8 bits — 2 kbit, register-based, no sram macro ports clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0] architecture independent read and write addresses, synchronous reset clearing the whole array clock clk, 5.000 ns period — 200 mhz, waveform {0 2.5} die size 222.31 × 222.31 µm chip area 49,422.625 µm² core area 40,930.145 µm² total cell area 26,803.30 µm² cell area with physical-only 31,383.99 µm² core utilisation 65.5 % (cell area over core area) cells 4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter hard macros none — the array is built from flip-flops combinational area 7,146.53 µm² noncombinational area 19,656.77 µm² buffer/inverter area 2,891.90 µm² placed instances incl. fill 11,207 nets 4,902 ports 38 cell references 60 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners hold wns / tns −0.01 ns / −0.01 ns (2 violating endpoints) critical path rd_addr[3] input port → data_out_reg[5], slack +0.29 ns clock tree (post-cts) 2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire clock latency / skew 2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c routing layers m1 – m9 open nets 0 of 4,902 detailed-route drc 0 after route_opt; 26 reported at sign-off, after metal fill lvs m1 shorts reported among shfill3_hvt filler cells; the check stops after 20 total power 8.85 mw — 1.71 mw dynamic, 7.13 mw leakage at the slow 125 °c corner power by group registers 80.5 %, clock network 13.0 %, combinational 6.6 % gds-ii size 7.1 mb run date 21 september 2026"
+ },
+ {
   "family": "openlane",
   "familyLabel": "OpenLane",
   "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",

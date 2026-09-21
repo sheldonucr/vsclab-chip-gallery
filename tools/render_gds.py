@@ -15,11 +15,30 @@ PALETTE = [
 ]
 
 app = pya.Application.instance()
+
+# Label suppression has to happen at application level and BEFORE the view is
+# created — setting it on the view afterwards reads back as applied but does not
+# affect the render. Two independent sources of labels:
+#   text-visible        TEXT objects. Cell libraries such as SAED32 put one
+#                       inside each standard-cell definition, so it is drawn
+#                       once per instance and the master names end up written
+#                       across the whole die.
+app.set_config("text-visible", "false")
+app.set_config("edit-mode", "true")          # needed to flatten, below
+
 mw = app.main_window()
 mw.create_layout(0)
 view = mw.current_view()
 view.load_layout(gds, 0)
 view.max_hier()
+
+# KLayout also writes each cell's master name over every instance wide enough to
+# hold it — "(SDFFX2_RVT)" and friends across every standard-cell row. That is
+# governed by inst-visible / min-inst-label-size, but neither is consulted by
+# save_image_with_options, only by the interactive canvas. Flattening removes the
+# instances, and with them the labels. It costs little and leaves the file on
+# disk untouched.
+view.cellview(0).layout().top_cell().flatten(-1, True)
 
 view.set_config("background-color", "#05070d")
 view.set_config("grid-visible", "false")

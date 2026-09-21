@@ -475,43 +475,54 @@ synopsys = [
     [("layout.png", "Routed core inside the I/O pad ring"),
      ("floorplan.png", "Floorplan"),
      ("gui.png", "The Fusion Compiler session that produced it")]),
-]
 
-# Withheld from the gallery for now — the record is kept intact here, and adding
-# `dc` back to the `designs` list at the bottom of this file is all it takes to
-# bring it back. It has no captured layout, so nothing else has to be restored.
-dc = [dict(
-  slug="dc-dual-ram", name="Dual-port RAM — synthesis reference flow",
-  blurb="A 256 × 8 dual-port RAM and the reusable Design Compiler project that hardens it: "
-        "a scripted dc_shell flow with its own configuration, constraints and report set. "
-        "This entry is the lab's synthesis template — no place-and-route layout was captured for it.",
-  family="synopsys", familyLabel="Synopsys Design Compiler",
-  tool="Synopsys Design Compiler (dc_shell-t, DC Ultra)",
-  toolLine="RTL → gate-level netlist with DC Ultra, power optimisation and incremental compile",
-  pdkKey="saed32", pdkLabel="Synopsys SAED32/28 nm EDK", node="32 nm", pdkNote=SAED32_NOTE,
-  head=[("Memory", "256 × 8"), ("Clock", "500 MHz"), ("Stage", "Synthesis")],
-  specs=[["Technology", "32 nm — Synopsys SAED32/28 nm EDK"],
-         ["Target library", "saed32rvt_tt1p05v25c.db — regular-Vt, CCS timing"],
-         ["Operating condition", "tt1p05v25c — typical, 1.05 V, 25 °C"],
-         ["Top module", "dual_ram"],
-         ["Memory organisation", "256 words × 8 bits, 8-bit address"],
-         ["Ports", "clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0]"],
-         ["Architecture", "Independent read and write addresses, synchronous reset that clears the whole array"],
-         ["Clock", "CLK, 2.000 ns period — 500 MHz"],
-         ["Clock uncertainty", "0.05 ns setup, 0.03 ns hold"],
-         ["I/O delay", "0.20 ns in and out"],
-         ["Driving cell", "INVX4"],
-         ["Output load", "50 fF"],
-         ["Max fanout", "16"],
-         ["Max transition", "0.20 ns"],
-         ["Max capacitance", "0.20 pF"],
-         ["Wire load", "ForQA model, predcaps selection group, top mode"],
-         ["Optimisation", "DC Ultra (compile_ultra), power optimisation and incremental compile on, DRC fixing on"],
-         ["Hierarchy policy", "Uniquify on, flatten off"],
-         ["Language", "SystemVerilog (hdlin_sv_enable)"],
-         ["Reports generated", "Design checks, QoR, setup and hold timing, hierarchical area, power"],
-         ["Layout", "Not captured — this project stops at the gate-level netlist"]],
-  images=[])]
+ fc("fc-dual-ram", "Dual-port RAM — 256 × 8",
+    "A 256-word by 8-bit dual-port RAM built entirely from standard-cell flip-flops — no "
+    "compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the "
+    "die. Independent read and write addresses let both ports work in the same cycle, and a "
+    "synchronous reset clears the array. Setup closes at both corners; the critical path runs "
+    "from the read address pins straight to the output register.",
+    [("Memory", "256 × 8"), ("Clock", "200 MHz"), ("Die", "222 × 222 µm")],
+    [("Technology", "32 nm — Synopsys SAED32/28 nm EDK"),
+     ("Technology file", TECH),
+     ("Cell libraries", LIBS),
+     ("Threshold flavours", "Predominantly HVT, with RVT and LVT where timing needed it"),
+     ("Top module", "dual_ram"),
+     ("Memory organisation", "256 words × 8 bits — 2 kbit, register-based, no SRAM macro"),
+     ("Ports", "clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0]"),
+     ("Architecture", "Independent read and write addresses, synchronous reset clearing the whole array"),
+     ("Clock", "clk, 5.000 ns period — 200 MHz, waveform {0 2.5}"),
+     ("Die size", "222.31 × 222.31 µm"),
+     ("Chip area", "49,422.625 µm²"),
+     ("Core area", "40,930.145 µm²"),
+     ("Total cell area", "26,803.30 µm²"),
+     ("Cell area with physical-only", "31,383.99 µm²"),
+     ("Core utilisation", "65.5 % (cell area over core area)"),
+     ("Cells", "4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter"),
+     ("Hard macros", "None — the array is built from flip-flops"),
+     ("Combinational area", "7,146.53 µm²"),
+     ("Noncombinational area", "19,656.77 µm²"),
+     ("Buffer/inverter area", "2,891.90 µm²"),
+     ("Placed instances incl. fill", "11,207"),
+     ("Nets", "4,902"),
+     ("Ports", "38"),
+     ("Cell references", "60"),
+     ("Modes / corners", SCEN),
+     ("Setup WNS / TNS", "+0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners"),
+     ("Hold WNS / TNS", "−0.01 ns / −0.01 ns (2 violating endpoints)"),
+     ("Critical path", "rd_addr[3] input port → data_out_reg[5], slack +0.29 ns"),
+     ("Clock tree (post-CTS)", "2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire"),
+     ("Clock latency / skew", "2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c"),
+     ("Routing layers", "M1 – M9"),
+     ("Open nets", "0 of 4,902"),
+     ("Detailed-route DRC", "0 after route_opt; 26 reported at sign-off, after metal fill"),
+     ("LVS", "M1 shorts reported among SHFILL3_HVT filler cells; the check stops after 20"),
+     ("Total power", "8.85 mW — 1.71 mW dynamic, 7.13 mW leakage at the slow 125 °C corner"),
+     ("Power by group", "Registers 80.5 %, clock network 13.0 %, combinational 6.6 %"),
+     ("GDS-II size", "7.1 MB"),
+     ("Run date", "21 September 2026")],
+    [("gds.png", "GDS-II tape-out database, rendered in KLayout")]),
+]
 
 OL = dict(family="openlane", familyLabel="OpenLane",
           tool="OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
@@ -624,7 +635,7 @@ openlane = [
 ]
 
 # ------------------------------------------------------------------ emit
-designs = synopsys + openlane + orfs_records()   # + dc  (see the note above `dc`)
+designs = synopsys + openlane + orfs_records()
 
 for d in designs:
     d["searchText"] = " ".join([d["name"], d["blurb"], d["tool"], d["pdkLabel"], d["node"]] +
