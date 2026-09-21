@@ -2,15 +2,6 @@ MIT License
 
 Copyright (c) 2026 VSCLAB, University of California, Riverside
 
-This license covers the SOFTWARE in this repository only — the website source
-(index.html, assets/style.css, assets/app.js, assets/data.js) and the generator
-scripts under tools/.
-
-It does NOT cover the layout images and written design descriptions, which are
-licensed separately under LICENSE-CONTENT (CC BY 4.0), nor the third-party
-designs, PDKs and tools those images were produced from, which keep their own
-licenses. See NOTICE.md for the full attribution and provenance list.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights

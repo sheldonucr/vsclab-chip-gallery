@@ -22,6 +22,10 @@ was built from; see **Where to verify** at the end.
 | Website source and generator scripts | VSCLAB, UC Riverside | MIT — [`LICENSE`](LICENSE) |
 | Layout images and design descriptions | VSCLAB, UC Riverside | CC BY 4.0 — [`LICENSE-CONTENT`](LICENSE-CONTENT) |
 
+`LICENSE` is plain MIT so that GitHub detects it; its scope is exactly the two
+rows above. It does not reach the circuits, PDKs or tools below — those keep
+their own licenses, and the rest of this file records them.
+
 ---
 
 ## Flows and tools
