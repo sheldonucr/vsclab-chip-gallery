@@ -1,0 +1,73 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 VSCLAB, University of California, Riverside
+
+
+WHAT THIS COVERS
+----------------
+
+The gallery CONTENT produced by VSCLAB:
+
+  * The layout images under assets/img/ — the KLayout renderings of the final
+    GDS-II databases, and the layout views captured from the OpenROAD, Synopsys
+    Fusion Compiler and OpenLane sessions.
+  * The written design descriptions, section text and specification summaries
+    shown on the page and held in assets/data.js and tools/build_site.py.
+
+You may copy, redistribute, remix and build on this material, for any purpose
+including commercially, provided you give appropriate credit, link to this
+license, and indicate if changes were made.
+
+The full legal code is at:
+
+    https://creativecommons.org/licenses/by/4.0/legalcode
+
+and the plain-language summary at:
+
+    https://creativecommons.org/licenses/by/4.0/
+
+SPDX-License-Identifier: CC-BY-4.0
+
+
+SUGGESTED ATTRIBUTION
+---------------------
+
+    Layout image courtesy of VSCLAB, University of California, Riverside
+    (https://github.com/sheldonucr/vsclab-chip-gallery), licensed CC BY 4.0.
+
+For an image of a specific design, please also carry the upstream credit for
+that design's RTL and PDK from NOTICE.md — several of them require it.
+
+
+WHAT THIS DOES NOT COVER
+------------------------
+
+  * The website source and generator scripts. Those are MIT — see LICENSE.
+
+  * Any right in the underlying circuit designs, RTL, process design kits,
+    standard-cell libraries or EDA tools that these images were produced from.
+    VSCLAB licenses only its own contribution: the implementation work and the
+    resulting renderings. Rights held by the upstream authors are unaffected,
+    and some of those upstream licenses carry conditions of their own —
+    attribution requirements for the AES and JPEG cores, LGPL terms for the
+    Ethernet MAC, and proprietary academic agreements for the Synopsys SAED32
+    EDK and the Arm Cortex-M0 DesignStart core.
+
+    NOTICE.md lists the origin and license of every design and PDK in the
+    gallery. Read it before reusing an image, and honour the upstream terms
+    as well as this one.
+
+  * Any trademark. "Arm" and "Cortex" are trademarks of Arm Limited; "Synopsys",
+    "Fusion Compiler" and "Design Compiler" of Synopsys, Inc.; "GlobalFoundries"
+    of GlobalFoundries Inc.; "SkyWater" of SkyWater Technology. They are used
+    here only to identify the tools and processes used, which this license does
+    not extend to.
+
+
+NO WARRANTY
+-----------
+
+The material is provided as-is. The figures come from academic and predictive
+process kits and from research flows; they are teaching and research artifacts,
+not qualified for manufacturing, and nothing here is a representation that any
+design is free of defects or of third-party rights.

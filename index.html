@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The VLSI chips designed by VSCLAB @ UC Riverside</title>
+<meta name="description" content="Physical-design layouts produced at VSCLAB, UC Riverside — taken from RTL to GDS-II with Synopsys Fusion Compiler, Design Compiler, OpenLane and the OpenROAD flow across 7, 32, 45, 130 and 180 nm technologies.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23ffffff'/><rect x='9' y='9' width='14' height='14' rx='2' fill='%23ffb81c' stroke='%23003da5' stroke-width='2'/><path d='M16 2v7M16 23v7M2 16h7M23 16h7' stroke='%23003da5' stroke-width='2'/></svg>">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">VSCLAB · Department of Electrical &amp; Computer Engineering</p>
+    <h1>The VLSI chips designed by <span class="accent">VSCLAB @ UC Riverside</span></h1>
+    <p class="lede">
+      A gallery of physical designs taken from RTL to GDS&#8209;II in the lab — processor cores,
+      cryptographic engines, codecs, accelerators and memory blocks, hardened with both
+      commercial and open-source tool flows across five technology nodes. Every layout below
+      comes from an actual run: the images are the tools' own renderings, or the finished
+      GDS&#8209;II database drawn in KLayout.
+    </p>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<nav class="controls">
+  <div class="controls-inner">
+    <div class="filter-group" id="f-family"><span class="glabel">Flow</span></div>
+    <div class="filter-group" id="f-node"><span class="glabel">Node</span></div>
+    <input class="search" id="search" type="search" placeholder="Search designs, tools, specs…" aria-label="Search designs">
+  </div>
+</nav>
+
+<main id="results"></main>
+
+<footer>
+  <div class="fin">
+    <p><strong>About the data.</strong> Areas, cell counts, timing, wirelength, power and DRC
+    figures are read directly from the reports each tool produced — Fusion Compiler
+    <code>report_design</code> and <code>report_qor</code> summaries, and the OpenROAD flow's
+    per-stage metrics files. Nothing is estimated.</p>
+    <p><strong>About the images.</strong> OpenROAD designs show the flow's own layout renderings
+    alongside a KLayout rendering of the final <code>6_final.gds</code> tape-out database.
+    Synopsys and OpenLane designs show layouts captured from the tool GUIs.</p>
+    <p><strong>A note on the PDKs.</strong> ASAP7, FreePDK45/Nangate45 and the Synopsys SAED32
+    EDK are academic or predictive kits, not manufacturable processes. SKY130 and GF180MCU are
+    real open-source foundry PDKs.</p>
+    <p class="lic"><strong>License.</strong> The layout images and design descriptions are
+    <a href="LICENSE-CONTENT">CC&nbsp;BY&nbsp;4.0</a> — free to reuse with credit to VSCLAB,
+    UC&nbsp;Riverside. The site source and generator scripts are <a href="LICENSE">MIT</a>.
+    The circuits, PDKs and tools behind these figures belong to their own authors and keep
+    their own terms, some of which require attribution — <a href="NOTICE.md">NOTICE.md</a>
+    lists the origin and license of every design and PDK shown here.</p>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="s-name">
+  <div class="sheet">
+    <div class="sheet-top">
+      <div>
+        <div class="badges" id="s-badges"></div>
+        <h2 id="s-name"></h2>
+        <p id="s-blurb"></p>
+      </div>
+      <button class="xbtn" id="s-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="sheet-body">
+      <div class="sheet-left"  id="s-left"></div>
+      <div class="sheet-right" id="s-right"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
