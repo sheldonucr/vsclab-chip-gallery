@@ -17,8 +17,8 @@
     <p class="lede">
       A gallery of physical designs taken from RTL to GDS&#8209;II in the lab — processor cores,
       cryptographic engines, codecs, accelerators and memory blocks, hardened with both
-      commercial and open-source tool flows across five technology nodes. Every layout below
-      comes from an actual run: the images are the tools' own renderings, or the finished
+      commercial and open-source tool flows across five technology nodes. Each layout below
+      comes from a completed run — the images are the tools' own renderings, or the finished
       GDS&#8209;II database drawn in KLayout.
     </p>
     <div class="stats" id="stats"></div>
@@ -38,15 +38,15 @@
 <footer>
   <div class="fin">
     <p><strong>About the data.</strong> Areas, cell counts, timing, wirelength, power and DRC
-    figures are read directly from the reports each tool produced — Fusion Compiler
+    figures are taken from the reports each tool produced — Fusion Compiler
     <code>report_design</code> and <code>report_qor</code> summaries, and the OpenROAD flow's
-    per-stage metrics files. Nothing is estimated.</p>
+    per-stage metrics files.</p>
     <p><strong>About the images.</strong> OpenROAD designs show the flow's own layout renderings
     alongside a KLayout rendering of the final <code>6_final.gds</code> tape-out database.
     Synopsys and OpenLane designs show layouts captured from the tool GUIs.</p>
-    <p><strong>A note on the PDKs.</strong> ASAP7, FreePDK45/Nangate45 and the Synopsys SAED32
-    EDK are academic or predictive kits, not manufacturable processes. SKY130 and GF180MCU are
-    real open-source foundry PDKs.</p>
+    <p><strong>Technology notes.</strong> ASAP7 is a predictive 7&nbsp;nm FinFET kit, and
+    FreePDK45/Nangate45 and the Synopsys SAED32 EDK are academic kits for research and teaching.
+    SKY130 and GF180MCU are open-source PDKs for manufacturable foundry processes.</p>
     <p class="lic"><strong>License.</strong> The layout images and design descriptions are
     <a href="LICENSE-CONTENT">CC&nbsp;BY&nbsp;4.0</a> — free to reuse with credit to VSCLAB,
     UC&nbsp;Riverside. The site source and generator scripts are <a href="LICENSE">MIT</a>.

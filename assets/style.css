@@ -1,10 +1,9 @@
 /* ===========================================================
    VSCLAB @ UC Riverside — chip gallery (light theme)
 
-   The page is light; the image surfaces stay dark on purpose.
-   Almost every layout in the gallery is rendered on black, so a
-   dark mat behind them reads as a frame and keeps the chips
-   legible instead of glowing against white.
+   The page is light; the image surfaces are dark. Almost every
+   layout in the gallery is rendered on black, so a dark mat frames
+   them and keeps the layouts legible.
    =========================================================== */
 
 :root {

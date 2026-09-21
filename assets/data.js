@@ -7,7 +7,7 @@ window.DESIGNS = [
   "pdkKey": "saed32",
   "pdkLabel": "Synopsys SAED32/28 nm EDK",
   "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit — a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is used for teaching and research and is not a foundry-manufacturable process.",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
   "slug": "fc-risc-core",
   "name": "RISC core with embedded SRAM",
   "blurb": "A RISC processor core hardened in Fusion Compiler with four SRAM macros placed around a central logic region. The finished layout shows the memories in the upper and right quadrants and the random logic packed into the lower-left.",
@@ -162,7 +162,7 @@ window.DESIGNS = [
   "pdkKey": "saed32",
   "pdkLabel": "Synopsys SAED32/28 nm EDK",
   "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit — a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is used for teaching and research and is not a foundry-manufacturable process.",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
   "slug": "fc-jpeg-encoder",
   "name": "JPEG encoder",
   "blurb": "A baseline JPEG encoder — the largest all-standard-cell design in the Fusion Compiler set at just over 25,000 leaf cells and 607 mm of routed wire. Closes timing at the slow corner; the fast corner still shows a small setup and hold residue.",
@@ -310,7 +310,7 @@ window.DESIGNS = [
   "pdkKey": "saed32",
   "pdkLabel": "Synopsys SAED32/28 nm EDK",
   "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit — a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is used for teaching and research and is not a foundry-manufacturable process.",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
   "slug": "fc-aes-cipher",
   "name": "AES-128 cipher",
   "blurb": "An AES cipher top hardened in Fusion Compiler. Setup timing closes at both corners with positive slack; only a handful of hold endpoints remain, and the 390-port interface dominates the pin ring around the core.",
@@ -449,7 +449,7 @@ window.DESIGNS = [
   "pdkKey": "saed32",
   "pdkLabel": "Synopsys SAED32/28 nm EDK",
   "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit — a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is used for teaching and research and is not a foundry-manufacturable process.",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
   "slug": "fc-cortex-m0",
   "name": "Arm Cortex-M0 DesignStart",
   "blurb": "An Arm Cortex-M0 DesignStart core (CORTEXM0DS) taken through Fusion Compiler design planning to a signed-off, fully routed block complete with an I/O pad ring and corner cells — the most complete full-chip floorplan in the collection.",
@@ -490,7 +490,7 @@ window.DESIGNS = [
    ],
    [
     "Technology",
-    "Not recorded in the captured artifacts. The companion Fusion Compiler projects in this workspace all target the Synopsys SAED32/28 nm EDK."
+    "Not recorded in this design's source files. The other Fusion Compiler projects in this set target the Synopsys SAED32/28 nm EDK."
    ],
    [
     "Captured",
@@ -514,7 +514,7 @@ window.DESIGNS = [
     "full": "assets/img/fc-cortex-m0/gui.png"
    }
   ],
-  "searchText": "arm cortex-m0 designstart an arm cortex-m0 designstart core (cortexm0ds) taken through fusion compiler design planning to a signed-off, fully routed block complete with an i/o pad ring and corner cells — the most complete full-chip floorplan in the collection. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm design library cortexm0ds.dlib — block cortexm0ds/signoff.design tool synopsys fusion compiler, design planning / blockwindow core ip arm cortex-m0 designstart — a 32-bit armv6-m processor flow stage reached sign-off design view: placed, clock-tree-synthesised and fully routed physical features peripheral i/o pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block technology not recorded in the captured artifacts. the companion fusion compiler projects in this workspace all target the synopsys saed32/28 nm edk. captured april 2026"
+  "searchText": "arm cortex-m0 designstart an arm cortex-m0 designstart core (cortexm0ds) taken through fusion compiler design planning to a signed-off, fully routed block complete with an i/o pad ring and corner cells — the most complete full-chip floorplan in the collection. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm design library cortexm0ds.dlib — block cortexm0ds/signoff.design tool synopsys fusion compiler, design planning / blockwindow core ip arm cortex-m0 designstart — a 32-bit armv6-m processor flow stage reached sign-off design view: placed, clock-tree-synthesised and fully routed physical features peripheral i/o pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block technology not recorded in this design's source files. the other fusion compiler projects in this set target the synopsys saed32/28 nm edk. captured april 2026"
  },
  {
   "family": "openlane",
@@ -904,7 +904,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -1089,7 +1089,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -1274,7 +1274,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -1451,7 +1451,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -1632,7 +1632,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -1813,7 +1813,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -2006,7 +2006,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -2199,7 +2199,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -2380,7 +2380,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -2561,7 +2561,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -2742,7 +2742,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -2927,7 +2927,7 @@ window.DESIGNS = [
   "pdkKey": "asap7",
   "pdkLabel": "ASAP7 predictive PDK",
   "node": "7 nm",
-  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It is an academic model of a 7 nm process rather than a foundry-manufacturable kit, and is the standard vehicle for research on FinFET-era place-and-route.",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
   "head": [
    [
     "Die",
@@ -3108,7 +3108,7 @@ window.DESIGNS = [
   "pdkKey": "gf180",
   "pdkLabel": "GlobalFoundries GF180MCU (open PDK)",
   "node": "180 nm",
-  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process: a real, manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
+  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process, a manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
   "head": [
    [
     "Die",
@@ -3285,7 +3285,7 @@ window.DESIGNS = [
   "pdkKey": "gf180",
   "pdkLabel": "GlobalFoundries GF180MCU (open PDK)",
   "node": "180 nm",
-  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process: a real, manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
+  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process, a manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
   "head": [
    [
     "Die",
@@ -3466,7 +3466,7 @@ window.DESIGNS = [
   "pdkKey": "gf180",
   "pdkLabel": "GlobalFoundries GF180MCU (open PDK)",
   "node": "180 nm",
-  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process: a real, manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
+  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process, a manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
   "head": [
    [
     "Die",
@@ -3647,7 +3647,7 @@ window.DESIGNS = [
   "pdkKey": "gf180",
   "pdkLabel": "GlobalFoundries GF180MCU (open PDK)",
   "node": "180 nm",
-  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process: a real, manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
+  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process, a manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
   "head": [
    [
     "Die",
@@ -3832,7 +3832,7 @@ window.DESIGNS = [
   "pdkKey": "gf180",
   "pdkLabel": "GlobalFoundries GF180MCU (open PDK)",
   "node": "180 nm",
-  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process: a real, manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
+  "pdkNote": "GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process, a manufacturable foundry PDK. This platform is configured for 9-track cells, a 5-metal stack (5LM_1TM) and the 5.0 V power option.",
   "head": [
    [
     "Die",
@@ -4013,7 +4013,7 @@ window.DESIGNS = [
   "pdkKey": "nangate45",
   "pdkLabel": "FreePDK45 / Nangate45",
   "node": "45 nm",
-  "pdkNote": "The Nangate Open Cell Library on FreePDK45 — non-manufacturable, and the long-standing reference platform for academic EDA research and flow bring-up.",
+  "pdkNote": "The Nangate Open Cell Library on FreePDK45. It is an academic platform rather than a manufacturable process, and has long served as a reference for EDA research and flow bring-up.",
   "head": [
    [
     "Die",
@@ -4194,7 +4194,7 @@ window.DESIGNS = [
   "pdkKey": "nangate45",
   "pdkLabel": "FreePDK45 / Nangate45",
   "node": "45 nm",
-  "pdkNote": "The Nangate Open Cell Library on FreePDK45 — non-manufacturable, and the long-standing reference platform for academic EDA research and flow bring-up.",
+  "pdkNote": "The Nangate Open Cell Library on FreePDK45. It is an academic platform rather than a manufacturable process, and has long served as a reference for EDA research and flow bring-up.",
   "head": [
    [
     "Die",

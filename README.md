@@ -10,13 +10,13 @@ Open `index.html` in a browser. It is plain HTML, CSS and JavaScript with no bui
 and no network dependencies, so `file://` works:
 
 ```bash
-open /Volumes/joule/chip_designed_io/index.html
+open index.html
 ```
 
 To serve it over HTTP instead (useful before publishing anywhere):
 
 ```bash
-cd /Volumes/joule/chip_designed_io && python3 -m http.server 8931
+python3 -m http.server 8931
 ```
 
 ## What's here
@@ -44,7 +44,7 @@ captures — the PNG is kept beside it and linked from the detail view as
 | OpenLane | `chip_design_work_desk/openlane_designs/*` — `config.json`, RTL and KLayout captures |
 | OpenROAD Flow Scripts | `OpenROAD-flow-scripts-Darwin/flow` — `results/`, `reports/` and `logs/` for each `<pdk>/<design>/base` run |
 
-Every number on the page is read from a tool-generated report. Nothing is estimated.
+Every number on the page comes from a tool-generated report.
 For the OpenROAD designs that means `logs/<pdk>/<design>/base/6_report.json` and
 `5_2_route.json`, the `DIEAREA` line of `6_final.def`, and the design's `config.mk`
 and `constraint.sdc`. Note that ASAP7 Liberty timing is in picoseconds while the other
@@ -67,9 +67,10 @@ Rebuilding `assets/data.js` from the reports is fast and safe to re-run any time
 python3 tools/build_site.py
 ```
 
-Paths to the two source trees are set at the top of `tools/build_site.py`
-(`FLOW`) and can be overridden for `render_all_gds.sh` with the `ORFS_RESULTS` and
-`KLAYOUT` environment variables.
+Paths to the source trees are set at the top of `tools/build_site.py` (`FLOW`
+and `SITE`), and can be overridden for `render_all_gds.sh` with the
+`ORFS_RESULTS` and `KLAYOUT` environment variables. Both trees are outside this
+repository, so regeneration only works on a machine that has them.
 
 ### Adding a design
 
@@ -81,7 +82,7 @@ Paths to the two source trees are set at the top of `tools/build_site.py`
 
 ## License
 
-Two licenses, because the repository holds two different kinds of thing:
+The repository holds two kinds of material, each under its own license:
 
 | | License | File |
 | --- | --- | --- |
@@ -89,22 +90,23 @@ Two licenses, because the repository holds two different kinds of thing:
 | Layout images and design descriptions | CC BY 4.0 | [`LICENSE-CONTENT`](LICENSE-CONTENT) |
 
 The images are free to download and reuse, including commercially, as long as
-you credit VSCLAB. Software licenses are a poor fit for images and content
-licenses are a poor fit for code, which is why they are split.
+you credit VSCLAB. The split follows normal practice: software licenses do not
+suit images, and content licenses do not suit code.
 
 Neither license reaches the underlying circuits, PDKs or tools — those belong to
 their authors and keep their own terms, several of which require attribution.
 **[`NOTICE.md`](NOTICE.md) records the origin and license of every design and
-PDK in the gallery**, and flags three items to confirm before publishing:
-the Synopsys SAED32 EDK agreement, the Arm Cortex-M0 DesignStart licence, and
+PDK in the gallery**, and lists three whose terms are set by separate
+agreements: the Synopsys SAED32 EDK, the Arm Cortex-M0 DesignStart licence, and
 the LGPL status of the OpenCores Ethernet MAC.
 
 No PDK files, RTL, netlists or GDS-II are committed here — only rendered images
 and the numbers read out of the tool reports.
 
-## A note on the PDKs
+## Technology notes
 
-ASAP7, FreePDK45/Nangate45 and the Synopsys SAED32 EDK are academic or predictive kits,
-not manufacturable processes. SKY130 and GF180MCU are real open-source foundry PDKs.
-The Arm Cortex-M0 entry does not record its PDK in the captured artifacts; the page says
-so rather than guessing.
+ASAP7 is a predictive 7 nm FinFET kit, and FreePDK45/Nangate45 and the Synopsys
+SAED32 EDK are academic kits for research and teaching. SKY130 and GF180MCU are
+open-source PDKs for manufacturable foundry processes.
+
+The PDK for the Arm Cortex-M0 entry is not recorded in that design's source files.

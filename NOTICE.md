@@ -6,12 +6,12 @@ the floorplanning, placement, clock-tree synthesis, routing and finishing — an
 the resulting images. The RTL, the process design kits and the EDA tools all
 belong to others and keep their own licenses.
 
-This file records where each piece came from. Several of the upstream licenses
-*require* that their notice travel with redistributed material, so please carry
-the relevant rows with you if you reuse an image.
+This file records the origin of each piece. Several of the upstream licenses
+require their notice to travel with redistributed material, so carry the relevant
+rows when reusing an image.
 
-Licenses quoted below were read from the copies in the source trees this site
-was built from; see **Where to verify** at the end.
+Licenses below are quoted from the copies in the source trees used to build this
+site; see **Where to verify** at the end.
 
 ---
 
@@ -22,9 +22,9 @@ was built from; see **Where to verify** at the end.
 | Website source and generator scripts | VSCLAB, UC Riverside | MIT — [`LICENSE`](LICENSE) |
 | Layout images and design descriptions | VSCLAB, UC Riverside | CC BY 4.0 — [`LICENSE-CONTENT`](LICENSE-CONTENT) |
 
-`LICENSE` is plain MIT so that GitHub detects it; its scope is exactly the two
-rows above. It does not reach the circuits, PDKs or tools below — those keep
-their own licenses, and the rest of this file records them.
+`LICENSE` covers the two rows above. It does not extend to the circuits, PDKs or
+tools listed below, which keep their own licenses; the rest of this file records
+them.
 
 ---
 
@@ -69,9 +69,12 @@ their own licenses, and the rest of this file records them.
 | Design | RTL origin | License |
 | --- | --- | --- |
 | 32 × 32 signed multiplier (`pm32` / `spm`) | Copyright 2016 Mohamed Shalan, American University in Cairo. The SPM core follows Atmel application notes DOC0529 / DOC0716. | No license text in the source files. Distributed with OpenLane as an example design — **confirm the applicable terms before redistributing the RTL.** Only the layout image appears here. |
-| RISC core | No copyright header in the sources | Provenance not recorded in the files — **confirm authorship before asserting it.** |
-| CNN layer (3 × 3 convolution) | No copyright header in the sources | Believed lab-authored — confirm |
-| RISC-V 32-bit ALU | No copyright header in the sources | Believed lab-authored — confirm |
+| RISC core | No copyright header in the sources | No license statement in the source files |
+| CNN layer (3 × 3 convolution) | No copyright header in the sources | No license statement in the source files |
+| RISC-V 32-bit ALU | No copyright header in the sources | No license statement in the source files |
+
+These three carry no copyright or license statement in their Verilog. Their
+authorship should be established from lab records before it is stated publicly.
 
 ### Synopsys Fusion Compiler
 
@@ -84,41 +87,41 @@ their own licenses, and the rest of this file records them.
 
 ---
 
-## Three things to check before you publish
+## Three items governed by separate agreements
 
-These are the items I could not verify from the files available here. None of
-them blocks publishing the *images* in the ordinary academic sense — layouts
-built in SAED32 and Cortex-M0 DesignStart appear in published papers routinely —
-but the terms are yours to confirm, not mine to assume.
+The terms for these three are set outside any of the source trees above, in
+signed agreements or in a copyleft license. Layouts built in SAED32 and with
+Cortex-M0 DesignStart appear routinely in published academic work; the specific
+terms should still be checked against the agreements themselves.
 
 **1. Synopsys SAED32/28 EDK.** The kit is distributed under a Synopsys
 university agreement. That agreement governs redistribution of the *kit* — the
 technology files, the NDM libraries, the SRAM macros — none of which is in this
 repository. What is here is images of designs implemented with it. Check your
 department's EDK agreement for any clause on publishing derived layout figures,
-and do not add GDS, LEF, LIB, NDM or `.tf` files from the kit to the repo.
+and do not add GDS, LEF, LIB, NDM or `.tf` files from the kit to the repository.
 
 **2. Arm Cortex-M0 DesignStart.** The `CORTEXM0DS` core comes under an Arm
 licence with its own terms on use and publication, and "Arm" and "Cortex" are
 Arm trademarks. Confirm your DesignStart agreement covers publishing a layout
-figure, and keep the RTL and any Arm-supplied deliverables out of the repo.
+figure, and keep the RTL and any Arm-supplied deliverables out of the repository.
 
 **3. The Ethernet MAC is LGPL.** Every other design here is under a permissive
 license; the OpenCores Ethernet MAC is LGPL v2.1-or-later. Whether a rendered
 picture of a layout is a "derivative work" of LGPL Verilog is genuinely
 unsettled, and the LGPL's mechanics were written for linked software, not
 images. The conservative options, in order of effort: keep the two `ethmac`
-entries and carry this notice (what the repo does today); or drop them if your
-institution wants no LGPL exposure at all. Either way, do not add the ethmac
+entries and carry this notice, as the repository currently does; or remove them
+if no LGPL exposure is acceptable. Either way, do not add the ethmac
 RTL or netlists to this repository without following the LGPL's source-offer
 requirements.
 
-## What is deliberately not in this repository
+## What this repository excludes
 
 No PDK files, no standard-cell libraries, no RTL, no netlists, no GDS-II, DEF or
-LEF. The repository holds rendered images and the numbers read out of the tool
+LEF. The repository holds rendered images and figures taken from the tool
 reports. This keeps it clear of the redistribution clauses that apply to the
-kits themselves, and is why the caution list above is short.
+kits themselves, which is why the list above is short.
 
 ## Where to verify
 

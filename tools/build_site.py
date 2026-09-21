@@ -5,7 +5,7 @@ import json, os, re, glob
 
 FLOW = "/Volumes/joule/OpenROAD-flow-scripts-Darwin/flow"
 R    = os.path.join(FLOW, "results")
-SITE = "/Volumes/joule/chip_designed_io"
+SITE = "/Volumes/joule/vsclab-chip-gallery"
 IMG  = os.path.join(SITE, "assets", "img")
 
 # ------------------------------------------------------------------ helpers
@@ -90,27 +90,27 @@ PDK = {
  "asap7": dict(node="7 nm", name="ASAP7 predictive PDK",
     cells="asap7sc7p5t — 7.5-track FinFET", tu=1e-12, tname="ps",
     note="ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. "
-         "It is an academic model of a 7 nm process rather than a foundry-manufacturable "
-         "kit, and is the standard vehicle for research on FinFET-era place-and-route."),
+         "It models a 7 nm process for academic use, and is a standard platform for "
+         "research on FinFET-era place-and-route."),
  "gf180": dict(node="180 nm", name="GlobalFoundries GF180MCU (open PDK)",
     cells="gf180mcu_fd_sc_mcu9t5v0 — 9-track, 5.0 V", tu=1e-9, tname="ns",
-    note="GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process: a real, "
-         "manufacturable foundry PDK. This platform is configured for 9-track cells, "
-         "a 5-metal stack (5LM_1TM) and the 5.0 V power option."),
+    note="GF180MCU is GlobalFoundries' open-sourced 180 nm MCU process, a manufacturable "
+         "foundry PDK. This platform is configured for 9-track cells, a 5-metal stack "
+         "(5LM_1TM) and the 5.0 V power option."),
  "nangate45": dict(node="45 nm", name="FreePDK45 / Nangate45",
     cells="NangateOpenCellLibrary", tu=1e-9, tname="ns",
-    note="The Nangate Open Cell Library on FreePDK45 — non-manufacturable, and the "
-         "long-standing reference platform for academic EDA research and flow bring-up."),
+    note="The Nangate Open Cell Library on FreePDK45. It is an academic platform rather "
+         "than a manufacturable process, and has long served as a reference for EDA "
+         "research and flow bring-up."),
  "ihp-sg13g2": dict(node="130 nm", name="IHP SG13G2 (open PDK)",
     cells="sg13g2_stdcell", tu=1e-9, tname="ns",
     note="IHP's SiGe BiCMOS 130 nm open PDK, 1.2 V core supply."),
 }
 
-SAED32_NOTE = ("SAED32/28 nm is Synopsys' Educational Design Kit — a complete, "
+SAED32_NOTE = ("SAED32/28 nm is Synopsys' Educational Design Kit: a complete, "
                "academically licensed 32 nm technology with a 1P9M metal stack, "
                "three threshold-voltage flavours (RVT / LVT / HVT) and low-power "
-               "SRAM macros. It is used for teaching and research and is not a "
-               "foundry-manufacturable process.")
+               "SRAM macros. It is licensed for teaching and research use.")
 
 TITLES = {
  ("asap7","aes-block"): ("AES-128 cipher — hierarchical",
@@ -469,8 +469,8 @@ synopsys = [
      ("Flow stage reached", "Sign-off design view: placed, clock-tree-synthesised and fully routed"),
      ("Physical features", "Peripheral I/O pad ring with corner cells, a dense multi-layer "
                            "routed core, and power-ground regions around the block"),
-     ("Technology", "Not recorded in the captured artifacts. The companion Fusion Compiler "
-                    "projects in this workspace all target the Synopsys SAED32/28 nm EDK."),
+     ("Technology", "Not recorded in this design's source files. The other Fusion Compiler "
+                    "projects in this set target the Synopsys SAED32/28 nm EDK."),
      ("Captured", "April 2026")],
     [("layout.png", "Routed core inside the I/O pad ring"),
      ("floorplan.png", "Floorplan"),
