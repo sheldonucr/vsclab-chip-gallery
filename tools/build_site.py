@@ -160,6 +160,115 @@ TITLES = {
    "The GCD datapath on Nangate45 — the default target of the OpenROAD flow."),
 }
 
+# ORFS runs kept outside the flow tree (their own WORK_HOME and FLOW_VARIANT). Each is
+# read exactly like a flow-tree run; "specs" rows are appended to the generated ones
+# and "power" replaces the flow's vectorless power estimate with a measured figure.
+V2 = "/Volumes/joule/htc-cnn-asic/v2"
+V2W = os.path.join(V2, "orfs", "work")
+HTCR_ARRAY = ("16 × 16 weight-stationary HTC-R array — hybrid temporal computing with run-time "
+              "precision: 16 stream bits per clock, one stored 8-bit weight set serving 3- to 8-bit "
+              "activations, early termination and clock gating")
+HTCR_ABOUT = ("Hybrid temporal computing with run-time precision. A product is the number of 1s "
+              "in the AND of two bitstreams: the activation as a thermometer code, 1 for its first "
+              "x positions, and the weight with each of its bits repeated at binary-weighted "
+              "positions (the top bit every second position, the next every fourth, and so on). "
+              "Earlier HTC designs stepped through that stream one bit per clock; HTC-R counts 16 "
+              "stream bits per clock in closed form, so each processing element is four AND gates "
+              "and a 5-bit adder, with no multiplier. Because the weight stream visits the weight "
+              "bits most-significant first, an n-bit activation only ever reads the top n bits of "
+              "the stored weight: one 8-bit weight set serves every precision from 3 to 8 bits, and "
+              "the activations alone set it — one clock per vector up to 4 bits, a few clocks with "
+              "early termination above.")
+BIN_ARRAY = ("16 × 16 weight-stationary binary array — 8-bit sign-magnitude multipliers and "
+             "adder trees, one input vector per clock")
+LENET_STORE = ("Row-banked register-file activation buffers, a 5 × 5 × C sliding window and a "
+               "56-entry partial-sum buffer, clock-gated per word; weights off-core behind a "
+               "128-bit read port")
+RESNET_STORE = ("Three 1024 × 128-bit activation buffers built from 12 fakeram45_1024x32 SRAM "
+                "macros, clock-gated per buffer, and a 64-entry partial-sum buffer; weights "
+                "off-core behind a 128-bit read port")
+GATE = ("gate-level simulation of whole inferences on the routed netlist with extracted "
+        "parasitics, including the weight-memory reads")
+EXTRA_ORFS = [
+ dict(slug="orfs-nangate45-lenet5-htcr", blockmap="lenet_acc", pdk="nangate45", work=V2W, design="lenet_acc", variant="arr0",
+   config=os.path.join(V2, "orfs", "acc", "config.mk"), periods=[2.5],
+   title="LeNet-5 accelerator — HTC-R array",
+   blurb="A complete LeNet-5 inference accelerator built around a precision-scalable hybrid "
+         "temporal computing (HTC-R) array. One stored 8-bit weight set serves 4- and 8-bit "
+         "activations without reconfiguration: at 4 bits a vector takes one clock, above that "
+         "the array runs temporally and stops early. Buffers, sliding window, pooling, "
+         "requantization and argmax are all on the die.",
+   power="32.7 mW measured — average over a 4-bit inference at 400 MHz (gate-level simulation)",
+   specs=[("Function", "LeNet-5 inference for Fashion-MNIST — convolution, pooling, fully connected layers and argmax"),
+          ("Compute array", HTCR_ARRAY),
+          ("What HTC-R is", HTCR_ABOUT),
+          ("On-chip storage", LENET_STORE),
+          ("Operating points", "4-bit, 4-bit with temporal oversampling, 8-bit — the same stored weights"),
+          ("Accuracy", "89.83 % / 90.14 % / 90.31 % on the 10,000 test images (hardware-exact integer model)"),
+          ("Energy per inference", "1.02 µJ / 1.17 µJ / 2.47 µJ — " + GATE),
+          ("Latency", "29.8 µs / 33.9 µs / 91.3 µs at 400 MHz"),
+          ("Verification", "RTL bit-exact against the integer model on 2,000 test images per operating point; "
+                           "every gate-level inference returns the model's class"),
+          ("Companion design", "Built twice with everything but the array identical — see the binary-array version")]),
+ dict(slug="orfs-nangate45-lenet5-binary", blockmap="lenet_acc", pdk="nangate45", work=V2W, design="lenet_acc", variant="arr1",
+   config=os.path.join(V2, "orfs", "acc", "config.mk"), periods=[2.5],
+   title="LeNet-5 accelerator — binary array",
+   blurb="The same LeNet-5 accelerator built around a conventional 16 × 16 binary multiplier "
+         "array: the baseline for the HTC-R version, with identical buffers, sliding window, "
+         "pooling, requantization and control.",
+   power="41.2 mW measured — average over a W4A4 inference at 400 MHz (gate-level simulation)",
+   specs=[("Function", "LeNet-5 inference for Fashion-MNIST — convolution, pooling, fully connected layers and argmax"),
+          ("Compute array", BIN_ARRAY),
+          ("On-chip storage", LENET_STORE),
+          ("Operating points", "W4A4 (4-bit weights and activations) and W8A8"),
+          ("Accuracy", "90.51 % / 90.57 % on the 10,000 test images (hardware-exact integer model)"),
+          ("Energy per inference", "1.27 µJ / 1.53 µJ — " + GATE),
+          ("Latency", "29.8 µs at 400 MHz"),
+          ("Verification", "RTL bit-exact against the integer model on 2,000 test images per operating point; "
+                           "every gate-level inference returns the model's class"),
+          ("Companion design", "Built twice with everything but the array identical — see the HTC-R version")]),
+ dict(slug="orfs-nangate45-resnet20-htcr", blockmap="resnet_acc", pdk="nangate45", work=V2W, design="resnet_acc", variant="arr0",
+   config=os.path.join(V2, "orfs", "res", "config.mk"), periods=[2.5],
+   title="ResNet-20 accelerator — HTC-R array",
+   blurb="A complete ResNet-20 inference accelerator for CIFAR-10 built around a precision-scalable "
+         "hybrid temporal computing (HTC-R) array. "
+         "Feature maps live in twelve SRAM macros; 3 × 3 convolutions with zero padding and "
+         "stride 2 are streamed from them, batch normalization and the residual additions are "
+         "folded into requantization, and global average pooling, the classifier and argmax "
+         "finish the network on chip.",
+   power="62.4 mW measured — average over a 4-bit inference at 400 MHz (gate-level simulation)",
+   specs=[("Function", "ResNet-20 inference for CIFAR-10 — 19 convolutions with residual blocks, global average pooling, classifier and argmax"),
+          ("Compute array", HTCR_ARRAY),
+          ("What HTC-R is", HTCR_ABOUT),
+          ("On-chip storage", RESNET_STORE),
+          ("Operating points", "4-bit, 4-bit with temporal oversampling, 8-bit — the same stored weights"),
+          ("Accuracy", "90.25 % / 90.97 % / 91.28 % on the 10,000 test images (hardware-exact integer model)"),
+          ("Energy per inference", "37.4 µJ / 43.0 µJ / 116.7 µJ — " + GATE),
+          ("Latency", "591 µs / 713 µs / 3,245 µs at 400 MHz"),
+          ("Verification", "RTL bit-exact against the integer model on 200 test images per operating point; "
+                           "every gate-level inference returns the model's class"),
+          ("SRAM macros", "fakeram45 models from the OpenROAD Nangate45 platform — abstracts without internal layout; the GDS-II rendering shows their outlines, pins and the power straps routed over them"),
+          ("Companion design", "Built twice with everything but the array identical — see the binary-array version")]),
+ dict(slug="orfs-nangate45-resnet20-binary", blockmap="resnet_acc", pdk="nangate45", work=V2W, design="resnet_acc", variant="arr1",
+   config=os.path.join(V2, "orfs", "res", "config.mk"), periods=[2.5],
+   title="ResNet-20 accelerator — binary array",
+   blurb="The same ResNet-20 accelerator built around a conventional 16 × 16 binary multiplier "
+         "array: the baseline for the HTC-R version, with the same twelve SRAM macros, "
+         "streaming, requantization, pooling and control.",
+   power="78.3 mW measured — average over a W4A4 inference at 400 MHz (gate-level simulation)",
+   specs=[("Function", "ResNet-20 inference for CIFAR-10 — 19 convolutions with residual blocks, global average pooling, classifier and argmax"),
+          ("Compute array", BIN_ARRAY),
+          ("On-chip storage", RESNET_STORE),
+          ("Operating points", "W4A4 (4-bit weights and activations) and W8A8"),
+          ("Accuracy", "90.54 % / 91.70 % on the 10,000 test images (hardware-exact integer model)"),
+          ("Energy per inference", "46.9 µJ / 58.9 µJ — " + GATE),
+          ("Latency", "591 µs at 400 MHz"),
+          ("Verification", "RTL bit-exact against the integer model on 200 test images per operating point; "
+                           "every gate-level inference returns the model's class"),
+          ("SRAM macros", "fakeram45 models from the OpenROAD Nangate45 platform — abstracts without internal layout; the GDS-II rendering shows their outlines, pins and the power straps routed over them"),
+          ("Companion design", "Built twice with everything but the array identical — see the HTC-R version")]),
+]
+
 CAPTION = {
  "gds.png":               "GDS-II tape-out database, rendered in KLayout",
  "final_all.webp":        "Final layout — every mask layer",
@@ -170,8 +279,9 @@ CAPTION = {
  "final_ir_drop.webp":    "Power-grid IR drop",
  "final_resizer.webp":    "Cells added by the resizer",
  "final_worst_path.webp": "Worst timing path",
+ "blocks.png":            "Block map — every placed cell coloured by the functional block it belongs to",
 }
-ORDER = ["gds.png", "final_all.webp", "final_routing.webp", "final_placement.webp",
+ORDER = ["gds.png", "blocks.png", "final_all.webp", "final_routing.webp", "final_placement.webp",
          "final_congestion.webp", "final_clocks.webp", "final_ir_drop.webp",
          "final_resizer.webp", "final_worst_path.webp"]
 
@@ -201,6 +311,14 @@ def read_cfg(pdk, nick):
             if m: d[m.group(1)] = m.group(2)
     return d
 
+def read_cfg_file(p):
+    d = {}
+    if os.path.exists(p):
+        for line in open(p, errors="ignore"):
+            m = re.match(r"\s*export\s+(\w+)\s*\??=\s*(.*?)\s*$", line)
+            if m: d[m.group(1)] = m.group(2)
+    return d
+
 def read_periods(pdk, nick):
     """Clock periods from the design's OWN constraint.sdc. Returns [] when the
     design has no SDC of its own — hierarchical sub-blocks are constrained by
@@ -220,22 +338,41 @@ def flatjson(p):
         d[k] = v.strip()
     return d
 
+def orfs_runs():
+    """Every finished ORFS run: first the runs listed in EXTRA_ORFS, which live in
+    their own work directories and lead the OpenROAD section, then the flow tree's
+    <pdk>/<design>/base runs."""
+    for e in EXTRA_ORFS:
+        gds = os.path.join(e["work"], "results", e["pdk"], e["design"], e["variant"], "6_final.gds")
+        if not os.path.exists(gds):
+            continue
+        yield dict(slug=e["slug"], pdk=e["pdk"], nick=e["design"], gds=gds,
+                   logd=os.path.join(e["work"], "logs", e["pdk"], e["design"], e["variant"]),
+                   cfg=read_cfg_file(e["config"]), per=e["periods"],
+                   title=(e["title"], e["blurb"]), extra=e)
+    for gds in sorted(glob.glob(os.path.join(R, "*", "*", "base", "6_final.gds"))):
+        pdk, nick = gds.split("/")[-4], gds.split("/")[-3]
+        yield dict(slug="orfs-%s-%s" % (pdk, nick), pdk=pdk, nick=nick, gds=gds,
+                   logd=os.path.join(FLOW, "logs", pdk, nick, "base"),
+                   cfg=read_cfg(pdk, nick) or read_cfg(pdk, nick.split("_")[0]),
+                   per=read_periods(pdk, nick),          # own SDC only — see read_periods
+                   title=TITLES.get((pdk, nick), (nick, "")))
+
+
 def orfs_records():
     out = []
-    for gds in sorted(glob.glob(os.path.join(R, "*", "*", "base", "6_final.gds"))):
+    for run in orfs_runs():
+        gds, slug, pdk, nick, logd = run["gds"], run["slug"], run["pdk"], run["nick"], run["logd"]
         base = os.path.dirname(gds)
-        pdk, nick = gds.split("/")[-4], gds.split("/")[-3]
-        slug = "orfs-%s-%s" % (pdk, nick)
-        logd = os.path.join(FLOW, "logs", pdk, nick, "base")
+        extra = run.get("extra", {})
 
         m  = flatjson(os.path.join(logd, "6_report.json"))
         rt = flatjson(os.path.join(logd, "5_2_route.json"))
-        cfg = read_cfg(pdk, nick) or read_cfg(pdk, nick.split("_")[0])
-        per = read_periods(pdk, nick)          # own SDC only — see read_periods
+        cfg, per = run["cfg"], run["per"]
         P = PDK[pdk]
 
         w, h = die_from_def(os.path.join(base, "6_final.def"))
-        title, blurb = TITLES.get((pdk, nick), (nick, ""))
+        title, blurb = run["title"]
 
         fmax = num(m.get("finish__timing__fmax"))
         ws   = num(m.get("finish__timing__setup__ws"))
@@ -315,9 +452,9 @@ def orfs_records():
                                     if cfg.get("MAX_ROUTING_LAYER") else None),
           ("Detailed-route DRC",    ints(rt.get("detailedroute__route__drc_errors"))),
           ("Antenna-violating nets", ints(rt.get("detailedroute__antenna__violating__nets"))),
-          ("Total power",           "%.3f mW" % (pw * 1e3) if pw else None),
+          ("Total power",           extra.get("power") or ("%.3f mW" % (pw * 1e3) if pw else None)),
           ("GDS-II size",           "%.1f MB" % (os.path.getsize(gds) / 1048576.0)),
-        ]
+        ] + [tuple(r) for r in extra.get("specs", [])]
 
         d = os.path.join(IMG, slug)
         have = sorted(os.listdir(d)) if os.path.isdir(d) else []
@@ -642,7 +779,15 @@ openlane = [
 ]
 
 # ------------------------------------------------------------------ emit
-designs = synopsys + openlane + orfs_records()
+import sys
+if "--list-extra" in sys.argv:
+    # For render_all_gds.sh: slug, GDS, routed database and block-map rules per extra run.
+    for e in EXTRA_ORFS:
+        b = os.path.join(e["work"], "results", e["pdk"], e["design"], e["variant"])
+        print(e["slug"], os.path.join(b, "6_final.gds"), os.path.join(b, "6_final.odb"), e.get("blockmap", ""))
+    sys.exit(0)
+
+designs = orfs_records() + synopsys + openlane
 
 for d in designs:
     d["searchText"] = " ".join([d["name"], d["blurb"], d["tool"], d["pdkLabel"], d["node"]] +

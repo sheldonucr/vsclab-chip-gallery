@@ -6,20 +6,20 @@
 
   var FAMILIES = [
     { key: "all",      label: "All flows" },
+    { key: "openroad", label: "OpenROAD" },
     { key: "synopsys", label: "Synopsys" },
-    { key: "openlane", label: "OpenLane" },
-    { key: "openroad", label: "OpenROAD" }
+    { key: "openlane", label: "OpenLane" }
   ];
 
   var SECTIONS = [
+    { key: "OpenROAD Flow Scripts",
+      note: "Open-source RTL-to-GDSII across four technology nodes" },
     { key: "Synopsys Fusion Compiler",
       note: "Commercial RTL-to-GDSII on the Synopsys educational 32 nm kit" },
     { key: "Synopsys Design Compiler",
       note: "Logic synthesis reference flow" },
     { key: "OpenLane",
-      note: "Push-button open-source flow on SkyWater SKY130" },
-    { key: "OpenROAD Flow Scripts",
-      note: "Open-source RTL-to-GDSII across four technology nodes" }
+      note: "Push-button open-source flow on SkyWater SKY130" }
   ];
 
   var state = { family: "all", node: "all", q: "" };

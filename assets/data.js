@@ -1,1067 +1,907 @@
 window.DESIGNS = [
  {
-  "family": "synopsys",
-  "familyLabel": "Synopsys Fusion Compiler",
-  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
-  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
-  "pdkKey": "saed32",
-  "pdkLabel": "Synopsys SAED32/28 nm EDK",
-  "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
-  "slug": "fc-risc-core",
-  "name": "RISC core with embedded SRAM",
-  "blurb": "A RISC processor core hardened in Fusion Compiler with four SRAM macros placed around a central logic region. The finished layout shows the memories in the upper and right quadrants and the random logic packed into the lower-left.",
+  "slug": "orfs-nangate45-lenet5-htcr",
+  "name": "LeNet-5 accelerator — HTC-R array",
+  "blurb": "A complete LeNet-5 inference accelerator built around a precision-scalable hybrid temporal computing (HTC-R) array. One stored 8-bit weight set serves 4- and 8-bit activations without reconfiguration: at 4 bits a vector takes one clock, above that the array runs temporally and stops early. Buffers, sliding window, pooling, requantization and argmax are all on the die.",
+  "family": "openroad",
+  "familyLabel": "OpenROAD Flow Scripts",
+  "tool": "OpenROAD-flow-scripts (ORFS)",
+  "toolLine": "Yosys synthesis → OpenROAD floorplan, placement, CTS, routing and finishing",
+  "pdkKey": "nangate45",
+  "pdkLabel": "FreePDK45 / Nangate45",
+  "node": "45 nm",
+  "pdkNote": "The Nangate Open Cell Library on FreePDK45. It is an academic platform rather than a manufacturable process, and has long served as a reference for EDA research and flow bring-up.",
   "head": [
-   [
-    "Chip area",
-    "104,386 µm²"
-   ],
-   [
-    "Leaf cells",
-    "8,286"
-   ],
-   [
-    "Macros",
-    "4 × SRAM"
-   ]
-  ],
-  "specs": [
-   [
-    "Technology",
-    "32 nm — Synopsys SAED32/28 nm EDK"
-   ],
-   [
-    "Technology file",
-    "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
-   ],
-   [
-    "Cell libraries",
-    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
-   ],
-   [
-    "Top module",
-    "risc_core"
-   ],
-   [
-    "Chip area",
-    "104,385.648 µm²"
-   ],
-   [
-    "Core area",
-    "91,862.128 µm²"
-   ],
-   [
-    "Site-row area",
-    "91,862.128 µm²"
-   ],
-   [
-    "Total leaf cells",
-    "8,286 — 70,608.401 µm²"
-   ],
-   [
-    "Standard cells",
-    "4,308 — 15,887.812 µm²"
-   ],
-   [
-    "Hard macros",
-    "4 — 51,184.683 µm² (SRAM)"
-   ],
-   [
-    "Sequential cells",
-    "490 — 55,341.971 µm²"
-   ],
-   [
-    "Buffers / inverters",
-    "1,034 — 2,986.446 µm²"
-   ],
-   [
-    "Clock-gating cells",
-    "19"
-   ],
-   [
-    "Physical-only cells",
-    "3,974 — 3,535.905 µm²"
-   ],
-   [
-    "Flat nets",
-    "5,147"
-   ],
-   [
-    "Ports",
-    "149"
-   ],
-   [
-    "Design masters",
-    "171"
-   ],
-   [
-    "Placement blockages",
-    "9 — 2,801.459 µm²"
-   ],
-   [
-    "Clocks",
-    "1 master clock, no generated clocks"
-   ],
-   [
-    "Modes / corners",
-    "func mode; corners ss_125c and ff_m40c (two scenarios)"
-   ],
-   [
-    "Path groups",
-    "7 (1 non-default)"
-   ],
-   [
-    "Power domains",
-    "1 domain, 1 voltage area"
-   ],
-   [
-    "Total wire length",
-    "135,460.53 µm"
-   ],
-   [
-    "Wires",
-    "51,792"
-   ],
-   [
-    "Contacts",
-    "54,010"
-   ],
-   [
-    "Metal layers available",
-    "71 tech layers in the technology file"
-   ],
-   [
-    "Report date",
-    "23 March 2026"
-   ]
-  ],
-  "images": [
-   {
-    "src": "assets/img/fc-risc-core/layout.webp",
-    "cap": "Finished layout — four SRAM macros and the routed core"
-   },
-   {
-    "src": "assets/img/fc-risc-core/placement.webp",
-    "cap": "Placement"
-   },
-   {
-    "src": "assets/img/fc-risc-core/floorplan.webp",
-    "cap": "Floorplan with macro placement"
-   }
-  ],
-  "searchText": "risc core with embedded sram a risc processor core hardened in fusion compiler with four sram macros placed around a central logic region. the finished layout shows the memories in the upper and right quadrants and the random logic packed into the lower-left. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module risc_core chip area 104,385.648 µm² core area 91,862.128 µm² site-row area 91,862.128 µm² total leaf cells 8,286 — 70,608.401 µm² standard cells 4,308 — 15,887.812 µm² hard macros 4 — 51,184.683 µm² (sram) sequential cells 490 — 55,341.971 µm² buffers / inverters 1,034 — 2,986.446 µm² clock-gating cells 19 physical-only cells 3,974 — 3,535.905 µm² flat nets 5,147 ports 149 design masters 171 placement blockages 9 — 2,801.459 µm² clocks 1 master clock, no generated clocks modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) path groups 7 (1 non-default) power domains 1 domain, 1 voltage area total wire length 135,460.53 µm wires 51,792 contacts 54,010 metal layers available 71 tech layers in the technology file report date 23 march 2026"
- },
- {
-  "family": "synopsys",
-  "familyLabel": "Synopsys Fusion Compiler",
-  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
-  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
-  "pdkKey": "saed32",
-  "pdkLabel": "Synopsys SAED32/28 nm EDK",
-  "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
-  "slug": "fc-jpeg-encoder",
-  "name": "JPEG encoder",
-  "blurb": "A baseline JPEG encoder — the largest all-standard-cell design in the Fusion Compiler set at just over 25,000 leaf cells and 607 mm of routed wire. Closes timing at the slow corner; the fast corner still shows a small setup and hold residue.",
-  "head": [
-   [
-    "Chip area",
-    "124,900 µm²"
-   ],
-   [
-    "Leaf cells",
-    "25,461"
-   ],
-   [
-    "Wire",
-    "607 mm"
-   ]
-  ],
-  "specs": [
-   [
-    "Technology",
-    "32 nm — Synopsys SAED32/28 nm EDK"
-   ],
-   [
-    "Cell libraries",
-    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
-   ],
-   [
-    "Top module",
-    "jpeg_encoder"
-   ],
-   [
-    "Chip area",
-    "124,899.574 µm²"
-   ],
-   [
-    "Core area",
-    "111,163.094 µm²"
-   ],
-   [
-    "Total leaf cells",
-    "25,461 — 97,293.185 µm²"
-   ],
-   [
-    "Standard cells",
-    "20,891 — 94,173.313 µm²"
-   ],
-   [
-    "Hard macros",
-    "none — fully standard-cell"
-   ],
-   [
-    "Sequential cells",
-    "4,335 — 36,770.062 µm²"
-   ],
-   [
-    "Buffers / inverters",
-    "5,762 — 20,775.255 µm²"
-   ],
-   [
-    "Clock-gating cells",
-    "76"
-   ],
-   [
-    "Physical-only cells",
-    "4,570 — 3,119.872 µm²"
-   ],
-   [
-    "Flat nets",
-    "25,338 (25,336 detail-routed)"
-   ],
-   [
-    "Ports",
-    "49"
-   ],
-   [
-    "Design masters",
-    "162"
-   ],
-   [
-    "Modes / corners",
-    "func mode; corners ss_125c and ff_m40c (two scenarios)"
-   ],
-   [
-    "Setup WNS / TNS",
-    "−0.30 ns / −8.74 ns at ff_m40c (143 violating endpoints); +0.26 ns clean at ss_125c"
-   ],
-   [
-    "Hold WNS / TNS",
-    "−0.45 ns / −5.42 ns (102 violating endpoints)"
-   ],
-   [
-    "Total wire length",
-    "607,456.06 µm"
-   ],
-   [
-    "Wires",
-    "238,606"
-   ],
-   [
-    "Contacts",
-    "241,808"
-   ],
-   [
-    "Cell area (netlist)",
-    "94,173.31 µm²"
-   ],
-   [
-    "Peak memory",
-    "978 MB"
-   ],
-   [
-    "Report date",
-    "16 April 2026"
-   ]
-  ],
-  "images": [
-   {
-    "src": "assets/img/fc-jpeg-encoder/layout.webp",
-    "cap": "Finished routed layout"
-   },
-   {
-    "src": "assets/img/fc-jpeg-encoder/merged.webp",
-    "cap": "Side-by-side flow stages"
-   },
-   {
-    "src": "assets/img/fc-jpeg-encoder/placement.webp",
-    "cap": "Placement"
-   },
-   {
-    "src": "assets/img/fc-jpeg-encoder/floorplan.webp",
-    "cap": "Floorplan"
-   }
-  ],
-  "searchText": "jpeg encoder a baseline jpeg encoder — the largest all-standard-cell design in the fusion compiler set at just over 25,000 leaf cells and 607 mm of routed wire. closes timing at the slow corner; the fast corner still shows a small setup and hold residue. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module jpeg_encoder chip area 124,899.574 µm² core area 111,163.094 µm² total leaf cells 25,461 — 97,293.185 µm² standard cells 20,891 — 94,173.313 µm² hard macros none — fully standard-cell sequential cells 4,335 — 36,770.062 µm² buffers / inverters 5,762 — 20,775.255 µm² clock-gating cells 76 physical-only cells 4,570 — 3,119.872 µm² flat nets 25,338 (25,336 detail-routed) ports 49 design masters 162 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns −0.30 ns / −8.74 ns at ff_m40c (143 violating endpoints); +0.26 ns clean at ss_125c hold wns / tns −0.45 ns / −5.42 ns (102 violating endpoints) total wire length 607,456.06 µm wires 238,606 contacts 241,808 cell area (netlist) 94,173.31 µm² peak memory 978 mb report date 16 april 2026"
- },
- {
-  "family": "synopsys",
-  "familyLabel": "Synopsys Fusion Compiler",
-  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
-  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
-  "pdkKey": "saed32",
-  "pdkLabel": "Synopsys SAED32/28 nm EDK",
-  "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
-  "slug": "fc-aes-cipher",
-  "name": "AES-128 cipher",
-  "blurb": "An AES cipher top hardened in Fusion Compiler. Setup timing closes at both corners with positive slack; only a handful of hold endpoints remain, and the 390-port interface dominates the pin ring around the core.",
-  "head": [
-   [
-    "Chip area",
-    "40,353 µm²"
-   ],
-   [
-    "Leaf cells",
-    "9,999"
-   ],
-   [
-    "Setup",
-    "+0.07 ns"
-   ]
-  ],
-  "specs": [
-   [
-    "Technology",
-    "32 nm — Synopsys SAED32/28 nm EDK"
-   ],
-   [
-    "Cell libraries",
-    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
-   ],
-   [
-    "Top module",
-    "aes_cipher_top"
-   ],
-   [
-    "Chip area",
-    "40,352.682 µm²"
-   ],
-   [
-    "Core area",
-    "32,717.482 µm²"
-   ],
-   [
-    "Total leaf cells",
-    "9,999 — 24,395.537 µm²"
-   ],
-   [
-    "Standard cells",
-    "8,437 — 23,332.706 µm²"
-   ],
-   [
-    "Hard macros",
-    "none — fully standard-cell"
-   ],
-   [
-    "Sequential cells",
-    "537 — 4,735.973 µm²"
-   ],
-   [
-    "Buffers / inverters",
-    "972 — 1,751.306 µm²"
-   ],
-   [
-    "Clock-gating cells",
-    "7"
-   ],
-   [
-    "Physical-only cells",
-    "1,562 — 1,062.830 µm²"
-   ],
-   [
-    "Flat nets",
-    "8,920 (8,918 detail-routed)"
-   ],
-   [
-    "Ports",
-    "390"
-   ],
-   [
-    "Design masters",
-    "89"
-   ],
-   [
-    "Modes / corners",
-    "func mode; corners ss_125c and ff_m40c (two scenarios)"
-   ],
-   [
-    "Setup WNS / TNS",
-    "+0.07 ns / 0.00 ns — timing met at both corners"
-   ],
-   [
-    "Hold WNS / TNS",
-    "−0.03 ns / −0.09 ns (7 violating endpoints)"
-   ],
-   [
-    "Total wire length",
-    "245,624.94 µm"
-   ],
-   [
-    "Wires",
-    "109,287"
-   ],
-   [
-    "Contacts",
-    "101,383"
-   ],
-   [
-    "Peak memory",
-    "804 MB"
-   ],
-   [
-    "Report date",
-    "16 April 2026"
-   ]
-  ],
-  "images": [
-   {
-    "src": "assets/img/fc-aes-cipher/layout.webp",
-    "cap": "Finished routed layout"
-   },
-   {
-    "src": "assets/img/fc-aes-cipher/placement.webp",
-    "cap": "Placement"
-   },
-   {
-    "src": "assets/img/fc-aes-cipher/floorplan.webp",
-    "cap": "Floorplan"
-   }
-  ],
-  "searchText": "aes-128 cipher an aes cipher top hardened in fusion compiler. setup timing closes at both corners with positive slack; only a handful of hold endpoints remain, and the 390-port interface dominates the pin ring around the core. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module aes_cipher_top chip area 40,352.682 µm² core area 32,717.482 µm² total leaf cells 9,999 — 24,395.537 µm² standard cells 8,437 — 23,332.706 µm² hard macros none — fully standard-cell sequential cells 537 — 4,735.973 µm² buffers / inverters 972 — 1,751.306 µm² clock-gating cells 7 physical-only cells 1,562 — 1,062.830 µm² flat nets 8,920 (8,918 detail-routed) ports 390 design masters 89 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.07 ns / 0.00 ns — timing met at both corners hold wns / tns −0.03 ns / −0.09 ns (7 violating endpoints) total wire length 245,624.94 µm wires 109,287 contacts 101,383 peak memory 804 mb report date 16 april 2026"
- },
- {
-  "family": "synopsys",
-  "familyLabel": "Synopsys Fusion Compiler",
-  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
-  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
-  "pdkKey": "saed32",
-  "pdkLabel": "Synopsys SAED32/28 nm EDK",
-  "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
-  "slug": "fc-cortex-m0",
-  "name": "Arm Cortex-M0 DesignStart",
-  "blurb": "An Arm Cortex-M0 DesignStart core (CORTEXM0DS) taken through Fusion Compiler design planning to a signed-off, fully routed block complete with an I/O pad ring and corner cells — the most complete full-chip floorplan in the collection.",
-  "head": [
-   [
-    "Core",
-    "Cortex-M0"
-   ],
-   [
-    "Stage",
-    "Routed"
-   ],
-   [
-    "Chip",
-    "Pad ring"
-   ]
-  ],
-  "specs": [
-   [
-    "Design library",
-    "CORTEXM0DS.dlib — block CORTEXM0DS/signoff.design"
-   ],
-   [
-    "Tool",
-    "Synopsys Fusion Compiler, Design Planning / BlockWindow"
-   ],
-   [
-    "Core IP",
-    "Arm Cortex-M0 DesignStart — a 32-bit Armv6-M processor"
-   ],
-   [
-    "Flow stage reached",
-    "Sign-off design view: placed, clock-tree-synthesised and fully routed"
-   ],
-   [
-    "Physical features",
-    "Peripheral I/O pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block"
-   ],
-   [
-    "Technology",
-    "Not recorded in this design's source files. The other Fusion Compiler projects in this set target the Synopsys SAED32/28 nm EDK."
-   ],
-   [
-    "Captured",
-    "April 2026"
-   ]
-  ],
-  "images": [
-   {
-    "src": "assets/img/fc-cortex-m0/layout.webp",
-    "cap": "Routed core inside the I/O pad ring"
-   },
-   {
-    "src": "assets/img/fc-cortex-m0/floorplan.webp",
-    "cap": "Floorplan"
-   },
-   {
-    "src": "assets/img/fc-cortex-m0/gui.webp",
-    "cap": "The Fusion Compiler session that produced it"
-   }
-  ],
-  "searchText": "arm cortex-m0 designstart an arm cortex-m0 designstart core (cortexm0ds) taken through fusion compiler design planning to a signed-off, fully routed block complete with an i/o pad ring and corner cells — the most complete full-chip floorplan in the collection. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm design library cortexm0ds.dlib — block cortexm0ds/signoff.design tool synopsys fusion compiler, design planning / blockwindow core ip arm cortex-m0 designstart — a 32-bit armv6-m processor flow stage reached sign-off design view: placed, clock-tree-synthesised and fully routed physical features peripheral i/o pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block technology not recorded in this design's source files. the other fusion compiler projects in this set target the synopsys saed32/28 nm edk. captured april 2026"
- },
- {
-  "family": "synopsys",
-  "familyLabel": "Synopsys Fusion Compiler",
-  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
-  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
-  "pdkKey": "saed32",
-  "pdkLabel": "Synopsys SAED32/28 nm EDK",
-  "node": "32 nm",
-  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
-  "slug": "fc-dual-ram",
-  "name": "Dual-port RAM — 256 × 8",
-  "blurb": "A 256-word by 8-bit dual-port RAM built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. Independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. Setup closes at both corners; the critical path runs from the read address pins straight to the output register.",
-  "head": [
-   [
-    "Memory",
-    "256 × 8"
-   ],
-   [
-    "Clock",
-    "200 MHz"
-   ],
    [
     "Die",
-    "222 × 222 µm"
+    "846 × 846 µm"
+   ],
+   [
+    "Instances",
+    "175,141"
+   ],
+   [
+    "F<sub>max</sub>",
+    "401.55 MHz"
    ]
   ],
   "specs": [
    [
     "Technology",
-    "32 nm — Synopsys SAED32/28 nm EDK"
+    "45 nm — FreePDK45 / Nangate45"
    ],
    [
-    "Technology file",
-    "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
-   ],
-   [
-    "Cell libraries",
-    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
-   ],
-   [
-    "Threshold flavours",
-    "Predominantly HVT, with RVT and LVT where timing needed it"
+    "Standard-cell library",
+    "NangateOpenCellLibrary"
    ],
    [
     "Top module",
-    "dual_ram"
-   ],
-   [
-    "Memory organisation",
-    "256 words × 8 bits — 2 kbit, register-based, no SRAM macro"
-   ],
-   [
-    "Ports",
-    "clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0]"
-   ],
-   [
-    "Architecture",
-    "Independent read and write addresses, synchronous reset clearing the whole array"
-   ],
-   [
-    "Clock",
-    "clk, 5.000 ns period — 200 MHz, waveform {0 2.5}"
+    "lenet_acc"
    ],
    [
     "Die size",
-    "222.31 × 222.31 µm"
+    "845.50 × 845.50 µm"
    ],
    [
-    "Chip area",
-    "49,422.625 µm²"
+    "Die area",
+    "714,870 µm²"
    ],
    [
     "Core area",
-    "40,930.145 µm²"
+    "710,666 µm²"
    ],
    [
-    "Total cell area",
-    "26,803.30 µm²"
+    "Instances (excl. filler)",
+    "175,141"
    ],
    [
-    "Cell area with physical-only",
-    "31,383.99 µm²"
+    "Standard cells",
+    "175,141"
+   ],
+   [
+    "Sequential cells",
+    "45,935"
+   ],
+   [
+    "Tap cells",
+    "3,318"
+   ],
+   [
+    "Filler cells",
+    "176,239"
+   ],
+   [
+    "Total placed cells",
+    "350,209"
+   ],
+   [
+    "Cell area",
+    "414,055 µm²"
    ],
    [
     "Core utilisation",
-    "65.5 % (cell area over core area)"
+    "58.3 %"
    ],
    [
-    "Cells",
-    "4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter"
+    "I/O pins",
+    "171"
    ],
    [
-    "Hard macros",
-    "None — the array is built from flip-flops"
+    "Target clock",
+    "2.5 ns (400.00 MHz)"
    ],
    [
-    "Combinational area",
-    "7,146.53 µm²"
+    "Achieved F<sub>max</sub>",
+    "401.55 MHz"
    ],
    [
-    "Noncombinational area",
-    "19,656.77 µm²"
+    "Setup WNS",
+    "0.009678 ns"
    ],
    [
-    "Buffer/inverter area",
-    "2,891.90 µm²"
+    "Setup TNS",
+    "0 ns"
    ],
    [
-    "Placed instances incl. fill",
-    "11,207"
+    "Hold WNS",
+    "0.01165 ns"
    ],
    [
-    "Nets",
-    "4,902"
+    "Routed wirelength",
+    "3,422,114 µm"
    ],
    [
-    "Ports",
-    "38"
+    "Routed nets",
+    "225,724"
    ],
    [
-    "Cell references",
-    "60"
-   ],
-   [
-    "Modes / corners",
-    "func mode; corners ss_125c and ff_m40c (two scenarios)"
-   ],
-   [
-    "Setup WNS / TNS",
-    "+0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners"
-   ],
-   [
-    "Hold WNS / TNS",
-    "−0.01 ns / −0.01 ns (2 violating endpoints)"
-   ],
-   [
-    "Critical path",
-    "rd_addr[3] input port → data_out_reg[5], slack +0.29 ns"
-   ],
-   [
-    "Clock tree (post-CTS)",
-    "2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire"
-   ],
-   [
-    "Clock latency / skew",
-    "2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c"
-   ],
-   [
-    "Routing layers",
-    "M1 – M9"
-   ],
-   [
-    "Open nets",
-    "0 of 4,902"
+    "Vias",
+    "1,135,618"
    ],
    [
     "Detailed-route DRC",
-    "0 after route_opt; 26 reported at sign-off, after metal fill"
+    "0"
    ],
    [
-    "LVS",
-    "M1 shorts reported among SHFILL3_HVT filler cells; the check stops after 20"
+    "Antenna-violating nets",
+    "0"
    ],
    [
     "Total power",
-    "8.85 mW — 1.71 mW dynamic, 7.13 mW leakage at the slow 125 °C corner"
-   ],
-   [
-    "Power by group",
-    "Registers 80.5 %, clock network 13.0 %, combinational 6.6 %"
+    "32.7 mW measured — average over a 4-bit inference at 400 MHz (gate-level simulation)"
    ],
    [
     "GDS-II size",
-    "7.1 MB"
+    "138.9 MB"
    ],
    [
-    "Run date",
-    "21 September 2026"
+    "Function",
+    "LeNet-5 inference for Fashion-MNIST — convolution, pooling, fully connected layers and argmax"
+   ],
+   [
+    "Compute array",
+    "16 × 16 weight-stationary HTC-R array — hybrid temporal computing with run-time precision: 16 stream bits per clock, one stored 8-bit weight set serving 3- to 8-bit activations, early termination and clock gating"
+   ],
+   [
+    "What HTC-R is",
+    "Hybrid temporal computing with run-time precision. A product is the number of 1s in the AND of two bitstreams: the activation as a thermometer code, 1 for its first x positions, and the weight with each of its bits repeated at binary-weighted positions (the top bit every second position, the next every fourth, and so on). Earlier HTC designs stepped through that stream one bit per clock; HTC-R counts 16 stream bits per clock in closed form, so each processing element is four AND gates and a 5-bit adder, with no multiplier. Because the weight stream visits the weight bits most-significant first, an n-bit activation only ever reads the top n bits of the stored weight: one 8-bit weight set serves every precision from 3 to 8 bits, and the activations alone set it — one clock per vector up to 4 bits, a few clocks with early termination above."
+   ],
+   [
+    "On-chip storage",
+    "Row-banked register-file activation buffers, a 5 × 5 × C sliding window and a 56-entry partial-sum buffer, clock-gated per word; weights off-core behind a 128-bit read port"
+   ],
+   [
+    "Operating points",
+    "4-bit, 4-bit with temporal oversampling, 8-bit — the same stored weights"
+   ],
+   [
+    "Accuracy",
+    "89.83 % / 90.14 % / 90.31 % on the 10,000 test images (hardware-exact integer model)"
+   ],
+   [
+    "Energy per inference",
+    "1.02 µJ / 1.17 µJ / 2.47 µJ — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads"
+   ],
+   [
+    "Latency",
+    "29.8 µs / 33.9 µs / 91.3 µs at 400 MHz"
+   ],
+   [
+    "Verification",
+    "RTL bit-exact against the integer model on 2,000 test images per operating point; every gate-level inference returns the model's class"
+   ],
+   [
+    "Companion design",
+    "Built twice with everything but the array identical — see the binary-array version"
    ]
   ],
   "images": [
    {
-    "src": "assets/img/fc-dual-ram/gds.webp",
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/gds.webp",
     "cap": "GDS-II tape-out database, rendered in KLayout"
-   }
-  ],
-  "searchText": "dual-port ram — 256 × 8 a 256-word by 8-bit dual-port ram built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. setup closes at both corners; the critical path runs from the read address pins straight to the output register. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros threshold flavours predominantly hvt, with rvt and lvt where timing needed it top module dual_ram memory organisation 256 words × 8 bits — 2 kbit, register-based, no sram macro ports clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0] architecture independent read and write addresses, synchronous reset clearing the whole array clock clk, 5.000 ns period — 200 mhz, waveform {0 2.5} die size 222.31 × 222.31 µm chip area 49,422.625 µm² core area 40,930.145 µm² total cell area 26,803.30 µm² cell area with physical-only 31,383.99 µm² core utilisation 65.5 % (cell area over core area) cells 4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter hard macros none — the array is built from flip-flops combinational area 7,146.53 µm² noncombinational area 19,656.77 µm² buffer/inverter area 2,891.90 µm² placed instances incl. fill 11,207 nets 4,902 ports 38 cell references 60 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners hold wns / tns −0.01 ns / −0.01 ns (2 violating endpoints) critical path rd_addr[3] input port → data_out_reg[5], slack +0.29 ns clock tree (post-cts) 2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire clock latency / skew 2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c routing layers m1 – m9 open nets 0 of 4,902 detailed-route drc 0 after route_opt; 26 reported at sign-off, after metal fill lvs m1 shorts reported among shfill3_hvt filler cells; the check stops after 20 total power 8.85 mw — 1.71 mw dynamic, 7.13 mw leakage at the slow 125 °c corner power by group registers 80.5 %, clock network 13.0 %, combinational 6.6 % gds-ii size 7.1 mb run date 21 september 2026"
- },
- {
-  "family": "openlane",
-  "familyLabel": "OpenLane",
-  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
-  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
-  "pdkKey": "sky130",
-  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
-  "node": "130 nm",
-  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
-  "slug": "ol-risc-core",
-  "name": "RISC core",
-  "blurb": "A RISC processor built from fourteen Verilog modules — ALU, control FSM, datapath, program counter, decoder, register file, hardware stack and a 128 × 16 SRAM — pushed through OpenLane to GDS-II. The power straps and the block outline of the register file are clearly visible in the layout.",
-  "head": [
-   [
-    "Datapath",
-    "64-bit"
-   ],
-   [
-    "Instruction",
-    "32-bit"
-   ],
-   [
-    "Clock",
-    "40 MHz"
-   ]
-  ],
-  "specs": [
-   [
-    "Technology",
-    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
-   ],
-   [
-    "Standard cells",
-    "sky130_fd_sc_hd — high density"
-   ],
-   [
-    "Top module",
-    "risc_core"
-   ],
-   [
-    "Clock",
-    "25 ns period — 40 MHz, port <code>clk</code>"
-   ],
-   [
-    "Instruction width",
-    "32 bits"
-   ],
-   [
-    "Datapath width",
-    "64 bits (widened from the original 16-bit design)"
-   ],
-   [
-    "Program counter",
-    "8-bit"
-   ],
-   [
-    "Status word",
-    "11-bit PSW with zero, negative and carry flags"
-   ],
-   [
-    "ALU opcode",
-    "6-bit"
-   ],
-   [
-    "Register file",
-    "7-bit addressing, three ports (A, B, C), optionally RAM-backed"
-   ],
-   [
-    "Memory",
-    "sram128x16 — 128 words × 16 bits"
-   ],
-   [
-    "Stack",
-    "Hardware stack with its own FSM and full flag"
-   ],
-   [
-    "DFT ports",
-    "scan_en, test_mode"
-   ],
-   [
-    "Source modules",
-    "risc_core, alu, control, data_path, instrn_lat, prgrm_cnt, prgrm_cnt_top, prgrm_decode, prgrm_fsm, reg_file, stack_fsm, stack_mem, stack_top, sram128x16"
-   ],
-   [
-    "Output",
-    "risc_core.gds, inspected in KLayout"
-   ],
-   [
-    "Run date",
-    "February 2026"
-   ]
-  ],
-  "images": [
-   {
-    "src": "assets/img/ol-risc-core/layout.webp",
-    "cap": "Full die — power straps and the register-file block outline"
    },
    {
-    "src": "assets/img/ol-risc-core/zoom.webp",
-    "cap": "Zoomed into the standard-cell rows and local interconnect"
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/blocks.webp",
+    "cap": "Block map — every placed cell coloured by the functional block it belongs to"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_all.webp",
+    "cap": "Final layout — every mask layer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_routing.webp",
+    "cap": "Detailed routing"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_placement.webp",
+    "cap": "Standard-cell placement"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_congestion.webp",
+    "cap": "Global-routing congestion"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_clocks.webp",
+    "cap": "Clock nets"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_ir_drop.webp",
+    "cap": "Power-grid IR drop"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_resizer.webp",
+    "cap": "Cells added by the resizer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/final_worst_path.webp",
+    "cap": "Worst timing path"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-htcr/cts_core_clock.webp",
+    "cap": "Clock tree — core_clock"
    }
   ],
-  "searchText": "risc core a risc processor built from fourteen verilog modules — alu, control fsm, datapath, program counter, decoder, register file, hardware stack and a 128 × 16 sram — pushed through openlane to gds-ii. the power straps and the block outline of the register file are clearly visible in the layout. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module risc_core clock 25 ns period — 40 mhz, port <code>clk</code> instruction width 32 bits datapath width 64 bits (widened from the original 16-bit design) program counter 8-bit status word 11-bit psw with zero, negative and carry flags alu opcode 6-bit register file 7-bit addressing, three ports (a, b, c), optionally ram-backed memory sram128x16 — 128 words × 16 bits stack hardware stack with its own fsm and full flag dft ports scan_en, test_mode source modules risc_core, alu, control, data_path, instrn_lat, prgrm_cnt, prgrm_cnt_top, prgrm_decode, prgrm_fsm, reg_file, stack_fsm, stack_mem, stack_top, sram128x16 output risc_core.gds, inspected in klayout run date february 2026"
+  "searchText": "lenet-5 accelerator — htc-r array a complete lenet-5 inference accelerator built around a precision-scalable hybrid temporal computing (htc-r) array. one stored 8-bit weight set serves 4- and 8-bit activations without reconfiguration: at 4 bits a vector takes one clock, above that the array runs temporally and stops early. buffers, sliding window, pooling, requantization and argmax are all on the die. openroad-flow-scripts (orfs) freepdk45 / nangate45 45 nm technology 45 nm — freepdk45 / nangate45 standard-cell library nangateopencelllibrary top module lenet_acc die size 845.50 × 845.50 µm die area 714,870 µm² core area 710,666 µm² instances (excl. filler) 175,141 standard cells 175,141 sequential cells 45,935 tap cells 3,318 filler cells 176,239 total placed cells 350,209 cell area 414,055 µm² core utilisation 58.3 % i/o pins 171 target clock 2.5 ns (400.00 mhz) achieved f<sub>max</sub> 401.55 mhz setup wns 0.009678 ns setup tns 0 ns hold wns 0.01165 ns routed wirelength 3,422,114 µm routed nets 225,724 vias 1,135,618 detailed-route drc 0 antenna-violating nets 0 total power 32.7 mw measured — average over a 4-bit inference at 400 mhz (gate-level simulation) gds-ii size 138.9 mb function lenet-5 inference for fashion-mnist — convolution, pooling, fully connected layers and argmax compute array 16 × 16 weight-stationary htc-r array — hybrid temporal computing with run-time precision: 16 stream bits per clock, one stored 8-bit weight set serving 3- to 8-bit activations, early termination and clock gating what htc-r is hybrid temporal computing with run-time precision. a product is the number of 1s in the and of two bitstreams: the activation as a thermometer code, 1 for its first x positions, and the weight with each of its bits repeated at binary-weighted positions (the top bit every second position, the next every fourth, and so on). earlier htc designs stepped through that stream one bit per clock; htc-r counts 16 stream bits per clock in closed form, so each processing element is four and gates and a 5-bit adder, with no multiplier. because the weight stream visits the weight bits most-significant first, an n-bit activation only ever reads the top n bits of the stored weight: one 8-bit weight set serves every precision from 3 to 8 bits, and the activations alone set it — one clock per vector up to 4 bits, a few clocks with early termination above. on-chip storage row-banked register-file activation buffers, a 5 × 5 × c sliding window and a 56-entry partial-sum buffer, clock-gated per word; weights off-core behind a 128-bit read port operating points 4-bit, 4-bit with temporal oversampling, 8-bit — the same stored weights accuracy 89.83 % / 90.14 % / 90.31 % on the 10,000 test images (hardware-exact integer model) energy per inference 1.02 µj / 1.17 µj / 2.47 µj — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads latency 29.8 µs / 33.9 µs / 91.3 µs at 400 mhz verification rtl bit-exact against the integer model on 2,000 test images per operating point; every gate-level inference returns the model's class companion design built twice with everything but the array identical — see the binary-array version"
  },
  {
-  "family": "openlane",
-  "familyLabel": "OpenLane",
-  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
-  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
-  "pdkKey": "sky130",
-  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
-  "node": "130 nm",
-  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
-  "slug": "ol-pm32",
-  "name": "32 × 32 signed multiplier",
-  "blurb": "A signed 32 × 32 multiplier built on a serial-parallel multiplier core (SPM), modelled on Atmel's AT6000 FPGA application notes. A three-state FSM sequences the shift-and-add iterations and raises <code>done</code> when the 64-bit product is ready.",
+  "slug": "orfs-nangate45-lenet5-binary",
+  "name": "LeNet-5 accelerator — binary array",
+  "blurb": "The same LeNet-5 accelerator built around a conventional 16 × 16 binary multiplier array: the baseline for the HTC-R version, with identical buffers, sliding window, pooling, requantization and control.",
+  "family": "openroad",
+  "familyLabel": "OpenROAD Flow Scripts",
+  "tool": "OpenROAD-flow-scripts (ORFS)",
+  "toolLine": "Yosys synthesis → OpenROAD floorplan, placement, CTS, routing and finishing",
+  "pdkKey": "nangate45",
+  "pdkLabel": "FreePDK45 / Nangate45",
+  "node": "45 nm",
+  "pdkNote": "The Nangate Open Cell Library on FreePDK45. It is an academic platform rather than a manufacturable process, and has long served as a reference for EDA research and flow bring-up.",
   "head": [
    [
-    "Operands",
-    "32 × 32 signed"
+    "Die",
+    "986 × 986 µm"
    ],
    [
-    "Product",
-    "64-bit"
+    "Instances",
+    "258,995"
    ],
    [
-    "Clock",
-    "40 MHz"
+    "F<sub>max</sub>",
+    "402.91 MHz"
    ]
   ],
   "specs": [
    [
     "Technology",
-    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
+    "45 nm — FreePDK45 / Nangate45"
    ],
    [
-    "Standard cells",
-    "sky130_fd_sc_hd — high density"
+    "Standard-cell library",
+    "NangateOpenCellLibrary"
    ],
    [
     "Top module",
-    "pm32 (instantiates spm)"
+    "lenet_acc"
    ],
    [
-    "Clock",
-    "25 ns period — 40 MHz, port <code>clk</code>"
+    "Die size",
+    "985.70 × 985.70 µm"
    ],
    [
-    "Operands",
-    "mc[31:0] × mp[31:0], signed"
+    "Die area",
+    "971,604 µm²"
    ],
    [
-    "Product",
-    "p[63:0]"
+    "Core area",
+    "966,525 µm²"
    ],
    [
-    "Handshake",
-    "start input, done output"
+    "Instances (excl. filler)",
+    "258,995"
    ],
    [
-    "Architecture",
-    "Serial-parallel multiplier (SPM), parameterised SIZE = 32"
+    "Standard cells",
+    "258,995"
    ],
    [
-    "Control",
-    "Three-state FSM — IDLE, RUNNING, DONE — with an 8-bit iteration counter"
+    "Sequential cells",
+    "51,129"
    ],
    [
-    "Provenance",
-    "SPM core after the Atmel AT6000 application notes DOC0529 / DOC0716, implemented by mshalan@aucegypt.edu (2016)"
+    "Tap cells",
+    "4,220"
    ],
    [
-    "Source files",
-    "pm32.v, spm.v"
+    "Filler cells",
+    "246,655"
    ],
    [
-    "Run date",
-    "February 2026"
+    "Total placed cells",
+    "504,481"
+   ],
+   [
+    "Cell area",
+    "557,052 µm²"
+   ],
+   [
+    "Core utilisation",
+    "57.6 %"
+   ],
+   [
+    "I/O pins",
+    "171"
+   ],
+   [
+    "Target clock",
+    "2.5 ns (400.00 MHz)"
+   ],
+   [
+    "Achieved F<sub>max</sub>",
+    "402.91 MHz"
+   ],
+   [
+    "Setup WNS",
+    "0.01805 ns"
+   ],
+   [
+    "Setup TNS",
+    "0 ns"
+   ],
+   [
+    "Hold WNS",
+    "-0.004851 ns"
+   ],
+   [
+    "Routed wirelength",
+    "4,553,788 µm"
+   ],
+   [
+    "Routed nets",
+    "329,165"
+   ],
+   [
+    "Vias",
+    "1,655,764"
+   ],
+   [
+    "Detailed-route DRC",
+    "0"
+   ],
+   [
+    "Antenna-violating nets",
+    "0"
+   ],
+   [
+    "Total power",
+    "41.2 mW measured — average over a W4A4 inference at 400 MHz (gate-level simulation)"
+   ],
+   [
+    "GDS-II size",
+    "201.9 MB"
+   ],
+   [
+    "Function",
+    "LeNet-5 inference for Fashion-MNIST — convolution, pooling, fully connected layers and argmax"
+   ],
+   [
+    "Compute array",
+    "16 × 16 weight-stationary binary array — 8-bit sign-magnitude multipliers and adder trees, one input vector per clock"
+   ],
+   [
+    "On-chip storage",
+    "Row-banked register-file activation buffers, a 5 × 5 × C sliding window and a 56-entry partial-sum buffer, clock-gated per word; weights off-core behind a 128-bit read port"
+   ],
+   [
+    "Operating points",
+    "W4A4 (4-bit weights and activations) and W8A8"
+   ],
+   [
+    "Accuracy",
+    "90.51 % / 90.57 % on the 10,000 test images (hardware-exact integer model)"
+   ],
+   [
+    "Energy per inference",
+    "1.27 µJ / 1.53 µJ — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads"
+   ],
+   [
+    "Latency",
+    "29.8 µs at 400 MHz"
+   ],
+   [
+    "Verification",
+    "RTL bit-exact against the integer model on 2,000 test images per operating point; every gate-level inference returns the model's class"
+   ],
+   [
+    "Companion design",
+    "Built twice with everything but the array identical — see the HTC-R version"
    ]
   ],
   "images": [
    {
-    "src": "assets/img/ol-pm32/layout.webp",
-    "cap": "Routed layout in KLayout"
+    "src": "assets/img/orfs-nangate45-lenet5-binary/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/blocks.webp",
+    "cap": "Block map — every placed cell coloured by the functional block it belongs to"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_all.webp",
+    "cap": "Final layout — every mask layer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_routing.webp",
+    "cap": "Detailed routing"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_placement.webp",
+    "cap": "Standard-cell placement"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_congestion.webp",
+    "cap": "Global-routing congestion"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_clocks.webp",
+    "cap": "Clock nets"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_ir_drop.webp",
+    "cap": "Power-grid IR drop"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_resizer.webp",
+    "cap": "Cells added by the resizer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/final_worst_path.webp",
+    "cap": "Worst timing path"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-lenet5-binary/cts_core_clock.webp",
+    "cap": "Clock tree — core_clock"
    }
   ],
-  "searchText": "32 × 32 signed multiplier a signed 32 × 32 multiplier built on a serial-parallel multiplier core (spm), modelled on atmel's at6000 fpga application notes. a three-state fsm sequences the shift-and-add iterations and raises <code>done</code> when the 64-bit product is ready. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module pm32 (instantiates spm) clock 25 ns period — 40 mhz, port <code>clk</code> operands mc[31:0] × mp[31:0], signed product p[63:0] handshake start input, done output architecture serial-parallel multiplier (spm), parameterised size = 32 control three-state fsm — idle, running, done — with an 8-bit iteration counter provenance spm core after the atmel at6000 application notes doc0529 / doc0716, implemented by mshalan@aucegypt.edu (2016) source files pm32.v, spm.v run date february 2026"
+  "searchText": "lenet-5 accelerator — binary array the same lenet-5 accelerator built around a conventional 16 × 16 binary multiplier array: the baseline for the htc-r version, with identical buffers, sliding window, pooling, requantization and control. openroad-flow-scripts (orfs) freepdk45 / nangate45 45 nm technology 45 nm — freepdk45 / nangate45 standard-cell library nangateopencelllibrary top module lenet_acc die size 985.70 × 985.70 µm die area 971,604 µm² core area 966,525 µm² instances (excl. filler) 258,995 standard cells 258,995 sequential cells 51,129 tap cells 4,220 filler cells 246,655 total placed cells 504,481 cell area 557,052 µm² core utilisation 57.6 % i/o pins 171 target clock 2.5 ns (400.00 mhz) achieved f<sub>max</sub> 402.91 mhz setup wns 0.01805 ns setup tns 0 ns hold wns -0.004851 ns routed wirelength 4,553,788 µm routed nets 329,165 vias 1,655,764 detailed-route drc 0 antenna-violating nets 0 total power 41.2 mw measured — average over a w4a4 inference at 400 mhz (gate-level simulation) gds-ii size 201.9 mb function lenet-5 inference for fashion-mnist — convolution, pooling, fully connected layers and argmax compute array 16 × 16 weight-stationary binary array — 8-bit sign-magnitude multipliers and adder trees, one input vector per clock on-chip storage row-banked register-file activation buffers, a 5 × 5 × c sliding window and a 56-entry partial-sum buffer, clock-gated per word; weights off-core behind a 128-bit read port operating points w4a4 (4-bit weights and activations) and w8a8 accuracy 90.51 % / 90.57 % on the 10,000 test images (hardware-exact integer model) energy per inference 1.27 µj / 1.53 µj — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads latency 29.8 µs at 400 mhz verification rtl bit-exact against the integer model on 2,000 test images per operating point; every gate-level inference returns the model's class companion design built twice with everything but the array identical — see the htc-r version"
  },
  {
-  "family": "openlane",
-  "familyLabel": "OpenLane",
-  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
-  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
-  "pdkKey": "sky130",
-  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
-  "node": "130 nm",
-  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
-  "slug": "ol-cnn-3x3",
-  "name": "CNN layer — 3 × 3 convolution",
-  "blurb": "One complete convolutional-neural-network layer in hardware: a 3 × 3 convolution with a hard-coded Sobel-style kernel, followed by ReLU activation and 2 × 2 max pooling. Line buffers hold two image rows so a sliding 3 × 3 window can stream over the input one pixel per cycle.",
+  "slug": "orfs-nangate45-resnet20-htcr",
+  "name": "ResNet-20 accelerator — HTC-R array",
+  "blurb": "A complete ResNet-20 inference accelerator for CIFAR-10 built around a precision-scalable hybrid temporal computing (HTC-R) array. Feature maps live in twelve SRAM macros; 3 × 3 convolutions with zero padding and stride 2 are streamed from them, batch normalization and the residual additions are folded into requantization, and global average pooling, the classifier and argmax finish the network on chip.",
+  "family": "openroad",
+  "familyLabel": "OpenROAD Flow Scripts",
+  "tool": "OpenROAD-flow-scripts (ORFS)",
+  "toolLine": "Yosys synthesis → OpenROAD floorplan, placement, CTS, routing and finishing",
+  "pdkKey": "nangate45",
+  "pdkLabel": "FreePDK45 / Nangate45",
+  "node": "45 nm",
+  "pdkNote": "The Nangate Open Cell Library on FreePDK45. It is an academic platform rather than a manufacturable process, and has long served as a reference for EDA research and flow bring-up.",
   "head": [
    [
-    "Pipeline",
-    "Conv→ReLU→Pool"
+    "Die",
+    "1050 × 1050 µm"
    ],
    [
-    "Data",
-    "8-bit fixed"
+    "Instances",
+    "153,447"
    ],
    [
-    "Clock",
-    "40 MHz"
+    "F<sub>max</sub>",
+    "403.20 MHz"
    ]
   ],
   "specs": [
    [
     "Technology",
-    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
+    "45 nm — FreePDK45 / Nangate45"
    ],
    [
-    "Standard cells",
-    "sky130_fd_sc_hd — high density"
+    "Standard-cell library",
+    "NangateOpenCellLibrary"
    ],
    [
     "Top module",
-    "cnn_layer"
+    "resnet_acc"
    ],
    [
-    "Clock",
-    "25 ns period — 40 MHz, port <code>clk</code>"
+    "Die size",
+    "1049.79 × 1049.79 µm"
    ],
    [
-    "Data width",
-    "8-bit fixed point (DATA_WIDTH = 8)"
+    "Die area",
+    "1.102 mm² (1,102,050 µm²)"
    ],
    [
-    "Image width",
-    "8 pixels (IMG_WIDTH = 8, parameterised)"
+    "Core area",
+    "1.097 mm² (1,096,910 µm²)"
    ],
    [
-    "Stage 1",
-    "3 × 3 convolution with two line buffers and a sliding-window register array"
+    "Instances (excl. filler)",
+    "153,447"
    ],
    [
-    "Kernel",
-    "Hard-coded [[1,0,−1],[2,0,−2],[1,0,−1]] — a Sobel vertical-edge operator"
+    "Standard cells",
+    "153,435"
    ],
    [
-    "MAC accumulator",
-    "2·DATA_WIDTH + 4 bits, signed"
+    "Hard macros",
+    "12"
    ],
    [
-    "Stage 2",
-    "ReLU activation"
+    "Sequential cells",
+    "28,940"
    ],
    [
-    "Stage 3",
-    "2 × 2 max pooling"
+    "Tap cells",
+    "5,935"
    ],
    [
-    "Interface",
-    "pixel_in / valid_in streaming in, pool_out / valid_out streaming out"
+    "Filler cells",
+    "214,875"
    ],
    [
-    "Reset",
-    "Active-low asynchronous (rst_n)"
+    "Total placed cells",
+    "368,216"
    ],
    [
-    "Variants",
-    "Two configurations were run: one_cnn_layer3x3.v (shown) and a second one_cnn_layer.v build with no layout captured"
+    "Cell area",
+    "514,959 µm²"
    ],
    [
-    "Run date",
-    "February 2026"
+    "Core utilisation",
+    "46.9 %"
+   ],
+   [
+    "I/O pins",
+    "294"
+   ],
+   [
+    "Target clock",
+    "2.5 ns (400.00 MHz)"
+   ],
+   [
+    "Achieved F<sub>max</sub>",
+    "403.20 MHz"
+   ],
+   [
+    "Setup WNS",
+    "0.01984 ns"
+   ],
+   [
+    "Setup TNS",
+    "0 ns"
+   ],
+   [
+    "Hold WNS",
+    "0.001869 ns"
+   ],
+   [
+    "Routed wirelength",
+    "3,795,754 µm"
+   ],
+   [
+    "Routed nets",
+    "187,804"
+   ],
+   [
+    "Vias",
+    "954,900"
+   ],
+   [
+    "Detailed-route DRC",
+    "0"
+   ],
+   [
+    "Antenna-violating nets",
+    "0"
+   ],
+   [
+    "Total power",
+    "62.4 mW measured — average over a 4-bit inference at 400 MHz (gate-level simulation)"
+   ],
+   [
+    "GDS-II size",
+    "121.6 MB"
+   ],
+   [
+    "Function",
+    "ResNet-20 inference for CIFAR-10 — 19 convolutions with residual blocks, global average pooling, classifier and argmax"
+   ],
+   [
+    "Compute array",
+    "16 × 16 weight-stationary HTC-R array — hybrid temporal computing with run-time precision: 16 stream bits per clock, one stored 8-bit weight set serving 3- to 8-bit activations, early termination and clock gating"
+   ],
+   [
+    "What HTC-R is",
+    "Hybrid temporal computing with run-time precision. A product is the number of 1s in the AND of two bitstreams: the activation as a thermometer code, 1 for its first x positions, and the weight with each of its bits repeated at binary-weighted positions (the top bit every second position, the next every fourth, and so on). Earlier HTC designs stepped through that stream one bit per clock; HTC-R counts 16 stream bits per clock in closed form, so each processing element is four AND gates and a 5-bit adder, with no multiplier. Because the weight stream visits the weight bits most-significant first, an n-bit activation only ever reads the top n bits of the stored weight: one 8-bit weight set serves every precision from 3 to 8 bits, and the activations alone set it — one clock per vector up to 4 bits, a few clocks with early termination above."
+   ],
+   [
+    "On-chip storage",
+    "Three 1024 × 128-bit activation buffers built from 12 fakeram45_1024x32 SRAM macros, clock-gated per buffer, and a 64-entry partial-sum buffer; weights off-core behind a 128-bit read port"
+   ],
+   [
+    "Operating points",
+    "4-bit, 4-bit with temporal oversampling, 8-bit — the same stored weights"
+   ],
+   [
+    "Accuracy",
+    "90.25 % / 90.97 % / 91.28 % on the 10,000 test images (hardware-exact integer model)"
+   ],
+   [
+    "Energy per inference",
+    "37.4 µJ / 43.0 µJ / 116.7 µJ — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads"
+   ],
+   [
+    "Latency",
+    "591 µs / 713 µs / 3,245 µs at 400 MHz"
+   ],
+   [
+    "Verification",
+    "RTL bit-exact against the integer model on 200 test images per operating point; every gate-level inference returns the model's class"
+   ],
+   [
+    "SRAM macros",
+    "fakeram45 models from the OpenROAD Nangate45 platform — abstracts without internal layout; the GDS-II rendering shows their outlines, pins and the power straps routed over them"
+   ],
+   [
+    "Companion design",
+    "Built twice with everything but the array identical — see the binary-array version"
    ]
   ],
   "images": [
    {
-    "src": "assets/img/ol-cnn-3x3/layout.webp",
-    "cap": "Routed layout in KLayout"
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/blocks.webp",
+    "cap": "Block map — every placed cell coloured by the functional block it belongs to"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_all.webp",
+    "cap": "Final layout — every mask layer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_routing.webp",
+    "cap": "Detailed routing"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_placement.webp",
+    "cap": "Standard-cell placement"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_congestion.webp",
+    "cap": "Global-routing congestion"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_clocks.webp",
+    "cap": "Clock nets"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_ir_drop.webp",
+    "cap": "Power-grid IR drop"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_resizer.webp",
+    "cap": "Cells added by the resizer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/final_worst_path.webp",
+    "cap": "Worst timing path"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-htcr/cts_core_clock.webp",
+    "cap": "Clock tree — core_clock"
    }
   ],
-  "searchText": "cnn layer — 3 × 3 convolution one complete convolutional-neural-network layer in hardware: a 3 × 3 convolution with a hard-coded sobel-style kernel, followed by relu activation and 2 × 2 max pooling. line buffers hold two image rows so a sliding 3 × 3 window can stream over the input one pixel per cycle. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module cnn_layer clock 25 ns period — 40 mhz, port <code>clk</code> data width 8-bit fixed point (data_width = 8) image width 8 pixels (img_width = 8, parameterised) stage 1 3 × 3 convolution with two line buffers and a sliding-window register array kernel hard-coded [[1,0,−1],[2,0,−2],[1,0,−1]] — a sobel vertical-edge operator mac accumulator 2·data_width + 4 bits, signed stage 2 relu activation stage 3 2 × 2 max pooling interface pixel_in / valid_in streaming in, pool_out / valid_out streaming out reset active-low asynchronous (rst_n) variants two configurations were run: one_cnn_layer3x3.v (shown) and a second one_cnn_layer.v build with no layout captured run date february 2026"
+  "searchText": "resnet-20 accelerator — htc-r array a complete resnet-20 inference accelerator for cifar-10 built around a precision-scalable hybrid temporal computing (htc-r) array. feature maps live in twelve sram macros; 3 × 3 convolutions with zero padding and stride 2 are streamed from them, batch normalization and the residual additions are folded into requantization, and global average pooling, the classifier and argmax finish the network on chip. openroad-flow-scripts (orfs) freepdk45 / nangate45 45 nm technology 45 nm — freepdk45 / nangate45 standard-cell library nangateopencelllibrary top module resnet_acc die size 1049.79 × 1049.79 µm die area 1.102 mm² (1,102,050 µm²) core area 1.097 mm² (1,096,910 µm²) instances (excl. filler) 153,447 standard cells 153,435 hard macros 12 sequential cells 28,940 tap cells 5,935 filler cells 214,875 total placed cells 368,216 cell area 514,959 µm² core utilisation 46.9 % i/o pins 294 target clock 2.5 ns (400.00 mhz) achieved f<sub>max</sub> 403.20 mhz setup wns 0.01984 ns setup tns 0 ns hold wns 0.001869 ns routed wirelength 3,795,754 µm routed nets 187,804 vias 954,900 detailed-route drc 0 antenna-violating nets 0 total power 62.4 mw measured — average over a 4-bit inference at 400 mhz (gate-level simulation) gds-ii size 121.6 mb function resnet-20 inference for cifar-10 — 19 convolutions with residual blocks, global average pooling, classifier and argmax compute array 16 × 16 weight-stationary htc-r array — hybrid temporal computing with run-time precision: 16 stream bits per clock, one stored 8-bit weight set serving 3- to 8-bit activations, early termination and clock gating what htc-r is hybrid temporal computing with run-time precision. a product is the number of 1s in the and of two bitstreams: the activation as a thermometer code, 1 for its first x positions, and the weight with each of its bits repeated at binary-weighted positions (the top bit every second position, the next every fourth, and so on). earlier htc designs stepped through that stream one bit per clock; htc-r counts 16 stream bits per clock in closed form, so each processing element is four and gates and a 5-bit adder, with no multiplier. because the weight stream visits the weight bits most-significant first, an n-bit activation only ever reads the top n bits of the stored weight: one 8-bit weight set serves every precision from 3 to 8 bits, and the activations alone set it — one clock per vector up to 4 bits, a few clocks with early termination above. on-chip storage three 1024 × 128-bit activation buffers built from 12 fakeram45_1024x32 sram macros, clock-gated per buffer, and a 64-entry partial-sum buffer; weights off-core behind a 128-bit read port operating points 4-bit, 4-bit with temporal oversampling, 8-bit — the same stored weights accuracy 90.25 % / 90.97 % / 91.28 % on the 10,000 test images (hardware-exact integer model) energy per inference 37.4 µj / 43.0 µj / 116.7 µj — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads latency 591 µs / 713 µs / 3,245 µs at 400 mhz verification rtl bit-exact against the integer model on 200 test images per operating point; every gate-level inference returns the model's class sram macros fakeram45 models from the openroad nangate45 platform — abstracts without internal layout; the gds-ii rendering shows their outlines, pins and the power straps routed over them companion design built twice with everything but the array identical — see the binary-array version"
  },
  {
-  "family": "openlane",
-  "familyLabel": "OpenLane",
-  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
-  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
-  "pdkKey": "sky130",
-  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
-  "node": "130 nm",
-  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
-  "slug": "ol-riscv-alu",
-  "name": "RISC-V 32-bit ALU",
-  "blurb": "A single-cycle 32-bit arithmetic-logic unit covering the RV32I integer operations — add, subtract, the three shifts, signed and unsigned set-less-than, and the bitwise logic — with zero, overflow and carry-out flags. The layout shows a dense cell array with the 64 operand and result pins fanning out to the die edge.",
+  "slug": "orfs-nangate45-resnet20-binary",
+  "name": "ResNet-20 accelerator — binary array",
+  "blurb": "The same ResNet-20 accelerator built around a conventional 16 × 16 binary multiplier array: the baseline for the HTC-R version, with the same twelve SRAM macros, streaming, requantization, pooling and control.",
+  "family": "openroad",
+  "familyLabel": "OpenROAD Flow Scripts",
+  "tool": "OpenROAD-flow-scripts (ORFS)",
+  "toolLine": "Yosys synthesis → OpenROAD floorplan, placement, CTS, routing and finishing",
+  "pdkKey": "nangate45",
+  "pdkLabel": "FreePDK45 / Nangate45",
+  "node": "45 nm",
+  "pdkNote": "The Nangate Open Cell Library on FreePDK45. It is an academic platform rather than a manufacturable process, and has long served as a reference for EDA research and flow bring-up.",
   "head": [
    [
-    "Width",
-    "32-bit"
+    "Die",
+    "1190 × 1190 µm"
    ],
    [
-    "Operations",
-    "10"
+    "Instances",
+    "233,222"
    ],
    [
-    "Clock",
-    "40 MHz"
+    "F<sub>max</sub>",
+    "404.42 MHz"
    ]
   ],
   "specs": [
    [
     "Technology",
-    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
+    "45 nm — FreePDK45 / Nangate45"
    ],
    [
-    "Standard cells",
-    "sky130_fd_sc_hd — high density"
+    "Standard-cell library",
+    "NangateOpenCellLibrary"
    ],
    [
     "Top module",
-    "riscv_alu_32bit"
+    "resnet_acc"
    ],
    [
-    "Clock",
-    "25 ns period — 40 MHz, port <code>clk</code>"
+    "Die size",
+    "1189.87 × 1189.87 µm"
    ],
    [
-    "Operand width",
-    "32 bits — operand_a, operand_b"
+    "Die area",
+    "1.416 mm² (1,415,780 µm²)"
    ],
    [
-    "Result width",
-    "32 bits"
+    "Core area",
+    "1.410 mm² (1,410,030 µm²)"
    ],
    [
-    "Opcode",
-    "4-bit alu_op, encoded from the RISC-V funct3 / funct7 fields"
+    "Instances (excl. filler)",
+    "233,222"
    ],
    [
-    "Operations",
-    "ADD, SUB, SLL, SLT, SLTU, XOR, SRL, SRA, OR, AND"
+    "Standard cells",
+    "233,210"
    ],
    [
-    "Flags",
-    "zero, overflow (signed), carry_out"
+    "Hard macros",
+    "12"
    ],
    [
-    "Arithmetic",
-    "33-bit internal add and subtract paths for carry and borrow capture"
+    "Sequential cells",
+    "34,902"
    ],
    [
-    "Overflow detection",
-    "Sign-comparison logic on the operands and the result"
+    "Tap cells",
+    "7,029"
    ],
    [
-    "Output",
-    "riscv_alu_32bit.gds, inspected in KLayout"
+    "Filler cells",
+    "322,303"
    ],
    [
-    "Run date",
-    "February 2026"
+    "Total placed cells",
+    "555,421"
+   ],
+   [
+    "Cell area",
+    "660,236 µm²"
+   ],
+   [
+    "Core utilisation",
+    "46.8 %"
+   ],
+   [
+    "I/O pins",
+    "294"
+   ],
+   [
+    "Target clock",
+    "2.5 ns (400.00 MHz)"
+   ],
+   [
+    "Achieved F<sub>max</sub>",
+    "404.42 MHz"
+   ],
+   [
+    "Setup WNS",
+    "0.02733 ns"
+   ],
+   [
+    "Setup TNS",
+    "0 ns"
+   ],
+   [
+    "Hold WNS",
+    "-0.009228 ns"
+   ],
+   [
+    "Routed wirelength",
+    "5,043,238 µm"
+   ],
+   [
+    "Routed nets",
+    "287,624"
+   ],
+   [
+    "Vias",
+    "1,427,373"
+   ],
+   [
+    "Detailed-route DRC",
+    "0"
+   ],
+   [
+    "Antenna-violating nets",
+    "0"
+   ],
+   [
+    "Total power",
+    "78.3 mW measured — average over a W4A4 inference at 400 MHz (gate-level simulation)"
+   ],
+   [
+    "GDS-II size",
+    "181.5 MB"
+   ],
+   [
+    "Function",
+    "ResNet-20 inference for CIFAR-10 — 19 convolutions with residual blocks, global average pooling, classifier and argmax"
+   ],
+   [
+    "Compute array",
+    "16 × 16 weight-stationary binary array — 8-bit sign-magnitude multipliers and adder trees, one input vector per clock"
+   ],
+   [
+    "On-chip storage",
+    "Three 1024 × 128-bit activation buffers built from 12 fakeram45_1024x32 SRAM macros, clock-gated per buffer, and a 64-entry partial-sum buffer; weights off-core behind a 128-bit read port"
+   ],
+   [
+    "Operating points",
+    "W4A4 (4-bit weights and activations) and W8A8"
+   ],
+   [
+    "Accuracy",
+    "90.54 % / 91.70 % on the 10,000 test images (hardware-exact integer model)"
+   ],
+   [
+    "Energy per inference",
+    "46.9 µJ / 58.9 µJ — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads"
+   ],
+   [
+    "Latency",
+    "591 µs at 400 MHz"
+   ],
+   [
+    "Verification",
+    "RTL bit-exact against the integer model on 200 test images per operating point; every gate-level inference returns the model's class"
+   ],
+   [
+    "SRAM macros",
+    "fakeram45 models from the OpenROAD Nangate45 platform — abstracts without internal layout; the GDS-II rendering shows their outlines, pins and the power straps routed over them"
+   ],
+   [
+    "Companion design",
+    "Built twice with everything but the array identical — see the HTC-R version"
    ]
   ],
   "images": [
    {
-    "src": "assets/img/ol-riscv-alu/layout.webp",
-    "cap": "Routed layout with the pin ring fanning out to the die edge"
+    "src": "assets/img/orfs-nangate45-resnet20-binary/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/blocks.webp",
+    "cap": "Block map — every placed cell coloured by the functional block it belongs to"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_all.webp",
+    "cap": "Final layout — every mask layer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_routing.webp",
+    "cap": "Detailed routing"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_placement.webp",
+    "cap": "Standard-cell placement"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_congestion.webp",
+    "cap": "Global-routing congestion"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_clocks.webp",
+    "cap": "Clock nets"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_ir_drop.webp",
+    "cap": "Power-grid IR drop"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_resizer.webp",
+    "cap": "Cells added by the resizer"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/final_worst_path.webp",
+    "cap": "Worst timing path"
+   },
+   {
+    "src": "assets/img/orfs-nangate45-resnet20-binary/cts_core_clock.webp",
+    "cap": "Clock tree — core_clock"
    }
   ],
-  "searchText": "risc-v 32-bit alu a single-cycle 32-bit arithmetic-logic unit covering the rv32i integer operations — add, subtract, the three shifts, signed and unsigned set-less-than, and the bitwise logic — with zero, overflow and carry-out flags. the layout shows a dense cell array with the 64 operand and result pins fanning out to the die edge. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module riscv_alu_32bit clock 25 ns period — 40 mhz, port <code>clk</code> operand width 32 bits — operand_a, operand_b result width 32 bits opcode 4-bit alu_op, encoded from the risc-v funct3 / funct7 fields operations add, sub, sll, slt, sltu, xor, srl, sra, or, and flags zero, overflow (signed), carry_out arithmetic 33-bit internal add and subtract paths for carry and borrow capture overflow detection sign-comparison logic on the operands and the result output riscv_alu_32bit.gds, inspected in klayout run date february 2026"
+  "searchText": "resnet-20 accelerator — binary array the same resnet-20 accelerator built around a conventional 16 × 16 binary multiplier array: the baseline for the htc-r version, with the same twelve sram macros, streaming, requantization, pooling and control. openroad-flow-scripts (orfs) freepdk45 / nangate45 45 nm technology 45 nm — freepdk45 / nangate45 standard-cell library nangateopencelllibrary top module resnet_acc die size 1189.87 × 1189.87 µm die area 1.416 mm² (1,415,780 µm²) core area 1.410 mm² (1,410,030 µm²) instances (excl. filler) 233,222 standard cells 233,210 hard macros 12 sequential cells 34,902 tap cells 7,029 filler cells 322,303 total placed cells 555,421 cell area 660,236 µm² core utilisation 46.8 % i/o pins 294 target clock 2.5 ns (400.00 mhz) achieved f<sub>max</sub> 404.42 mhz setup wns 0.02733 ns setup tns 0 ns hold wns -0.009228 ns routed wirelength 5,043,238 µm routed nets 287,624 vias 1,427,373 detailed-route drc 0 antenna-violating nets 0 total power 78.3 mw measured — average over a w4a4 inference at 400 mhz (gate-level simulation) gds-ii size 181.5 mb function resnet-20 inference for cifar-10 — 19 convolutions with residual blocks, global average pooling, classifier and argmax compute array 16 × 16 weight-stationary binary array — 8-bit sign-magnitude multipliers and adder trees, one input vector per clock on-chip storage three 1024 × 128-bit activation buffers built from 12 fakeram45_1024x32 sram macros, clock-gated per buffer, and a 64-entry partial-sum buffer; weights off-core behind a 128-bit read port operating points w4a4 (4-bit weights and activations) and w8a8 accuracy 90.54 % / 91.70 % on the 10,000 test images (hardware-exact integer model) energy per inference 46.9 µj / 58.9 µj — gate-level simulation of whole inferences on the routed netlist with extracted parasitics, including the weight-memory reads latency 591 µs at 400 mhz verification rtl bit-exact against the integer model on 200 test images per operating point; every gate-level inference returns the model's class sram macros fakeram45 models from the openroad nangate45 platform — abstracts without internal layout; the gds-ii rendering shows their outlines, pins and the power straps routed over them companion design built twice with everything but the array identical — see the htc-r version"
  },
  {
   "slug": "orfs-asap7-aes-block",
@@ -4514,5 +4354,1069 @@ window.DESIGNS = [
    }
   ],
   "searchText": "gcd accelerator the gcd datapath on nangate45 — the default target of the openroad flow. openroad-flow-scripts (orfs) freepdk45 / nangate45 45 nm technology 45 nm — freepdk45 / nangate45 standard-cell library nangateopencelllibrary top module gcd die size 35.22 × 35.22 µm die area 1,240 µm² core area 1,065 µm² instances (excl. filler) 631 standard cells 631 sequential cells 35 tap cells 46 filler cells 221 total placed cells 852 cell area 854 µm² core utilisation 80.3 % i/o pins 54 target clock 0.46 ns (2.17 ghz) achieved f<sub>max</sub> 1.95 ghz setup wns -0.05392 ns setup tns -0.4759 ns hold wns 0.04976 ns routed wirelength 4,239 µm routed nets 653 vias 3,500 detailed-route drc 0 antenna-violating nets 0 total power 3.889 mw gds-ii size 0.5 mb"
+ },
+ {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-risc-core",
+  "name": "RISC core with embedded SRAM",
+  "blurb": "A RISC processor core hardened in Fusion Compiler with four SRAM macros placed around a central logic region. The finished layout shows the memories in the upper and right quadrants and the random logic packed into the lower-left.",
+  "head": [
+   [
+    "Chip area",
+    "104,386 µm²"
+   ],
+   [
+    "Leaf cells",
+    "8,286"
+   ],
+   [
+    "Macros",
+    "4 × SRAM"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "32 nm — Synopsys SAED32/28 nm EDK"
+   ],
+   [
+    "Technology file",
+    "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
+   ],
+   [
+    "Cell libraries",
+    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
+   ],
+   [
+    "Top module",
+    "risc_core"
+   ],
+   [
+    "Chip area",
+    "104,385.648 µm²"
+   ],
+   [
+    "Core area",
+    "91,862.128 µm²"
+   ],
+   [
+    "Site-row area",
+    "91,862.128 µm²"
+   ],
+   [
+    "Total leaf cells",
+    "8,286 — 70,608.401 µm²"
+   ],
+   [
+    "Standard cells",
+    "4,308 — 15,887.812 µm²"
+   ],
+   [
+    "Hard macros",
+    "4 — 51,184.683 µm² (SRAM)"
+   ],
+   [
+    "Sequential cells",
+    "490 — 55,341.971 µm²"
+   ],
+   [
+    "Buffers / inverters",
+    "1,034 — 2,986.446 µm²"
+   ],
+   [
+    "Clock-gating cells",
+    "19"
+   ],
+   [
+    "Physical-only cells",
+    "3,974 — 3,535.905 µm²"
+   ],
+   [
+    "Flat nets",
+    "5,147"
+   ],
+   [
+    "Ports",
+    "149"
+   ],
+   [
+    "Design masters",
+    "171"
+   ],
+   [
+    "Placement blockages",
+    "9 — 2,801.459 µm²"
+   ],
+   [
+    "Clocks",
+    "1 master clock, no generated clocks"
+   ],
+   [
+    "Modes / corners",
+    "func mode; corners ss_125c and ff_m40c (two scenarios)"
+   ],
+   [
+    "Path groups",
+    "7 (1 non-default)"
+   ],
+   [
+    "Power domains",
+    "1 domain, 1 voltage area"
+   ],
+   [
+    "Total wire length",
+    "135,460.53 µm"
+   ],
+   [
+    "Wires",
+    "51,792"
+   ],
+   [
+    "Contacts",
+    "54,010"
+   ],
+   [
+    "Metal layers available",
+    "71 tech layers in the technology file"
+   ],
+   [
+    "Report date",
+    "23 March 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-risc-core/layout.webp",
+    "cap": "Finished layout — four SRAM macros and the routed core"
+   },
+   {
+    "src": "assets/img/fc-risc-core/placement.webp",
+    "cap": "Placement"
+   },
+   {
+    "src": "assets/img/fc-risc-core/floorplan.webp",
+    "cap": "Floorplan with macro placement"
+   }
+  ],
+  "searchText": "risc core with embedded sram a risc processor core hardened in fusion compiler with four sram macros placed around a central logic region. the finished layout shows the memories in the upper and right quadrants and the random logic packed into the lower-left. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module risc_core chip area 104,385.648 µm² core area 91,862.128 µm² site-row area 91,862.128 µm² total leaf cells 8,286 — 70,608.401 µm² standard cells 4,308 — 15,887.812 µm² hard macros 4 — 51,184.683 µm² (sram) sequential cells 490 — 55,341.971 µm² buffers / inverters 1,034 — 2,986.446 µm² clock-gating cells 19 physical-only cells 3,974 — 3,535.905 µm² flat nets 5,147 ports 149 design masters 171 placement blockages 9 — 2,801.459 µm² clocks 1 master clock, no generated clocks modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) path groups 7 (1 non-default) power domains 1 domain, 1 voltage area total wire length 135,460.53 µm wires 51,792 contacts 54,010 metal layers available 71 tech layers in the technology file report date 23 march 2026"
+ },
+ {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-jpeg-encoder",
+  "name": "JPEG encoder",
+  "blurb": "A baseline JPEG encoder — the largest all-standard-cell design in the Fusion Compiler set at just over 25,000 leaf cells and 607 mm of routed wire. Closes timing at the slow corner; the fast corner still shows a small setup and hold residue.",
+  "head": [
+   [
+    "Chip area",
+    "124,900 µm²"
+   ],
+   [
+    "Leaf cells",
+    "25,461"
+   ],
+   [
+    "Wire",
+    "607 mm"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "32 nm — Synopsys SAED32/28 nm EDK"
+   ],
+   [
+    "Cell libraries",
+    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
+   ],
+   [
+    "Top module",
+    "jpeg_encoder"
+   ],
+   [
+    "Chip area",
+    "124,899.574 µm²"
+   ],
+   [
+    "Core area",
+    "111,163.094 µm²"
+   ],
+   [
+    "Total leaf cells",
+    "25,461 — 97,293.185 µm²"
+   ],
+   [
+    "Standard cells",
+    "20,891 — 94,173.313 µm²"
+   ],
+   [
+    "Hard macros",
+    "none — fully standard-cell"
+   ],
+   [
+    "Sequential cells",
+    "4,335 — 36,770.062 µm²"
+   ],
+   [
+    "Buffers / inverters",
+    "5,762 — 20,775.255 µm²"
+   ],
+   [
+    "Clock-gating cells",
+    "76"
+   ],
+   [
+    "Physical-only cells",
+    "4,570 — 3,119.872 µm²"
+   ],
+   [
+    "Flat nets",
+    "25,338 (25,336 detail-routed)"
+   ],
+   [
+    "Ports",
+    "49"
+   ],
+   [
+    "Design masters",
+    "162"
+   ],
+   [
+    "Modes / corners",
+    "func mode; corners ss_125c and ff_m40c (two scenarios)"
+   ],
+   [
+    "Setup WNS / TNS",
+    "−0.30 ns / −8.74 ns at ff_m40c (143 violating endpoints); +0.26 ns clean at ss_125c"
+   ],
+   [
+    "Hold WNS / TNS",
+    "−0.45 ns / −5.42 ns (102 violating endpoints)"
+   ],
+   [
+    "Total wire length",
+    "607,456.06 µm"
+   ],
+   [
+    "Wires",
+    "238,606"
+   ],
+   [
+    "Contacts",
+    "241,808"
+   ],
+   [
+    "Cell area (netlist)",
+    "94,173.31 µm²"
+   ],
+   [
+    "Peak memory",
+    "978 MB"
+   ],
+   [
+    "Report date",
+    "16 April 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-jpeg-encoder/layout.webp",
+    "cap": "Finished routed layout"
+   },
+   {
+    "src": "assets/img/fc-jpeg-encoder/merged.webp",
+    "cap": "Side-by-side flow stages"
+   },
+   {
+    "src": "assets/img/fc-jpeg-encoder/placement.webp",
+    "cap": "Placement"
+   },
+   {
+    "src": "assets/img/fc-jpeg-encoder/floorplan.webp",
+    "cap": "Floorplan"
+   }
+  ],
+  "searchText": "jpeg encoder a baseline jpeg encoder — the largest all-standard-cell design in the fusion compiler set at just over 25,000 leaf cells and 607 mm of routed wire. closes timing at the slow corner; the fast corner still shows a small setup and hold residue. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module jpeg_encoder chip area 124,899.574 µm² core area 111,163.094 µm² total leaf cells 25,461 — 97,293.185 µm² standard cells 20,891 — 94,173.313 µm² hard macros none — fully standard-cell sequential cells 4,335 — 36,770.062 µm² buffers / inverters 5,762 — 20,775.255 µm² clock-gating cells 76 physical-only cells 4,570 — 3,119.872 µm² flat nets 25,338 (25,336 detail-routed) ports 49 design masters 162 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns −0.30 ns / −8.74 ns at ff_m40c (143 violating endpoints); +0.26 ns clean at ss_125c hold wns / tns −0.45 ns / −5.42 ns (102 violating endpoints) total wire length 607,456.06 µm wires 238,606 contacts 241,808 cell area (netlist) 94,173.31 µm² peak memory 978 mb report date 16 april 2026"
+ },
+ {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-aes-cipher",
+  "name": "AES-128 cipher",
+  "blurb": "An AES cipher top hardened in Fusion Compiler. Setup timing closes at both corners with positive slack; only a handful of hold endpoints remain, and the 390-port interface dominates the pin ring around the core.",
+  "head": [
+   [
+    "Chip area",
+    "40,353 µm²"
+   ],
+   [
+    "Leaf cells",
+    "9,999"
+   ],
+   [
+    "Setup",
+    "+0.07 ns"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "32 nm — Synopsys SAED32/28 nm EDK"
+   ],
+   [
+    "Cell libraries",
+    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
+   ],
+   [
+    "Top module",
+    "aes_cipher_top"
+   ],
+   [
+    "Chip area",
+    "40,352.682 µm²"
+   ],
+   [
+    "Core area",
+    "32,717.482 µm²"
+   ],
+   [
+    "Total leaf cells",
+    "9,999 — 24,395.537 µm²"
+   ],
+   [
+    "Standard cells",
+    "8,437 — 23,332.706 µm²"
+   ],
+   [
+    "Hard macros",
+    "none — fully standard-cell"
+   ],
+   [
+    "Sequential cells",
+    "537 — 4,735.973 µm²"
+   ],
+   [
+    "Buffers / inverters",
+    "972 — 1,751.306 µm²"
+   ],
+   [
+    "Clock-gating cells",
+    "7"
+   ],
+   [
+    "Physical-only cells",
+    "1,562 — 1,062.830 µm²"
+   ],
+   [
+    "Flat nets",
+    "8,920 (8,918 detail-routed)"
+   ],
+   [
+    "Ports",
+    "390"
+   ],
+   [
+    "Design masters",
+    "89"
+   ],
+   [
+    "Modes / corners",
+    "func mode; corners ss_125c and ff_m40c (two scenarios)"
+   ],
+   [
+    "Setup WNS / TNS",
+    "+0.07 ns / 0.00 ns — timing met at both corners"
+   ],
+   [
+    "Hold WNS / TNS",
+    "−0.03 ns / −0.09 ns (7 violating endpoints)"
+   ],
+   [
+    "Total wire length",
+    "245,624.94 µm"
+   ],
+   [
+    "Wires",
+    "109,287"
+   ],
+   [
+    "Contacts",
+    "101,383"
+   ],
+   [
+    "Peak memory",
+    "804 MB"
+   ],
+   [
+    "Report date",
+    "16 April 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-aes-cipher/layout.webp",
+    "cap": "Finished routed layout"
+   },
+   {
+    "src": "assets/img/fc-aes-cipher/placement.webp",
+    "cap": "Placement"
+   },
+   {
+    "src": "assets/img/fc-aes-cipher/floorplan.webp",
+    "cap": "Floorplan"
+   }
+  ],
+  "searchText": "aes-128 cipher an aes cipher top hardened in fusion compiler. setup timing closes at both corners with positive slack; only a handful of hold endpoints remain, and the 390-port interface dominates the pin ring around the core. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module aes_cipher_top chip area 40,352.682 µm² core area 32,717.482 µm² total leaf cells 9,999 — 24,395.537 µm² standard cells 8,437 — 23,332.706 µm² hard macros none — fully standard-cell sequential cells 537 — 4,735.973 µm² buffers / inverters 972 — 1,751.306 µm² clock-gating cells 7 physical-only cells 1,562 — 1,062.830 µm² flat nets 8,920 (8,918 detail-routed) ports 390 design masters 89 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.07 ns / 0.00 ns — timing met at both corners hold wns / tns −0.03 ns / −0.09 ns (7 violating endpoints) total wire length 245,624.94 µm wires 109,287 contacts 101,383 peak memory 804 mb report date 16 april 2026"
+ },
+ {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-cortex-m0",
+  "name": "Arm Cortex-M0 DesignStart",
+  "blurb": "An Arm Cortex-M0 DesignStart core (CORTEXM0DS) taken through Fusion Compiler design planning to a signed-off, fully routed block complete with an I/O pad ring and corner cells — the most complete full-chip floorplan in the collection.",
+  "head": [
+   [
+    "Core",
+    "Cortex-M0"
+   ],
+   [
+    "Stage",
+    "Routed"
+   ],
+   [
+    "Chip",
+    "Pad ring"
+   ]
+  ],
+  "specs": [
+   [
+    "Design library",
+    "CORTEXM0DS.dlib — block CORTEXM0DS/signoff.design"
+   ],
+   [
+    "Tool",
+    "Synopsys Fusion Compiler, Design Planning / BlockWindow"
+   ],
+   [
+    "Core IP",
+    "Arm Cortex-M0 DesignStart — a 32-bit Armv6-M processor"
+   ],
+   [
+    "Flow stage reached",
+    "Sign-off design view: placed, clock-tree-synthesised and fully routed"
+   ],
+   [
+    "Physical features",
+    "Peripheral I/O pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block"
+   ],
+   [
+    "Technology",
+    "Not recorded in this design's source files. The other Fusion Compiler projects in this set target the Synopsys SAED32/28 nm EDK."
+   ],
+   [
+    "Captured",
+    "April 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-cortex-m0/layout.webp",
+    "cap": "Routed core inside the I/O pad ring"
+   },
+   {
+    "src": "assets/img/fc-cortex-m0/floorplan.webp",
+    "cap": "Floorplan"
+   },
+   {
+    "src": "assets/img/fc-cortex-m0/gui.webp",
+    "cap": "The Fusion Compiler session that produced it"
+   }
+  ],
+  "searchText": "arm cortex-m0 designstart an arm cortex-m0 designstart core (cortexm0ds) taken through fusion compiler design planning to a signed-off, fully routed block complete with an i/o pad ring and corner cells — the most complete full-chip floorplan in the collection. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm design library cortexm0ds.dlib — block cortexm0ds/signoff.design tool synopsys fusion compiler, design planning / blockwindow core ip arm cortex-m0 designstart — a 32-bit armv6-m processor flow stage reached sign-off design view: placed, clock-tree-synthesised and fully routed physical features peripheral i/o pad ring with corner cells, a dense multi-layer routed core, and power-ground regions around the block technology not recorded in this design's source files. the other fusion compiler projects in this set target the synopsys saed32/28 nm edk. captured april 2026"
+ },
+ {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-dual-ram",
+  "name": "Dual-port RAM — 256 × 8",
+  "blurb": "A 256-word by 8-bit dual-port RAM built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. Independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. Setup closes at both corners; the critical path runs from the read address pins straight to the output register.",
+  "head": [
+   [
+    "Memory",
+    "256 × 8"
+   ],
+   [
+    "Clock",
+    "200 MHz"
+   ],
+   [
+    "Die",
+    "222 × 222 µm"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "32 nm — Synopsys SAED32/28 nm EDK"
+   ],
+   [
+    "Technology file",
+    "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
+   ],
+   [
+    "Cell libraries",
+    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
+   ],
+   [
+    "Threshold flavours",
+    "Predominantly HVT, with RVT and LVT where timing needed it"
+   ],
+   [
+    "Top module",
+    "dual_ram"
+   ],
+   [
+    "Memory organisation",
+    "256 words × 8 bits — 2 kbit, register-based, no SRAM macro"
+   ],
+   [
+    "Ports",
+    "clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0]"
+   ],
+   [
+    "Architecture",
+    "Independent read and write addresses, synchronous reset clearing the whole array"
+   ],
+   [
+    "Clock",
+    "clk, 5.000 ns period — 200 MHz, waveform {0 2.5}"
+   ],
+   [
+    "Die size",
+    "222.31 × 222.31 µm"
+   ],
+   [
+    "Chip area",
+    "49,422.625 µm²"
+   ],
+   [
+    "Core area",
+    "40,930.145 µm²"
+   ],
+   [
+    "Total cell area",
+    "26,803.30 µm²"
+   ],
+   [
+    "Cell area with physical-only",
+    "31,383.99 µm²"
+   ],
+   [
+    "Core utilisation",
+    "65.5 % (cell area over core area)"
+   ],
+   [
+    "Cells",
+    "4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter"
+   ],
+   [
+    "Hard macros",
+    "None — the array is built from flip-flops"
+   ],
+   [
+    "Combinational area",
+    "7,146.53 µm²"
+   ],
+   [
+    "Noncombinational area",
+    "19,656.77 µm²"
+   ],
+   [
+    "Buffer/inverter area",
+    "2,891.90 µm²"
+   ],
+   [
+    "Placed instances incl. fill",
+    "11,207"
+   ],
+   [
+    "Nets",
+    "4,902"
+   ],
+   [
+    "Ports",
+    "38"
+   ],
+   [
+    "Cell references",
+    "60"
+   ],
+   [
+    "Modes / corners",
+    "func mode; corners ss_125c and ff_m40c (two scenarios)"
+   ],
+   [
+    "Setup WNS / TNS",
+    "+0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners"
+   ],
+   [
+    "Hold WNS / TNS",
+    "−0.01 ns / −0.01 ns (2 violating endpoints)"
+   ],
+   [
+    "Critical path",
+    "rd_addr[3] input port → data_out_reg[5], slack +0.29 ns"
+   ],
+   [
+    "Clock tree (post-CTS)",
+    "2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire"
+   ],
+   [
+    "Clock latency / skew",
+    "2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c"
+   ],
+   [
+    "Routing layers",
+    "M1 – M9"
+   ],
+   [
+    "Open nets",
+    "0 of 4,902"
+   ],
+   [
+    "Detailed-route DRC",
+    "0 after route_opt; 26 reported at sign-off, after metal fill"
+   ],
+   [
+    "LVS",
+    "M1 shorts reported among SHFILL3_HVT filler cells; the check stops after 20"
+   ],
+   [
+    "Total power",
+    "8.85 mW — 1.71 mW dynamic, 7.13 mW leakage at the slow 125 °C corner"
+   ],
+   [
+    "Power by group",
+    "Registers 80.5 %, clock network 13.0 %, combinational 6.6 %"
+   ],
+   [
+    "GDS-II size",
+    "7.1 MB"
+   ],
+   [
+    "Run date",
+    "21 September 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-dual-ram/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
+   }
+  ],
+  "searchText": "dual-port ram — 256 × 8 a 256-word by 8-bit dual-port ram built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. setup closes at both corners; the critical path runs from the read address pins straight to the output register. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros threshold flavours predominantly hvt, with rvt and lvt where timing needed it top module dual_ram memory organisation 256 words × 8 bits — 2 kbit, register-based, no sram macro ports clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0] architecture independent read and write addresses, synchronous reset clearing the whole array clock clk, 5.000 ns period — 200 mhz, waveform {0 2.5} die size 222.31 × 222.31 µm chip area 49,422.625 µm² core area 40,930.145 µm² total cell area 26,803.30 µm² cell area with physical-only 31,383.99 µm² core utilisation 65.5 % (cell area over core area) cells 4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter hard macros none — the array is built from flip-flops combinational area 7,146.53 µm² noncombinational area 19,656.77 µm² buffer/inverter area 2,891.90 µm² placed instances incl. fill 11,207 nets 4,902 ports 38 cell references 60 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners hold wns / tns −0.01 ns / −0.01 ns (2 violating endpoints) critical path rd_addr[3] input port → data_out_reg[5], slack +0.29 ns clock tree (post-cts) 2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire clock latency / skew 2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c routing layers m1 – m9 open nets 0 of 4,902 detailed-route drc 0 after route_opt; 26 reported at sign-off, after metal fill lvs m1 shorts reported among shfill3_hvt filler cells; the check stops after 20 total power 8.85 mw — 1.71 mw dynamic, 7.13 mw leakage at the slow 125 °c corner power by group registers 80.5 %, clock network 13.0 %, combinational 6.6 % gds-ii size 7.1 mb run date 21 september 2026"
+ },
+ {
+  "family": "openlane",
+  "familyLabel": "OpenLane",
+  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
+  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
+  "pdkKey": "sky130",
+  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
+  "node": "130 nm",
+  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
+  "slug": "ol-risc-core",
+  "name": "RISC core",
+  "blurb": "A RISC processor built from fourteen Verilog modules — ALU, control FSM, datapath, program counter, decoder, register file, hardware stack and a 128 × 16 SRAM — pushed through OpenLane to GDS-II. The power straps and the block outline of the register file are clearly visible in the layout.",
+  "head": [
+   [
+    "Datapath",
+    "64-bit"
+   ],
+   [
+    "Instruction",
+    "32-bit"
+   ],
+   [
+    "Clock",
+    "40 MHz"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
+   ],
+   [
+    "Standard cells",
+    "sky130_fd_sc_hd — high density"
+   ],
+   [
+    "Top module",
+    "risc_core"
+   ],
+   [
+    "Clock",
+    "25 ns period — 40 MHz, port <code>clk</code>"
+   ],
+   [
+    "Instruction width",
+    "32 bits"
+   ],
+   [
+    "Datapath width",
+    "64 bits (widened from the original 16-bit design)"
+   ],
+   [
+    "Program counter",
+    "8-bit"
+   ],
+   [
+    "Status word",
+    "11-bit PSW with zero, negative and carry flags"
+   ],
+   [
+    "ALU opcode",
+    "6-bit"
+   ],
+   [
+    "Register file",
+    "7-bit addressing, three ports (A, B, C), optionally RAM-backed"
+   ],
+   [
+    "Memory",
+    "sram128x16 — 128 words × 16 bits"
+   ],
+   [
+    "Stack",
+    "Hardware stack with its own FSM and full flag"
+   ],
+   [
+    "DFT ports",
+    "scan_en, test_mode"
+   ],
+   [
+    "Source modules",
+    "risc_core, alu, control, data_path, instrn_lat, prgrm_cnt, prgrm_cnt_top, prgrm_decode, prgrm_fsm, reg_file, stack_fsm, stack_mem, stack_top, sram128x16"
+   ],
+   [
+    "Output",
+    "risc_core.gds, inspected in KLayout"
+   ],
+   [
+    "Run date",
+    "February 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/ol-risc-core/layout.webp",
+    "cap": "Full die — power straps and the register-file block outline"
+   },
+   {
+    "src": "assets/img/ol-risc-core/zoom.webp",
+    "cap": "Zoomed into the standard-cell rows and local interconnect"
+   }
+  ],
+  "searchText": "risc core a risc processor built from fourteen verilog modules — alu, control fsm, datapath, program counter, decoder, register file, hardware stack and a 128 × 16 sram — pushed through openlane to gds-ii. the power straps and the block outline of the register file are clearly visible in the layout. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module risc_core clock 25 ns period — 40 mhz, port <code>clk</code> instruction width 32 bits datapath width 64 bits (widened from the original 16-bit design) program counter 8-bit status word 11-bit psw with zero, negative and carry flags alu opcode 6-bit register file 7-bit addressing, three ports (a, b, c), optionally ram-backed memory sram128x16 — 128 words × 16 bits stack hardware stack with its own fsm and full flag dft ports scan_en, test_mode source modules risc_core, alu, control, data_path, instrn_lat, prgrm_cnt, prgrm_cnt_top, prgrm_decode, prgrm_fsm, reg_file, stack_fsm, stack_mem, stack_top, sram128x16 output risc_core.gds, inspected in klayout run date february 2026"
+ },
+ {
+  "family": "openlane",
+  "familyLabel": "OpenLane",
+  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
+  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
+  "pdkKey": "sky130",
+  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
+  "node": "130 nm",
+  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
+  "slug": "ol-pm32",
+  "name": "32 × 32 signed multiplier",
+  "blurb": "A signed 32 × 32 multiplier built on a serial-parallel multiplier core (SPM), modelled on Atmel's AT6000 FPGA application notes. A three-state FSM sequences the shift-and-add iterations and raises <code>done</code> when the 64-bit product is ready.",
+  "head": [
+   [
+    "Operands",
+    "32 × 32 signed"
+   ],
+   [
+    "Product",
+    "64-bit"
+   ],
+   [
+    "Clock",
+    "40 MHz"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
+   ],
+   [
+    "Standard cells",
+    "sky130_fd_sc_hd — high density"
+   ],
+   [
+    "Top module",
+    "pm32 (instantiates spm)"
+   ],
+   [
+    "Clock",
+    "25 ns period — 40 MHz, port <code>clk</code>"
+   ],
+   [
+    "Operands",
+    "mc[31:0] × mp[31:0], signed"
+   ],
+   [
+    "Product",
+    "p[63:0]"
+   ],
+   [
+    "Handshake",
+    "start input, done output"
+   ],
+   [
+    "Architecture",
+    "Serial-parallel multiplier (SPM), parameterised SIZE = 32"
+   ],
+   [
+    "Control",
+    "Three-state FSM — IDLE, RUNNING, DONE — with an 8-bit iteration counter"
+   ],
+   [
+    "Provenance",
+    "SPM core after the Atmel AT6000 application notes DOC0529 / DOC0716, implemented by mshalan@aucegypt.edu (2016)"
+   ],
+   [
+    "Source files",
+    "pm32.v, spm.v"
+   ],
+   [
+    "Run date",
+    "February 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/ol-pm32/layout.webp",
+    "cap": "Routed layout in KLayout"
+   }
+  ],
+  "searchText": "32 × 32 signed multiplier a signed 32 × 32 multiplier built on a serial-parallel multiplier core (spm), modelled on atmel's at6000 fpga application notes. a three-state fsm sequences the shift-and-add iterations and raises <code>done</code> when the 64-bit product is ready. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module pm32 (instantiates spm) clock 25 ns period — 40 mhz, port <code>clk</code> operands mc[31:0] × mp[31:0], signed product p[63:0] handshake start input, done output architecture serial-parallel multiplier (spm), parameterised size = 32 control three-state fsm — idle, running, done — with an 8-bit iteration counter provenance spm core after the atmel at6000 application notes doc0529 / doc0716, implemented by mshalan@aucegypt.edu (2016) source files pm32.v, spm.v run date february 2026"
+ },
+ {
+  "family": "openlane",
+  "familyLabel": "OpenLane",
+  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
+  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
+  "pdkKey": "sky130",
+  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
+  "node": "130 nm",
+  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
+  "slug": "ol-cnn-3x3",
+  "name": "CNN layer — 3 × 3 convolution",
+  "blurb": "One complete convolutional-neural-network layer in hardware: a 3 × 3 convolution with a hard-coded Sobel-style kernel, followed by ReLU activation and 2 × 2 max pooling. Line buffers hold two image rows so a sliding 3 × 3 window can stream over the input one pixel per cycle.",
+  "head": [
+   [
+    "Pipeline",
+    "Conv→ReLU→Pool"
+   ],
+   [
+    "Data",
+    "8-bit fixed"
+   ],
+   [
+    "Clock",
+    "40 MHz"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
+   ],
+   [
+    "Standard cells",
+    "sky130_fd_sc_hd — high density"
+   ],
+   [
+    "Top module",
+    "cnn_layer"
+   ],
+   [
+    "Clock",
+    "25 ns period — 40 MHz, port <code>clk</code>"
+   ],
+   [
+    "Data width",
+    "8-bit fixed point (DATA_WIDTH = 8)"
+   ],
+   [
+    "Image width",
+    "8 pixels (IMG_WIDTH = 8, parameterised)"
+   ],
+   [
+    "Stage 1",
+    "3 × 3 convolution with two line buffers and a sliding-window register array"
+   ],
+   [
+    "Kernel",
+    "Hard-coded [[1,0,−1],[2,0,−2],[1,0,−1]] — a Sobel vertical-edge operator"
+   ],
+   [
+    "MAC accumulator",
+    "2·DATA_WIDTH + 4 bits, signed"
+   ],
+   [
+    "Stage 2",
+    "ReLU activation"
+   ],
+   [
+    "Stage 3",
+    "2 × 2 max pooling"
+   ],
+   [
+    "Interface",
+    "pixel_in / valid_in streaming in, pool_out / valid_out streaming out"
+   ],
+   [
+    "Reset",
+    "Active-low asynchronous (rst_n)"
+   ],
+   [
+    "Variants",
+    "Two configurations were run: one_cnn_layer3x3.v (shown) and a second one_cnn_layer.v build with no layout captured"
+   ],
+   [
+    "Run date",
+    "February 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/ol-cnn-3x3/layout.webp",
+    "cap": "Routed layout in KLayout"
+   }
+  ],
+  "searchText": "cnn layer — 3 × 3 convolution one complete convolutional-neural-network layer in hardware: a 3 × 3 convolution with a hard-coded sobel-style kernel, followed by relu activation and 2 × 2 max pooling. line buffers hold two image rows so a sliding 3 × 3 window can stream over the input one pixel per cycle. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module cnn_layer clock 25 ns period — 40 mhz, port <code>clk</code> data width 8-bit fixed point (data_width = 8) image width 8 pixels (img_width = 8, parameterised) stage 1 3 × 3 convolution with two line buffers and a sliding-window register array kernel hard-coded [[1,0,−1],[2,0,−2],[1,0,−1]] — a sobel vertical-edge operator mac accumulator 2·data_width + 4 bits, signed stage 2 relu activation stage 3 2 × 2 max pooling interface pixel_in / valid_in streaming in, pool_out / valid_out streaming out reset active-low asynchronous (rst_n) variants two configurations were run: one_cnn_layer3x3.v (shown) and a second one_cnn_layer.v build with no layout captured run date february 2026"
+ },
+ {
+  "family": "openlane",
+  "familyLabel": "OpenLane",
+  "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
+  "toolLine": "OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
+  "pdkKey": "sky130",
+  "pdkLabel": "SkyWater SKY130 (OpenLane default)",
+  "node": "130 nm",
+  "pdkNote": "These runs use the OpenLane default PDK — SkyWater SKY130 with the sky130_fd_sc_hd high-density standard cells. SKY130 is a real, manufacturable open-source 130 nm process; the configurations here do not override the default, so the PDK is implied rather than pinned.",
+  "slug": "ol-riscv-alu",
+  "name": "RISC-V 32-bit ALU",
+  "blurb": "A single-cycle 32-bit arithmetic-logic unit covering the RV32I integer operations — add, subtract, the three shifts, signed and unsigned set-less-than, and the bitwise logic — with zero, overflow and carry-out flags. The layout shows a dense cell array with the 64 operand and result pins fanning out to the die edge.",
+  "head": [
+   [
+    "Width",
+    "32-bit"
+   ],
+   [
+    "Operations",
+    "10"
+   ],
+   [
+    "Clock",
+    "40 MHz"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "130 nm — SkyWater SKY130 (OpenLane default PDK)"
+   ],
+   [
+    "Standard cells",
+    "sky130_fd_sc_hd — high density"
+   ],
+   [
+    "Top module",
+    "riscv_alu_32bit"
+   ],
+   [
+    "Clock",
+    "25 ns period — 40 MHz, port <code>clk</code>"
+   ],
+   [
+    "Operand width",
+    "32 bits — operand_a, operand_b"
+   ],
+   [
+    "Result width",
+    "32 bits"
+   ],
+   [
+    "Opcode",
+    "4-bit alu_op, encoded from the RISC-V funct3 / funct7 fields"
+   ],
+   [
+    "Operations",
+    "ADD, SUB, SLL, SLT, SLTU, XOR, SRL, SRA, OR, AND"
+   ],
+   [
+    "Flags",
+    "zero, overflow (signed), carry_out"
+   ],
+   [
+    "Arithmetic",
+    "33-bit internal add and subtract paths for carry and borrow capture"
+   ],
+   [
+    "Overflow detection",
+    "Sign-comparison logic on the operands and the result"
+   ],
+   [
+    "Output",
+    "riscv_alu_32bit.gds, inspected in KLayout"
+   ],
+   [
+    "Run date",
+    "February 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/ol-riscv-alu/layout.webp",
+    "cap": "Routed layout with the pin ring fanning out to the die edge"
+   }
+  ],
+  "searchText": "risc-v 32-bit alu a single-cycle 32-bit arithmetic-logic unit covering the rv32i integer operations — add, subtract, the three shifts, signed and unsigned set-less-than, and the bitwise logic — with zero, overflow and carry-out flags. the layout shows a dense cell array with the 64 operand and result pins fanning out to the die edge. openlane (openroad-based rtl-to-gdsii wrapper) skywater sky130 (openlane default) 130 nm technology 130 nm — skywater sky130 (openlane default pdk) standard cells sky130_fd_sc_hd — high density top module riscv_alu_32bit clock 25 ns period — 40 mhz, port <code>clk</code> operand width 32 bits — operand_a, operand_b result width 32 bits opcode 4-bit alu_op, encoded from the risc-v funct3 / funct7 fields operations add, sub, sll, slt, sltu, xor, srl, sra, or, and flags zero, overflow (signed), carry_out arithmetic 33-bit internal add and subtract paths for carry and borrow capture overflow detection sign-comparison logic on the operands and the result output riscv_alu_32bit.gds, inspected in klayout run date february 2026"
  }
 ];

@@ -63,6 +63,7 @@ them.
 | UART, UART receiver block | Alex Forencich, 2014–2017 | MIT |
 | GCD accelerator, GCD (CCS) | Originally generated with PyMTL (Cornell) — no separate license file in the ORFS tree | Covered by the ORFS BSD 3-Clause license |
 | Mock CPU (two clock domains) | ORFS `mock-array` test vehicle — no separate license file | Covered by the ORFS BSD 3-Clause license |
+| LeNet-5 and ResNet-20 accelerators (HTC-R array and binary array) | VSCLAB, UC Riverside — lab-authored RTL. The activation buffers of the ResNet-20 designs use the `fakeram45_1024x32` memory models of the ORFS Nangate45 platform, which are abstracts without a layout | Lab's own work; the images are CC BY 4.0 like the rest of the gallery. The RTL is not part of this repository. |
 
 ### OpenLane
 

@@ -1,7 +1,7 @@
 # The VLSI chips designed by VSCLAB @ UC Riverside
 
-A static gallery of the lab's physical designs — 28 designs across five technology nodes,
-hardened with Synopsys Fusion Compiler, OpenLane and the OpenROAD flow, with 212
+A static gallery of the lab's physical designs — 32 designs across five technology nodes,
+hardened with Synopsys Fusion Compiler, OpenLane and the OpenROAD flow, with 256
 layout views.
 
 ## Viewing it
@@ -42,7 +42,7 @@ kept in the design directories, outside this repository.
 | --- | --- |
 | Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports; and `dual_ram_project_icc` — a full RTL-to-GDSII run, read from `reports/*.rpt`, `outputs/dual_ram.def` and `outputs/dual_ram.sdc`, with the layout rendered from `outputs/dual_ram.gds` |
 | OpenLane | `chip_design_work_desk/openlane_designs/*` — `config.json`, RTL and KLayout captures |
-| OpenROAD Flow Scripts | `OpenROAD-flow-scripts-Darwin/flow` — `results/`, `reports/` and `logs/` for each `<pdk>/<design>/base` run |
+| OpenROAD Flow Scripts | `OpenROAD-flow-scripts-Darwin/flow` — `results/`, `reports/` and `logs/` for each `<pdk>/<design>/base` run; and the LeNet-5 and ResNet-20 accelerators from `htc-cnn-asic/v2/orfs/work`, read the same way from their own work directory and flow variants (`EXTRA_ORFS` in `build_site.py`) |
 
 Every number on the page comes from a tool-generated report.
 For the OpenROAD designs that means `logs/<pdk>/<design>/base/6_report.json` and
@@ -77,6 +77,12 @@ repository, so regeneration only works on a machine that has them.
 - **OpenROAD:** finish a run so that `results/<pdk>/<design>/base/6_final.gds` exists,
   then re-run both scripts. Give it a title and a description in the `TITLES` table in
   `build_site.py`; without one it falls back to the directory name.
+- **OpenROAD, outside the flow tree:** add a record to `EXTRA_ORFS` in `build_site.py`
+  with the run's work directory, design, flow variant, config and clock period. Its
+  `specs` rows are appended to the generated ones, and `power` replaces the flow's
+  vectorless estimate with a measured figure. `render_all_gds.sh` then renders its GDS-II,
+  copies the flow's report images and, when a `blockmap` rule set is named, draws a block
+  map from the routed database with `tools/render_blockmap.py`.
 - **Anything else:** drop the images in `assets/img/<slug>/`, add a record to the
   `synopsys` or `openlane` list in `build_site.py`, and re-run it.
 
