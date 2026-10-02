@@ -739,6 +739,111 @@ synopsys = [
      ("GDS-II size", "7.1 MB"),
      ("Run date", "21 September 2026")],
     [("gds.png", "GDS-II tape-out database, rendered in KLayout")]),
+
+ fc("fc-lpu", "Groq-style LPU accelerator — dual-port SRAM",
+    "A statically scheduled machine-learning accelerator in the style of Groq's tensor "
+    "streaming processor: an 8 × 8 int8 weight-stationary systolic array, a vector unit for "
+    "bias, ReLU and requantisation, and an instruction sequencer with fixed latencies, so the "
+    "cycle count of every program is known at compile time. Eighteen dual-port SRAM macros in "
+    "two rows hold 4 KB of data and the program; the matrix and vector units are generated "
+    "with Google XLS.",
+    [("Clock", "400 MHz"), ("Macros", "18 × SRAM"), ("Die", "1347 × 532 µm")],
+    [("Technology", "32 nm — Synopsys SAED32/28 nm EDK"),
+     ("Technology file", TECH),
+     ("Cell libraries", LIBS),
+     ("Top module", "lpu_top"),
+     ("Architecture", "ICU sequencer with a 32-bit static ISA (NOP, LDW, VCFG, MM, HALT); "
+                      "MEM 8 banks × 64 × 64 bit; MXM 8 × 8 int8 weight-stationary systolic array "
+                      "with 32-bit results; VXM bias, rounding shift, ReLU and int8 saturation"),
+     ("RTL", "Hand-written top level and SRAM wrappers; MXM and VXM generated from DSLX "
+             "with Google XLS"),
+     ("Memories", "16 × SRAMLP2RW64x32 data banks (4 KB) and 2 × SRAMLP2RW128x16 instruction "
+                  "memory (128 × 32 bit)"),
+     ("Clock", "clk, 2.500 ns period — 400 MHz"),
+     ("Die size", "1347.32 × 532.05 µm"),
+     ("Chip area", "716,840.542 µm²"),
+     ("Core area", "679,070.735 µm²"),
+     ("Total leaf cells", "129,237 — 655,857.584 µm²"),
+     ("Standard cells", "22,924 — 101,502.826 µm²"),
+     ("Hard macros", "18 — 253,365.919 µm² (SRAM)"),
+     ("Sequential cells", "5,548"),
+     ("Buffers / inverters", "5,158 — 9,989.892 µm²"),
+     ("Clock-gating cells", "12"),
+     ("Physical-only cells", "106,295 — 300,988.839 µm²"),
+     ("Flat nets", "27,472"),
+     ("Ports", "147"),
+     ("Design masters", "246"),
+     ("Modes / corners", SCEN),
+     ("Setup WNS / TNS", "−0.02 ns / −0.22 ns at ss_125c (55 violating endpoints)"),
+     ("Hold WNS / TNS", "−0.13 ns / −9.48 ns at ff_m40c (203 violating endpoints)"),
+     ("Clock tree (post-CTS)", "5,554 sinks, 15 levels, 561 repeaters, 60,094 µm of clock wire"),
+     ("Clock latency / skew", "1.61 ns / 1.08 ns"),
+     ("Total wire length", "1,118,726.78 µm"),
+     ("Wires", "284,329"),
+     ("Contacts", "363,010"),
+     ("Routing DRC", "0"),
+     ("LVS", "0 shorts, 0 open nets of 27,472"),
+     ("GDS-II size", "40.7 MB"),
+     ("Run date", "30 September 2026")],
+    [("gds.png", "GDS-II tape-out database, rendered in KLayout"),
+     ("placement.png", "Placement — 18 SRAM macros in two rows, logic coloured by function"),
+     ("power.png", "M2, M7 and M8 — the M7/M8 power mesh across the die"),
+     ("clock.png", "Clock tree — clock-tree cells and register sinks")]),
+
+ fc("fc-lpu-v2", "Groq-style LPU accelerator — compact, single-port SRAM",
+    "The same LPU architecture rebuilt around single-port SRAM macros, which shrinks the die "
+    "by 42 % to 0.41 mm². Nine macros sit above and nine below a 212 µm logic band holding the "
+    "systolic array, the vector unit and the sequencer. This is the design used to compare the "
+    "GridStack power-grid solver with in-design RedHawk-SC: 242,378 grid nodes, analysed static "
+    "and dynamic.",
+    [("Clock", "400 MHz"), ("Macros", "18 × SRAM"), ("Die", "767 × 538 µm")],
+    [("Technology", "32 nm — Synopsys SAED32/28 nm EDK"),
+     ("Technology file", TECH),
+     ("Cell libraries", LIBS),
+     ("Top module", "lpu_top"),
+     ("Architecture", "ICU sequencer with a 32-bit static ISA; 8 data banks; MXM 8 × 8 int8 "
+                      "weight-stationary systolic array; VXM bias, rounding shift, ReLU and "
+                      "int8 saturation"),
+     ("RTL", "Hand-written top level and SRAM wrappers; MXM and VXM generated from DSLX "
+             "with Google XLS"),
+     ("Memories", "18 × SRAMLP1RW64x32 single-port macros — 16 data-bank halves and 2 "
+                  "instruction-memory halves"),
+     ("Clock", "clk, 2.500 ns period — 400 MHz"),
+     ("Die size", "767.50 × 538.08 µm"),
+     ("Chip area", "412,977.397 µm²"),
+     ("Core area", "386,134.449 µm²"),
+     ("Total leaf cells", "93,514 — 326,420.365 µm²"),
+     ("Standard cells", "24,038 — 105,271.528 µm²"),
+     ("Hard macros", "18 — 171,505.873 µm² (SRAM)"),
+     ("Sequential cells", "5,548"),
+     ("Buffers / inverters", "6,262 — 13,539.776 µm²"),
+     ("Clock-gating cells", "12"),
+     ("Physical-only cells", "69,458 — 49,642.964 µm²"),
+     ("Flat nets", "28,661"),
+     ("Ports", "147"),
+     ("Design masters", "259"),
+     ("Placement blockages", "2 — 253,337.605 µm²"),
+     ("Modes / corners", SCEN),
+     ("Setup WNS / TNS", "−0.09 ns / −2.56 ns at ss_125c (156 violating endpoints)"),
+     ("Hold WNS / TNS", "−0.39 ns / −22.73 ns at ff_m40c (311 violating endpoints)"),
+     ("Clock tree (post-CTS)", "5,536 sinks, 22 levels, 877 repeaters, 101,452 µm of clock wire"),
+     ("Clock latency / skew", "1.93 ns / 1.10 ns"),
+     ("Total wire length", "1,159,322.52 µm"),
+     ("Wires", "331,353"),
+     ("Contacts", "343,803"),
+     ("Routing DRC", "0"),
+     ("LVS", "0 shorts, 0 open nets of 28,661"),
+     ("Power grid", "242,378 nodes, 263,258 resistors (43,516 vias), 96 taps on M8; "
+                    "M1 rails, M2 straps, M7/M8 mesh"),
+     ("Total power", "35.33 mW — RedHawk-SC in-design, vectorless, ss 0.95 V 125 °C"),
+     ("IR drop", "7.59 mV static, 35.8 mV dynamic worst effective drop (RedHawk-SC); "
+                 "GridStack 1.5 agrees within 1.5 %"),
+     ("GDS-II size", "40.2 MB"),
+     ("Run date", "30 September 2026")],
+    [("gds.png", "GDS-II tape-out database, rendered in KLayout"),
+     ("placement.png", "Placement — nine single-port SRAMs per row, logic coloured by function"),
+     ("power.png", "M2, M7 and M8 — the M7/M8 power mesh across the die"),
+     ("clock.png", "Clock tree — 877 clock-tree cells driving 5,530 registers and 18 SRAM clock pins")]),
 ]
 
 OL = dict(family="openlane", familyLabel="OpenLane",

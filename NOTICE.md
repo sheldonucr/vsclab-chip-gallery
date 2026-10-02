@@ -85,6 +85,7 @@ authorship should be established from lab records before it is stated publicly.
 | AES-128 cipher (`aes_cipher_top`) | Same OpenCores/ASICs World Services lineage as above | BSD-3-Clause-style, attribution required |
 | JPEG encoder | Same lineage | BSD-3-Clause-style, attribution required |
 | RISC core with embedded SRAM | Lab implementation; SRAM macros from the SAED32 EDK (`saed32_sram_lp`) | Design: confirm. Macros: Synopsys EDK terms |
+| Groq-style LPU accelerator (dual-port and single-port SRAM versions) | VSCLAB, UC Riverside — lab-authored RTL. The systolic matrix unit and vector unit are generated with Google XLS (Apache 2.0); SRAM macros from the SAED32 EDK (`saed32_sram_lp`) | Lab's own work; the images are CC BY 4.0 like the rest of the gallery. Macros: Synopsys EDK terms. The RTL is not part of this repository. |
 | **Arm Cortex-M0 DesignStart (`CORTEXM0DS`)** | Arm Limited | **Arm DesignStart license. See the caution below.** |
 
 ---

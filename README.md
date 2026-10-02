@@ -1,7 +1,7 @@
 # The VLSI chips designed by VSCLAB @ UC Riverside
 
-A static gallery of the lab's physical designs — 34 designs across five technology nodes,
-hardened with Synopsys Fusion Compiler, OpenLane and the OpenROAD flow, with 274
+A static gallery of the lab's physical designs — 36 designs across five technology nodes,
+hardened with Synopsys Fusion Compiler, OpenLane and the OpenROAD flow, with 282
 layout views.
 
 ## Viewing it
@@ -40,7 +40,7 @@ kept in the design directories, outside this repository.
 
 | Section | Source |
 | --- | --- |
-| Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports; and `dual_ram_project_icc` — a full RTL-to-GDSII run, read from `reports/*.rpt`, `outputs/dual_ram.def` and `outputs/dual_ram.sdc`, with the layout rendered from `outputs/dual_ram.gds` |
+| Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports; and `dual_ram_project_icc` — a full RTL-to-GDSII run, read from `reports/*.rpt`, `outputs/dual_ram.def` and `outputs/dual_ram.sdc`, with the layout rendered from `outputs/dual_ram.gds`; and the two Groq-style LPU accelerators from `lpu/fc` and `lpu/fc_v2` — read the same way from `reports/07_signoff_*.rpt` and `outputs/`, with the GDS-II rendered in KLayout and the placement, power-mesh and clock-tree figures from `lpu/report_img` |
 | OpenLane | `chip_design_work_desk/openlane_designs/*` — `config.json`, RTL and KLayout captures |
 | OpenROAD Flow Scripts | `OpenROAD-flow-scripts-Darwin/flow` — `results/`, `reports/` and `logs/` for each `<pdk>/<design>/base` run; the LeNet-5 and ResNet-20 accelerators from `htc-cnn-asic/v2/orfs/work`, and the Mini-Jalapeño tile and 4 × 4 chip from `mini_jalapeno/orfs/work` (flow variant `realram`), read the same way from their own work directories and flow variants (`EXTRA_ORFS` in `build_site.py`) |
 

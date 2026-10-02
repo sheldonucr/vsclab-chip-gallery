@@ -5496,6 +5496,382 @@ window.DESIGNS = [
   "searchText": "dual-port ram — 256 × 8 a 256-word by 8-bit dual-port ram built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. setup closes at both corners; the critical path runs from the read address pins straight to the output register. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros threshold flavours predominantly hvt, with rvt and lvt where timing needed it top module dual_ram memory organisation 256 words × 8 bits — 2 kbit, register-based, no sram macro ports clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0] architecture independent read and write addresses, synchronous reset clearing the whole array clock clk, 5.000 ns period — 200 mhz, waveform {0 2.5} die size 222.31 × 222.31 µm chip area 49,422.625 µm² core area 40,930.145 µm² total cell area 26,803.30 µm² cell area with physical-only 31,383.99 µm² core utilisation 65.5 % (cell area over core area) cells 4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter hard macros none — the array is built from flip-flops combinational area 7,146.53 µm² noncombinational area 19,656.77 µm² buffer/inverter area 2,891.90 µm² placed instances incl. fill 11,207 nets 4,902 ports 38 cell references 60 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners hold wns / tns −0.01 ns / −0.01 ns (2 violating endpoints) critical path rd_addr[3] input port → data_out_reg[5], slack +0.29 ns clock tree (post-cts) 2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire clock latency / skew 2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c routing layers m1 – m9 open nets 0 of 4,902 detailed-route drc 0 after route_opt; 26 reported at sign-off, after metal fill lvs m1 shorts reported among shfill3_hvt filler cells; the check stops after 20 total power 8.85 mw — 1.71 mw dynamic, 7.13 mw leakage at the slow 125 °c corner power by group registers 80.5 %, clock network 13.0 %, combinational 6.6 % gds-ii size 7.1 mb run date 21 september 2026"
  },
  {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-lpu",
+  "name": "Groq-style LPU accelerator — dual-port SRAM",
+  "blurb": "A statically scheduled machine-learning accelerator in the style of Groq's tensor streaming processor: an 8 × 8 int8 weight-stationary systolic array, a vector unit for bias, ReLU and requantisation, and an instruction sequencer with fixed latencies, so the cycle count of every program is known at compile time. Eighteen dual-port SRAM macros in two rows hold 4 KB of data and the program; the matrix and vector units are generated with Google XLS.",
+  "head": [
+   [
+    "Clock",
+    "400 MHz"
+   ],
+   [
+    "Macros",
+    "18 × SRAM"
+   ],
+   [
+    "Die",
+    "1347 × 532 µm"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "32 nm — Synopsys SAED32/28 nm EDK"
+   ],
+   [
+    "Technology file",
+    "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
+   ],
+   [
+    "Cell libraries",
+    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
+   ],
+   [
+    "Top module",
+    "lpu_top"
+   ],
+   [
+    "Architecture",
+    "ICU sequencer with a 32-bit static ISA (NOP, LDW, VCFG, MM, HALT); MEM 8 banks × 64 × 64 bit; MXM 8 × 8 int8 weight-stationary systolic array with 32-bit results; VXM bias, rounding shift, ReLU and int8 saturation"
+   ],
+   [
+    "RTL",
+    "Hand-written top level and SRAM wrappers; MXM and VXM generated from DSLX with Google XLS"
+   ],
+   [
+    "Memories",
+    "16 × SRAMLP2RW64x32 data banks (4 KB) and 2 × SRAMLP2RW128x16 instruction memory (128 × 32 bit)"
+   ],
+   [
+    "Clock",
+    "clk, 2.500 ns period — 400 MHz"
+   ],
+   [
+    "Die size",
+    "1347.32 × 532.05 µm"
+   ],
+   [
+    "Chip area",
+    "716,840.542 µm²"
+   ],
+   [
+    "Core area",
+    "679,070.735 µm²"
+   ],
+   [
+    "Total leaf cells",
+    "129,237 — 655,857.584 µm²"
+   ],
+   [
+    "Standard cells",
+    "22,924 — 101,502.826 µm²"
+   ],
+   [
+    "Hard macros",
+    "18 — 253,365.919 µm² (SRAM)"
+   ],
+   [
+    "Sequential cells",
+    "5,548"
+   ],
+   [
+    "Buffers / inverters",
+    "5,158 — 9,989.892 µm²"
+   ],
+   [
+    "Clock-gating cells",
+    "12"
+   ],
+   [
+    "Physical-only cells",
+    "106,295 — 300,988.839 µm²"
+   ],
+   [
+    "Flat nets",
+    "27,472"
+   ],
+   [
+    "Ports",
+    "147"
+   ],
+   [
+    "Design masters",
+    "246"
+   ],
+   [
+    "Modes / corners",
+    "func mode; corners ss_125c and ff_m40c (two scenarios)"
+   ],
+   [
+    "Setup WNS / TNS",
+    "−0.02 ns / −0.22 ns at ss_125c (55 violating endpoints)"
+   ],
+   [
+    "Hold WNS / TNS",
+    "−0.13 ns / −9.48 ns at ff_m40c (203 violating endpoints)"
+   ],
+   [
+    "Clock tree (post-CTS)",
+    "5,554 sinks, 15 levels, 561 repeaters, 60,094 µm of clock wire"
+   ],
+   [
+    "Clock latency / skew",
+    "1.61 ns / 1.08 ns"
+   ],
+   [
+    "Total wire length",
+    "1,118,726.78 µm"
+   ],
+   [
+    "Wires",
+    "284,329"
+   ],
+   [
+    "Contacts",
+    "363,010"
+   ],
+   [
+    "Routing DRC",
+    "0"
+   ],
+   [
+    "LVS",
+    "0 shorts, 0 open nets of 27,472"
+   ],
+   [
+    "GDS-II size",
+    "40.7 MB"
+   ],
+   [
+    "Run date",
+    "30 September 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-lpu/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
+   },
+   {
+    "src": "assets/img/fc-lpu/placement.webp",
+    "cap": "Placement — 18 SRAM macros in two rows, logic coloured by function"
+   },
+   {
+    "src": "assets/img/fc-lpu/power.webp",
+    "cap": "M2, M7 and M8 — the M7/M8 power mesh across the die"
+   },
+   {
+    "src": "assets/img/fc-lpu/clock.webp",
+    "cap": "Clock tree — clock-tree cells and register sinks"
+   }
+  ],
+  "searchText": "groq-style lpu accelerator — dual-port sram a statically scheduled machine-learning accelerator in the style of groq's tensor streaming processor: an 8 × 8 int8 weight-stationary systolic array, a vector unit for bias, relu and requantisation, and an instruction sequencer with fixed latencies, so the cycle count of every program is known at compile time. eighteen dual-port sram macros in two rows hold 4 kb of data and the program; the matrix and vector units are generated with google xls. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module lpu_top architecture icu sequencer with a 32-bit static isa (nop, ldw, vcfg, mm, halt); mem 8 banks × 64 × 64 bit; mxm 8 × 8 int8 weight-stationary systolic array with 32-bit results; vxm bias, rounding shift, relu and int8 saturation rtl hand-written top level and sram wrappers; mxm and vxm generated from dslx with google xls memories 16 × sramlp2rw64x32 data banks (4 kb) and 2 × sramlp2rw128x16 instruction memory (128 × 32 bit) clock clk, 2.500 ns period — 400 mhz die size 1347.32 × 532.05 µm chip area 716,840.542 µm² core area 679,070.735 µm² total leaf cells 129,237 — 655,857.584 µm² standard cells 22,924 — 101,502.826 µm² hard macros 18 — 253,365.919 µm² (sram) sequential cells 5,548 buffers / inverters 5,158 — 9,989.892 µm² clock-gating cells 12 physical-only cells 106,295 — 300,988.839 µm² flat nets 27,472 ports 147 design masters 246 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns −0.02 ns / −0.22 ns at ss_125c (55 violating endpoints) hold wns / tns −0.13 ns / −9.48 ns at ff_m40c (203 violating endpoints) clock tree (post-cts) 5,554 sinks, 15 levels, 561 repeaters, 60,094 µm of clock wire clock latency / skew 1.61 ns / 1.08 ns total wire length 1,118,726.78 µm wires 284,329 contacts 363,010 routing drc 0 lvs 0 shorts, 0 open nets of 27,472 gds-ii size 40.7 mb run date 30 september 2026"
+ },
+ {
+  "family": "synopsys",
+  "familyLabel": "Synopsys Fusion Compiler",
+  "tool": "Synopsys Fusion Compiler X-2025.06-SP3",
+  "toolLine": "Fusion Compiler — RTL-to-GDSII in a single engine: synthesis, floorplanning, placement, CTS, routing and sign-off timing",
+  "pdkKey": "saed32",
+  "pdkLabel": "Synopsys SAED32/28 nm EDK",
+  "node": "32 nm",
+  "pdkNote": "SAED32/28 nm is Synopsys' Educational Design Kit: a complete, academically licensed 32 nm technology with a 1P9M metal stack, three threshold-voltage flavours (RVT / LVT / HVT) and low-power SRAM macros. It is licensed for teaching and research use.",
+  "slug": "fc-lpu-v2",
+  "name": "Groq-style LPU accelerator — compact, single-port SRAM",
+  "blurb": "The same LPU architecture rebuilt around single-port SRAM macros, which shrinks the die by 42 % to 0.41 mm². Nine macros sit above and nine below a 212 µm logic band holding the systolic array, the vector unit and the sequencer. This is the design used to compare the GridStack power-grid solver with in-design RedHawk-SC: 242,378 grid nodes, analysed static and dynamic.",
+  "head": [
+   [
+    "Clock",
+    "400 MHz"
+   ],
+   [
+    "Macros",
+    "18 × SRAM"
+   ],
+   [
+    "Die",
+    "767 × 538 µm"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "32 nm — Synopsys SAED32/28 nm EDK"
+   ],
+   [
+    "Technology file",
+    "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
+   ],
+   [
+    "Cell libraries",
+    "saed32_rvt / saed32_lvt / saed32_hvt NDM, plus saed32_sram_lp SRAM macros"
+   ],
+   [
+    "Top module",
+    "lpu_top"
+   ],
+   [
+    "Architecture",
+    "ICU sequencer with a 32-bit static ISA; 8 data banks; MXM 8 × 8 int8 weight-stationary systolic array; VXM bias, rounding shift, ReLU and int8 saturation"
+   ],
+   [
+    "RTL",
+    "Hand-written top level and SRAM wrappers; MXM and VXM generated from DSLX with Google XLS"
+   ],
+   [
+    "Memories",
+    "18 × SRAMLP1RW64x32 single-port macros — 16 data-bank halves and 2 instruction-memory halves"
+   ],
+   [
+    "Clock",
+    "clk, 2.500 ns period — 400 MHz"
+   ],
+   [
+    "Die size",
+    "767.50 × 538.08 µm"
+   ],
+   [
+    "Chip area",
+    "412,977.397 µm²"
+   ],
+   [
+    "Core area",
+    "386,134.449 µm²"
+   ],
+   [
+    "Total leaf cells",
+    "93,514 — 326,420.365 µm²"
+   ],
+   [
+    "Standard cells",
+    "24,038 — 105,271.528 µm²"
+   ],
+   [
+    "Hard macros",
+    "18 — 171,505.873 µm² (SRAM)"
+   ],
+   [
+    "Sequential cells",
+    "5,548"
+   ],
+   [
+    "Buffers / inverters",
+    "6,262 — 13,539.776 µm²"
+   ],
+   [
+    "Clock-gating cells",
+    "12"
+   ],
+   [
+    "Physical-only cells",
+    "69,458 — 49,642.964 µm²"
+   ],
+   [
+    "Flat nets",
+    "28,661"
+   ],
+   [
+    "Ports",
+    "147"
+   ],
+   [
+    "Design masters",
+    "259"
+   ],
+   [
+    "Placement blockages",
+    "2 — 253,337.605 µm²"
+   ],
+   [
+    "Modes / corners",
+    "func mode; corners ss_125c and ff_m40c (two scenarios)"
+   ],
+   [
+    "Setup WNS / TNS",
+    "−0.09 ns / −2.56 ns at ss_125c (156 violating endpoints)"
+   ],
+   [
+    "Hold WNS / TNS",
+    "−0.39 ns / −22.73 ns at ff_m40c (311 violating endpoints)"
+   ],
+   [
+    "Clock tree (post-CTS)",
+    "5,536 sinks, 22 levels, 877 repeaters, 101,452 µm of clock wire"
+   ],
+   [
+    "Clock latency / skew",
+    "1.93 ns / 1.10 ns"
+   ],
+   [
+    "Total wire length",
+    "1,159,322.52 µm"
+   ],
+   [
+    "Wires",
+    "331,353"
+   ],
+   [
+    "Contacts",
+    "343,803"
+   ],
+   [
+    "Routing DRC",
+    "0"
+   ],
+   [
+    "LVS",
+    "0 shorts, 0 open nets of 28,661"
+   ],
+   [
+    "Power grid",
+    "242,378 nodes, 263,258 resistors (43,516 vias), 96 taps on M8; M1 rails, M2 straps, M7/M8 mesh"
+   ],
+   [
+    "Total power",
+    "35.33 mW — RedHawk-SC in-design, vectorless, ss 0.95 V 125 °C"
+   ],
+   [
+    "IR drop",
+    "7.59 mV static, 35.8 mV dynamic worst effective drop (RedHawk-SC); GridStack 1.5 agrees within 1.5 %"
+   ],
+   [
+    "GDS-II size",
+    "40.2 MB"
+   ],
+   [
+    "Run date",
+    "30 September 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/fc-lpu-v2/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
+   },
+   {
+    "src": "assets/img/fc-lpu-v2/placement.webp",
+    "cap": "Placement — nine single-port SRAMs per row, logic coloured by function"
+   },
+   {
+    "src": "assets/img/fc-lpu-v2/power.webp",
+    "cap": "M2, M7 and M8 — the M7/M8 power mesh across the die"
+   },
+   {
+    "src": "assets/img/fc-lpu-v2/clock.webp",
+    "cap": "Clock tree — 877 clock-tree cells driving 5,530 registers and 18 SRAM clock pins"
+   }
+  ],
+  "searchText": "groq-style lpu accelerator — compact, single-port sram the same lpu architecture rebuilt around single-port sram macros, which shrinks the die by 42 % to 0.41 mm². nine macros sit above and nine below a 212 µm logic band holding the systolic array, the vector unit and the sequencer. this is the design used to compare the gridstack power-grid solver with in-design redhawk-sc: 242,378 grid nodes, analysed static and dynamic. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros top module lpu_top architecture icu sequencer with a 32-bit static isa; 8 data banks; mxm 8 × 8 int8 weight-stationary systolic array; vxm bias, rounding shift, relu and int8 saturation rtl hand-written top level and sram wrappers; mxm and vxm generated from dslx with google xls memories 18 × sramlp1rw64x32 single-port macros — 16 data-bank halves and 2 instruction-memory halves clock clk, 2.500 ns period — 400 mhz die size 767.50 × 538.08 µm chip area 412,977.397 µm² core area 386,134.449 µm² total leaf cells 93,514 — 326,420.365 µm² standard cells 24,038 — 105,271.528 µm² hard macros 18 — 171,505.873 µm² (sram) sequential cells 5,548 buffers / inverters 6,262 — 13,539.776 µm² clock-gating cells 12 physical-only cells 69,458 — 49,642.964 µm² flat nets 28,661 ports 147 design masters 259 placement blockages 2 — 253,337.605 µm² modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns −0.09 ns / −2.56 ns at ss_125c (156 violating endpoints) hold wns / tns −0.39 ns / −22.73 ns at ff_m40c (311 violating endpoints) clock tree (post-cts) 5,536 sinks, 22 levels, 877 repeaters, 101,452 µm of clock wire clock latency / skew 1.93 ns / 1.10 ns total wire length 1,159,322.52 µm wires 331,353 contacts 343,803 routing drc 0 lvs 0 shorts, 0 open nets of 28,661 power grid 242,378 nodes, 263,258 resistors (43,516 vias), 96 taps on m8; m1 rails, m2 straps, m7/m8 mesh total power 35.33 mw — redhawk-sc in-design, vectorless, ss 0.95 v 125 °c ir drop 7.59 mv static, 35.8 mv dynamic worst effective drop (redhawk-sc); gridstack 1.5 agrees within 1.5 % gds-ii size 40.2 mb run date 30 september 2026"
+ },
+ {
   "family": "openlane",
   "familyLabel": "OpenLane",
   "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
