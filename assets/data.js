@@ -1,5 +1,453 @@
 window.DESIGNS = [
  {
+  "slug": "orfs-asap7-mini-jalapeno-4x4",
+  "name": "Mini-Jalapeño MXFP8 accelerator — 4 × 4 tiles",
+  "blurb": "A tiled MXFP8 matrix-multiply accelerator modelled on the core-slice plus memory-slice layout reported for OpenAI's Jalapeño: sixteen hardened tiles on a 4 × 4 XY mesh, each an 8 × 8 systolic array beside its own latch-RAM operand and accumulator buffers. 1,024 MACs, 2.0 TFLOPS of dense MXFP8; the memory/host port enters tile (0,0).",
+  "family": "openroad",
+  "familyLabel": "OpenROAD Flow Scripts",
+  "tool": "OpenROAD-flow-scripts (ORFS)",
+  "toolLine": "Yosys synthesis → OpenROAD floorplan, placement, CTS, routing and finishing",
+  "pdkKey": "asap7",
+  "pdkLabel": "ASAP7 predictive PDK",
+  "node": "7 nm",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
+  "head": [
+   [
+    "Die",
+    "1918 × 1918 µm"
+   ],
+   [
+    "Instances",
+    "76,830"
+   ],
+   [
+    "F<sub>max</sub>",
+    "978.54 MHz"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "7 nm — ASAP7 predictive PDK"
+   ],
+   [
+    "Standard-cell library",
+    "asap7sc7p5t — 7.5-track FinFET"
+   ],
+   [
+    "Top module",
+    "mj_top"
+   ],
+   [
+    "Die size",
+    "1918.34 × 1918.34 µm"
+   ],
+   [
+    "Die area",
+    "3.680 mm² (3,680,030 µm²)"
+   ],
+   [
+    "Core area",
+    "3.603 mm² (3,602,580 µm²)"
+   ],
+   [
+    "Instances (excl. filler)",
+    "76,830"
+   ],
+   [
+    "Standard cells",
+    "76,814"
+   ],
+   [
+    "Hard macros",
+    "16"
+   ],
+   [
+    "Tap cells",
+    "75,380"
+   ],
+   [
+    "Filler cells",
+    "559,863"
+   ],
+   [
+    "Total placed cells",
+    "635,560"
+   ],
+   [
+    "Cell area",
+    "3.382 mm² (3,381,830 µm²)"
+   ],
+   [
+    "Core utilisation",
+    "93.9 %"
+   ],
+   [
+    "I/O pins",
+    "139"
+   ],
+   [
+    "Target clock",
+    "1000 ps (1.00 GHz)"
+   ],
+   [
+    "Achieved F<sub>max</sub>",
+    "978.54 MHz — set by the tiles, which close at −22 ps against 1 GHz; the chip-level paths alone reach 1.22 GHz"
+   ],
+   [
+    "Setup WNS",
+    "181 ps"
+   ],
+   [
+    "Setup TNS",
+    "0 ps"
+   ],
+   [
+    "Hold WNS",
+    "71.14 ps"
+   ],
+   [
+    "Routed wirelength",
+    "78,384 µm"
+   ],
+   [
+    "Routed nets",
+    "5,871"
+   ],
+   [
+    "Vias",
+    "25,944"
+   ],
+   [
+    "Routing layers",
+    "M2 – M9"
+   ],
+   [
+    "Detailed-route DRC",
+    "0"
+   ],
+   [
+    "Antenna-violating nets",
+    "0"
+   ],
+   [
+    "Total power",
+    "2.61 W — 16 tiles × 163 mW (86 mW logic + 76 mW RAM macros) + 3.6 mW chip level; vectorless estimate, flow default switching activity, typical corner"
+   ],
+   [
+    "GDS-II size",
+    "387.0 MB"
+   ],
+   [
+    "Function",
+    "Dense MXFP8 GEMM across 16 tiles, with on-chip operand forwarding between tiles (SEND, SIGNAL/WAIT)"
+   ],
+   [
+    "Peak throughput",
+    "2.00 TFLOPS dense MXFP8 at 978 MHz (1,024 MAC × 2 FLOP)"
+   ],
+   [
+    "Number format",
+    "MXFP8 (OCP MX v1.0): E4M3 elements with one shared E8M0 scale per 32-element block. Products are exact and accumulate in a 42-bit fixed-point register, so a block is rounded once, to FP32"
+   ],
+   [
+    "Tile",
+    "8 × 8 output-stationary systolic array (64 MAC per clock), 8 column finishers, an MXFP8 requantization engine, an XY wormhole router, a descriptor sequencer and DMA — see the one-tile entry"
+   ],
+   [
+    "Mesh",
+    "XY wormhole routing, 64-bit flits, registered links between neighbouring tiles; the worst link closes with +209 ps setup and +95 ps hold"
+   ],
+   [
+    "On-chip memory",
+    "192 KB in 192 latch-RAM macros, 12 per tile"
+   ],
+   [
+    "Clock tree",
+    "Hand-built symmetric H-tree of 31 BUFx24 buffers to the 16 tile clock pins, every buffer in a routing channel; 1.13–1.36 ns latency, 190 ps skew"
+   ],
+   [
+    "Power grid",
+    "M8 mesh over the tiles, dropping onto their M7 power pins; M1/M2 rails and M5 stripes in the 12 µm channels"
+   ],
+   [
+    "Host interface",
+    "Timed against the clock at tile (0,0)'s clock pin, modelling a PLL/DLL deskewed to that tile"
+   ],
+   [
+    "Toolchain",
+    "Google XLS (DSLX → pipelined Verilog) for the MXFP8 product, the block finisher and the FP32 → E4M3 converter; hand-written Verilog for the rest"
+   ],
+   [
+    "Verification",
+    "A 32 × 32 × 128 GEMM spread over all 16 tiles matches a Python golden model bit for bit (512 / 512 checks), also with 90 % host backpressure"
+   ],
+   [
+    "Companion design",
+    "Built from the one-tile entry, hardened once and placed 16 times"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/final_all.webp",
+    "cap": "Final layout — every mask layer"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/final_routing.webp",
+    "cap": "Detailed routing"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/final_placement.webp",
+    "cap": "Standard-cell placement"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/final_congestion.webp",
+    "cap": "Global-routing congestion"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/final_clocks.webp",
+    "cap": "Clock nets"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/final_resizer.webp",
+    "cap": "Cells added by the resizer"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/final_worst_path.webp",
+    "cap": "Worst timing path"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-4x4/cts_core_clock.webp",
+    "cap": "Clock tree — core_clock"
+   }
+  ],
+  "searchText": "mini-jalapeño mxfp8 accelerator — 4 × 4 tiles a tiled mxfp8 matrix-multiply accelerator modelled on the core-slice plus memory-slice layout reported for openai's jalapeño: sixteen hardened tiles on a 4 × 4 xy mesh, each an 8 × 8 systolic array beside its own latch-ram operand and accumulator buffers. 1,024 macs, 2.0 tflops of dense mxfp8; the memory/host port enters tile (0,0). openroad-flow-scripts (orfs) asap7 predictive pdk 7 nm technology 7 nm — asap7 predictive pdk standard-cell library asap7sc7p5t — 7.5-track finfet top module mj_top die size 1918.34 × 1918.34 µm die area 3.680 mm² (3,680,030 µm²) core area 3.603 mm² (3,602,580 µm²) instances (excl. filler) 76,830 standard cells 76,814 hard macros 16 tap cells 75,380 filler cells 559,863 total placed cells 635,560 cell area 3.382 mm² (3,381,830 µm²) core utilisation 93.9 % i/o pins 139 target clock 1000 ps (1.00 ghz) achieved f<sub>max</sub> 978.54 mhz — set by the tiles, which close at −22 ps against 1 ghz; the chip-level paths alone reach 1.22 ghz setup wns 181 ps setup tns 0 ps hold wns 71.14 ps routed wirelength 78,384 µm routed nets 5,871 vias 25,944 routing layers m2 – m9 detailed-route drc 0 antenna-violating nets 0 total power 2.61 w — 16 tiles × 163 mw (86 mw logic + 76 mw ram macros) + 3.6 mw chip level; vectorless estimate, flow default switching activity, typical corner gds-ii size 387.0 mb function dense mxfp8 gemm across 16 tiles, with on-chip operand forwarding between tiles (send, signal/wait) peak throughput 2.00 tflops dense mxfp8 at 978 mhz (1,024 mac × 2 flop) number format mxfp8 (ocp mx v1.0): e4m3 elements with one shared e8m0 scale per 32-element block. products are exact and accumulate in a 42-bit fixed-point register, so a block is rounded once, to fp32 tile 8 × 8 output-stationary systolic array (64 mac per clock), 8 column finishers, an mxfp8 requantization engine, an xy wormhole router, a descriptor sequencer and dma — see the one-tile entry mesh xy wormhole routing, 64-bit flits, registered links between neighbouring tiles; the worst link closes with +209 ps setup and +95 ps hold on-chip memory 192 kb in 192 latch-ram macros, 12 per tile clock tree hand-built symmetric h-tree of 31 bufx24 buffers to the 16 tile clock pins, every buffer in a routing channel; 1.13–1.36 ns latency, 190 ps skew power grid m8 mesh over the tiles, dropping onto their m7 power pins; m1/m2 rails and m5 stripes in the 12 µm channels host interface timed against the clock at tile (0,0)'s clock pin, modelling a pll/dll deskewed to that tile toolchain google xls (dslx → pipelined verilog) for the mxfp8 product, the block finisher and the fp32 → e4m3 converter; hand-written verilog for the rest verification a 32 × 32 × 128 gemm spread over all 16 tiles matches a python golden model bit for bit (512 / 512 checks), also with 90 % host backpressure companion design built from the one-tile entry, hardened once and placed 16 times"
+ },
+ {
+  "slug": "orfs-asap7-mini-jalapeno-tile",
+  "name": "Mini-Jalapeño MXFP8 accelerator — one tile",
+  "blurb": "One tile of the Mini-Jalapeño accelerator: an 8 × 8 MXFP8 systolic array with its operand and FP32 accumulator buffers, column finishers, requantization engine, mesh router and sequencer. The twelve RAM macros are real standard-cell latch arrays and take more than half of the die.",
+  "family": "openroad",
+  "familyLabel": "OpenROAD Flow Scripts",
+  "tool": "OpenROAD-flow-scripts (ORFS)",
+  "toolLine": "Yosys synthesis → OpenROAD floorplan, placement, CTS, routing and finishing",
+  "pdkKey": "asap7",
+  "pdkLabel": "ASAP7 predictive PDK",
+  "node": "7 nm",
+  "pdkNote": "ASAP7 is a predictive 7 nm FinFET PDK from Arizona State University and Arm. It models a 7 nm process for academic use, and is a standard platform for research on FinFET-era place-and-route.",
+  "head": [
+   [
+    "Die",
+    "460 × 460 µm"
+   ],
+   [
+    "Instances",
+    "165,417"
+   ],
+   [
+    "F<sub>max</sub>",
+    "978.54 MHz"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "7 nm — ASAP7 predictive PDK"
+   ],
+   [
+    "Standard-cell library",
+    "asap7sc7p5t — 7.5-track FinFET"
+   ],
+   [
+    "Top module",
+    "mj_tile"
+   ],
+   [
+    "Die size",
+    "459.58 × 459.58 µm"
+   ],
+   [
+    "Die area",
+    "211,218 µm²"
+   ],
+   [
+    "Core area",
+    "207,348 µm²"
+   ],
+   [
+    "Instances (excl. filler)",
+    "165,417"
+   ],
+   [
+    "Standard cells",
+    "165,405"
+   ],
+   [
+    "Hard macros",
+    "12"
+   ],
+   [
+    "Sequential cells",
+    "20,144"
+   ],
+   [
+    "Tap cells",
+    "16,994"
+   ],
+   [
+    "Filler cells",
+    "347,021"
+   ],
+   [
+    "Total placed cells",
+    "512,430"
+   ],
+   [
+    "Cell area",
+    "136,259 µm²"
+   ],
+   [
+    "Core utilisation",
+    "65.7 %"
+   ],
+   [
+    "I/O pins",
+    "552"
+   ],
+   [
+    "Target clock",
+    "1000 ps (1.00 GHz)"
+   ],
+   [
+    "Achieved F<sub>max</sub>",
+    "978.54 MHz"
+   ],
+   [
+    "Setup WNS",
+    "-21.93 ps"
+   ],
+   [
+    "Setup TNS",
+    "-271.4 ps"
+   ],
+   [
+    "Hold WNS",
+    "5.846 ps"
+   ],
+   [
+    "Routed wirelength",
+    "1,197,439 µm"
+   ],
+   [
+    "Routed nets",
+    "148,035"
+   ],
+   [
+    "Vias",
+    "1,463,236"
+   ],
+   [
+    "Routing layers",
+    "M2 – M7"
+   ],
+   [
+    "Detailed-route DRC",
+    "0"
+   ],
+   [
+    "Antenna-violating nets",
+    "0"
+   ],
+   [
+    "Total power",
+    "163 mW — 86 mW logic + 76 mW for the 12 RAM macros (from each macro's own report; the macro abstracts carry no power); vectorless estimate, flow default switching activity, typical corner"
+   ],
+   [
+    "GDS-II size",
+    "258.0 MB"
+   ],
+   [
+    "Function",
+    "Dense MXFP8 GEMM tile, 64 MAC per clock — 125 GFLOPS at 978 MHz"
+   ],
+   [
+    "Number format",
+    "MXFP8 (OCP MX v1.0): E4M3 elements with one shared E8M0 scale per 32-element block. Products are exact and accumulate in a 42-bit fixed-point register, so a block is rounded once, to FP32"
+   ],
+   [
+    "Blocks",
+    "8 × 8 output-stationary systolic array (64 MAC per clock), 8 column finishers, an MXFP8 requantization engine, an XY wormhole router, a descriptor sequencer and DMA"
+   ],
+   [
+    "On-chip memory",
+    "12 KB in 12 latch-RAM macros: 4 × 128 × 32 for the A and B operand buffers, 8 × 256 × 32 for the FP32 accumulator banks — 55 % of the die"
+   ],
+   [
+    "RAM macros",
+    "Latch-array RAM built from asap7 standard cells — a DHLx1 latch per bit and an ICGx1 clock gate per word, with every input registered — hardened as separate blocks: 256 × 32 (11,583 µm²) and 128 × 32 (5,998 µm²). Real layout, not fakeram abstracts"
+   ],
+   [
+    "Routing and power",
+    "Signals on M2–M7; the block power grid adds M6 and M7 stripes and puts its pins on M7, so the 4 × 4 chip straps power over the tile on M8"
+   ],
+   [
+    "Toolchain",
+    "Google XLS (DSLX → pipelined Verilog) for the MXFP8 product, the block finisher and the FP32 → E4M3 converter; hand-written Verilog for the rest"
+   ],
+   [
+    "Verification",
+    "Tile RTL matches a Python golden model bit for bit on 258 checks; the latch RAM matches a behavioural reference on 99,867 random reads"
+   ],
+   [
+    "Companion design",
+    "Placed 16 times in the 4 × 4 entry"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/gds.webp",
+    "cap": "GDS-II tape-out database, rendered in KLayout"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_all.webp",
+    "cap": "Final layout — every mask layer"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_routing.webp",
+    "cap": "Detailed routing"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_placement.webp",
+    "cap": "Standard-cell placement"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_congestion.webp",
+    "cap": "Global-routing congestion"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_clocks.webp",
+    "cap": "Clock nets"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_ir_drop.webp",
+    "cap": "Power-grid IR drop"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_resizer.webp",
+    "cap": "Cells added by the resizer"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/final_worst_path.webp",
+    "cap": "Worst timing path"
+   },
+   {
+    "src": "assets/img/orfs-asap7-mini-jalapeno-tile/cts_core_clock.webp",
+    "cap": "Clock tree — core_clock"
+   }
+  ],
+  "searchText": "mini-jalapeño mxfp8 accelerator — one tile one tile of the mini-jalapeño accelerator: an 8 × 8 mxfp8 systolic array with its operand and fp32 accumulator buffers, column finishers, requantization engine, mesh router and sequencer. the twelve ram macros are real standard-cell latch arrays and take more than half of the die. openroad-flow-scripts (orfs) asap7 predictive pdk 7 nm technology 7 nm — asap7 predictive pdk standard-cell library asap7sc7p5t — 7.5-track finfet top module mj_tile die size 459.58 × 459.58 µm die area 211,218 µm² core area 207,348 µm² instances (excl. filler) 165,417 standard cells 165,405 hard macros 12 sequential cells 20,144 tap cells 16,994 filler cells 347,021 total placed cells 512,430 cell area 136,259 µm² core utilisation 65.7 % i/o pins 552 target clock 1000 ps (1.00 ghz) achieved f<sub>max</sub> 978.54 mhz setup wns -21.93 ps setup tns -271.4 ps hold wns 5.846 ps routed wirelength 1,197,439 µm routed nets 148,035 vias 1,463,236 routing layers m2 – m7 detailed-route drc 0 antenna-violating nets 0 total power 163 mw — 86 mw logic + 76 mw for the 12 ram macros (from each macro's own report; the macro abstracts carry no power); vectorless estimate, flow default switching activity, typical corner gds-ii size 258.0 mb function dense mxfp8 gemm tile, 64 mac per clock — 125 gflops at 978 mhz number format mxfp8 (ocp mx v1.0): e4m3 elements with one shared e8m0 scale per 32-element block. products are exact and accumulate in a 42-bit fixed-point register, so a block is rounded once, to fp32 blocks 8 × 8 output-stationary systolic array (64 mac per clock), 8 column finishers, an mxfp8 requantization engine, an xy wormhole router, a descriptor sequencer and dma on-chip memory 12 kb in 12 latch-ram macros: 4 × 128 × 32 for the a and b operand buffers, 8 × 256 × 32 for the fp32 accumulator banks — 55 % of the die ram macros latch-array ram built from asap7 standard cells — a dhlx1 latch per bit and an icgx1 clock gate per word, with every input registered — hardened as separate blocks: 256 × 32 (11,583 µm²) and 128 × 32 (5,998 µm²). real layout, not fakeram abstracts routing and power signals on m2–m7; the block power grid adds m6 and m7 stripes and puts its pins on m7, so the 4 × 4 chip straps power over the tile on m8 toolchain google xls (dslx → pipelined verilog) for the mxfp8 product, the block finisher and the fp32 → e4m3 converter; hand-written verilog for the rest verification tile rtl matches a python golden model bit for bit on 258 checks; the latch ram matches a behavioural reference on 99,867 random reads companion design placed 16 times in the 4 × 4 entry"
+ },
+ {
   "slug": "orfs-nangate45-lenet5-htcr",
   "name": "LeNet-5 accelerator — HTC-R array",
   "blurb": "A complete LeNet-5 inference accelerator built around a precision-scalable hybrid temporal computing (HTC-R) array. One stored 8-bit weight set serves 4- and 8-bit activations without reconfiguration: at 4 bits a vector takes one clock, above that the array runs temporally and stops early. Buffers, sliding window, pooling, requantization and argmax are all on the die.",

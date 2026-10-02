@@ -163,6 +163,9 @@ TITLES = {
 # ORFS runs kept outside the flow tree (their own WORK_HOME and FLOW_VARIANT). Each is
 # read exactly like a flow-tree run; "specs" rows are appended to the generated ones
 # and "power" replaces the flow's vectorless power estimate with a measured figure.
+# "fmax" (Hz) replaces the flow's F_max when that only covers the top level's own
+# paths -- a hierarchical chip whose limit is set inside its hard macros -- and
+# "fmax_note" says where the figure comes from.
 V2 = "/Volumes/joule/htc-cnn-asic/v2"
 V2W = os.path.join(V2, "orfs", "work")
 HTCR_ARRAY = ("16 × 16 weight-stationary HTC-R array — hybrid temporal computing with run-time "
@@ -189,7 +192,69 @@ RESNET_STORE = ("Three 1024 × 128-bit activation buffers built from 12 fakeram4
                 "off-core behind a 128-bit read port")
 GATE = ("gate-level simulation of whole inferences on the routed netlist with extracted "
         "parasitics, including the weight-memory reads")
+
+MJ  = "/Volumes/joule/mini_jalapeno"
+MJW = os.path.join(MJ, "orfs", "work")
+MJ_FORMAT = ("MXFP8 (OCP MX v1.0): E4M3 elements with one shared E8M0 scale per 32-element "
+             "block. Products are exact and accumulate in a 42-bit fixed-point register, so a "
+             "block is rounded once, to FP32")
+MJ_TILE = ("8 × 8 output-stationary systolic array (64 MAC per clock), 8 column finishers, "
+           "an MXFP8 requantization engine, an XY wormhole router, a descriptor sequencer and DMA")
+MJ_RAM = ("Latch-array RAM built from asap7 standard cells — a DHLx1 latch per bit and an ICGx1 "
+          "clock gate per word, with every input registered — hardened as separate blocks: "
+          "256 × 32 (11,583 µm²) and 128 × 32 (5,998 µm²). Real layout, not fakeram abstracts")
+MJ_XLS = ("Google XLS (DSLX → pipelined Verilog) for the MXFP8 product, the block finisher and "
+          "the FP32 → E4M3 converter; hand-written Verilog for the rest")
+MJ_POWER = "vectorless estimate, flow default switching activity, typical corner"
 EXTRA_ORFS = [
+ dict(slug="orfs-asap7-mini-jalapeno-4x4", pdk="asap7", work=MJW, design="mj_top", variant="realram",
+   config=os.path.join(MJ, "orfs", "mj_top", "config.mk"), periods=[1000],
+   title="Mini-Jalapeño MXFP8 accelerator — 4 × 4 tiles",
+   blurb="A tiled MXFP8 matrix-multiply accelerator modelled on the core-slice plus memory-slice "
+         "layout reported for OpenAI's Jalapeño: sixteen hardened tiles on a 4 × 4 XY mesh, each "
+         "an 8 × 8 systolic array beside its own latch-RAM operand and accumulator buffers. "
+         "1,024 MACs, 2.0 TFLOPS of dense MXFP8; the memory/host port enters tile (0,0).",
+   fmax=978.538e6,
+   fmax_note="set by the tiles, which close at −22 ps against 1 GHz; the chip-level paths alone reach 1.22 GHz",
+   power="2.61 W — 16 tiles × 163 mW (86 mW logic + 76 mW RAM macros) + 3.6 mW chip level; " + MJ_POWER,
+   specs=[("Function", "Dense MXFP8 GEMM across 16 tiles, with on-chip operand forwarding between tiles (SEND, SIGNAL/WAIT)"),
+          ("Peak throughput", "2.00 TFLOPS dense MXFP8 at 978 MHz (1,024 MAC × 2 FLOP)"),
+          ("Number format", MJ_FORMAT),
+          ("Tile", MJ_TILE + " — see the one-tile entry"),
+          ("Mesh", "XY wormhole routing, 64-bit flits, registered links between neighbouring tiles; "
+                   "the worst link closes with +209 ps setup and +95 ps hold"),
+          ("On-chip memory", "192 KB in 192 latch-RAM macros, 12 per tile"),
+          ("Clock tree", "Hand-built symmetric H-tree of 31 BUFx24 buffers to the 16 tile clock pins, "
+                         "every buffer in a routing channel; 1.13–1.36 ns latency, 190 ps skew"),
+          ("Power grid", "M8 mesh over the tiles, dropping onto their M7 power pins; M1/M2 rails and M5 "
+                         "stripes in the 12 µm channels"),
+          ("Host interface", "Timed against the clock at tile (0,0)'s clock pin, modelling a PLL/DLL "
+                             "deskewed to that tile"),
+          ("Toolchain", MJ_XLS),
+          ("Verification", "A 32 × 32 × 128 GEMM spread over all 16 tiles matches a Python golden model "
+                           "bit for bit (512 / 512 checks), also with 90 % host backpressure"),
+          ("Companion design", "Built from the one-tile entry, hardened once and placed 16 times")]),
+ dict(slug="orfs-asap7-mini-jalapeno-tile", pdk="asap7", work=MJW, design="mj_top_mj_tile", variant="realram",
+   config=os.path.join(MJ, "orfs", "mj_top", "mj_tile", "config.mk"), periods=[1000],
+   title="Mini-Jalapeño MXFP8 accelerator — one tile",
+   blurb="One tile of the Mini-Jalapeño accelerator: an 8 × 8 MXFP8 systolic array with its "
+         "operand and FP32 accumulator buffers, column finishers, requantization engine, mesh "
+         "router and sequencer. The twelve RAM macros are real standard-cell latch arrays and "
+         "take more than half of the die.",
+   power="163 mW — 86 mW logic + 76 mW for the 12 RAM macros (from each macro's own report; "
+         "the macro abstracts carry no power); " + MJ_POWER,
+   specs=[("Function", "Dense MXFP8 GEMM tile, 64 MAC per clock — 125 GFLOPS at 978 MHz"),
+          ("Number format", MJ_FORMAT),
+          ("Blocks", MJ_TILE),
+          ("On-chip memory", "12 KB in 12 latch-RAM macros: 4 × 128 × 32 for the A and B operand "
+                             "buffers, 8 × 256 × 32 for the FP32 accumulator banks — 55 % of the die"),
+          ("RAM macros", MJ_RAM),
+          ("Routing and power", "Signals on M2–M7; the block power grid adds M6 and M7 stripes and puts "
+                                "its pins on M7, so the 4 × 4 chip straps power over the tile on M8"),
+          ("Toolchain", MJ_XLS),
+          ("Verification", "Tile RTL matches a Python golden model bit for bit on 258 checks; the "
+                           "latch RAM matches a behavioural reference on 99,867 random reads"),
+          ("Companion design", "Placed 16 times in the 4 × 4 entry")]),
  dict(slug="orfs-nangate45-lenet5-htcr", blockmap="lenet_acc", pdk="nangate45", work=V2W, design="lenet_acc", variant="arr0",
    config=os.path.join(V2, "orfs", "acc", "config.mk"), periods=[2.5],
    title="LeNet-5 accelerator — HTC-R array",
@@ -375,6 +440,10 @@ def orfs_records():
         title, blurb = run["title"]
 
         fmax = num(m.get("finish__timing__fmax"))
+        if extra.get("fmax"):
+            # The flow's figure covers only this level's own paths; the record
+            # states the design's real limit (e.g. set inside its hard macros).
+            fmax = float(extra["fmax"])
         ws   = num(m.get("finish__timing__setup__ws"))
         tns  = num(m.get("finish__timing__setup__tns"))
         hws  = num(m.get("finish__timing__hold__ws"))
@@ -393,6 +462,8 @@ def orfs_records():
             mm = re.match(r"finish__timing__fmax__clock:(.+)$", k)
             if mm and num(v): perclk.append((mm.group(1), num(v)))
         perclk.sort(key=lambda t: -t[1])
+        if extra.get("fmax"):
+            perclk = [(n, fmax) for n, _ in perclk]
 
         clk = None
         if per:
@@ -420,6 +491,8 @@ def orfs_records():
                 "correspond to either SDC clock")
         else:
             fmax_txt = si(fmax, "Hz") if fmax else None
+        if extra.get("fmax_note") and fmax_txt:
+            fmax_txt += " — " + extra["fmax_note"]
 
         specs = [
           ("Technology",            "%s — %s" % (P["node"], P["name"])),
