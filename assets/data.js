@@ -5872,6 +5872,190 @@ window.DESIGNS = [
   "searchText": "dual-port ram — 256 × 8 a 256-word by 8-bit dual-port ram built entirely from standard-cell flip-flops — no compiled memory macro — so the whole 2 kbit array is 2,313 registers spread across the die. independent read and write addresses let both ports work in the same cycle, and a synchronous reset clears the array. setup closes at both corners; the critical path runs from the read address pins straight to the output register. synopsys fusion compiler x-2025.06-sp3 synopsys saed32/28 nm edk 32 nm technology 32 nm — synopsys saed32/28 nm edk technology file saed32nm_1p9m.tf (1 poly, 9 metal), tlu+ cmax / cmin extraction models cell libraries saed32_rvt / saed32_lvt / saed32_hvt ndm, plus saed32_sram_lp sram macros threshold flavours predominantly hvt, with rvt and lvt where timing needed it top module dual_ram memory organisation 256 words × 8 bits — 2 kbit, register-based, no sram macro ports clk, rst, wr_enb, rd_enb, wr_addr[7:0], rd_addr[7:0], data_in[7:0], data_out[7:0] architecture independent read and write addresses, synchronous reset clearing the whole array clock clk, 5.000 ns period — 200 mhz, waveform {0 2.5} die size 222.31 × 222.31 µm chip area 49,422.625 µm² core area 40,930.145 µm² total cell area 26,803.30 µm² cell area with physical-only 31,383.99 µm² core utilisation 65.5 % (cell area over core area) cells 4,872 — 2,559 combinational, 2,313 sequential, 1,061 buffer/inverter hard macros none — the array is built from flip-flops combinational area 7,146.53 µm² noncombinational area 19,656.77 µm² buffer/inverter area 2,891.90 µm² placed instances incl. fill 11,207 nets 4,902 ports 38 cell references 60 modes / corners func mode; corners ss_125c and ff_m40c (two scenarios) setup wns / tns +0.29 ns / 0.00 ns at ff_m40c, +0.81 ns at ss_125c — met at both corners hold wns / tns −0.01 ns / −0.01 ns (2 violating endpoints) critical path rd_addr[3] input port → data_out_reg[5], slack +0.29 ns clock tree (post-cts) 2,056 sinks, 26 levels, 838 repeaters, 30,930 µm of clock wire clock latency / skew 2.57 ns / 1.48 ns at ff_m40c; 2.17 ns / 1.24 ns at ss_125c routing layers m1 – m9 open nets 0 of 4,902 detailed-route drc 0 after route_opt; 26 reported at sign-off, after metal fill lvs m1 shorts reported among shfill3_hvt filler cells; the check stops after 20 total power 8.85 mw — 1.71 mw dynamic, 7.13 mw leakage at the slow 125 °c corner power by group registers 80.5 %, clock network 13.0 %, combinational 6.6 % gds-ii size 7.1 mb run date 21 september 2026"
  },
  {
+  "family": "cadence",
+  "familyLabel": "Cadence Innovus",
+  "tool": "Cadence Genus 21.19 + Innovus 21.19",
+  "toolLine": "Genus iSpatial physical-aware synthesis hands a placed database to Innovus for power grid, CTS, routing, post-route optimisation and sign-off timing",
+  "pdkKey": "gpdk045",
+  "pdkLabel": "Cadence GPDK045 (generic 45 nm)",
+  "node": "45 nm",
+  "pdkNote": "GPDK045 is Cadence's Generic Process Design Kit for 45 nm: a teaching and research kit that is not tied to a manufacturable foundry process. It has a nine-metal stack (Metal1–Metal9), the gsclib045 standard-cell library at slow, typical and fast corners, and Quantus QRC files for rcworst, typical and rcbest extraction. It is distributed through the Cadence university program.",
+  "slug": "cdn-fir16",
+  "name": "16-tap FIR filter",
+  "blurb": "A 16-tap, 16-bit signed FIR filter with programmable coefficients: a tap delay line feeds sixteen parallel multipliers, and a four-stage pipelined adder tree sums the registered products into a 36-bit result six cycles later. It is the reference design of the lab's Cadence flow, a Fusion Compiler-style single-database flow built from Genus iSpatial and Innovus. Timing closes at every corner and all physical checks are clean.",
+  "head": [
+   [
+    "Clock",
+    "400 MHz"
+   ],
+   [
+    "Cells",
+    "26,476"
+   ],
+   [
+    "Die",
+    "328 × 328 µm"
+   ]
+  ],
+  "specs": [
+   [
+    "Technology",
+    "45 nm — Cadence GPDK045 generic PDK"
+   ],
+   [
+    "Cell library",
+    "gsclib045 — slow (1.08 V, 125 °C), typical (1.20 V, 25 °C) and fast (1.32 V, 0 °C) Liberty"
+   ],
+   [
+    "Extraction",
+    "Innovus integrated Quantus with the GPDK045 QRC files — rcworst, typical, rcbest"
+   ],
+   [
+    "Top module",
+    "fir16"
+   ],
+   [
+    "Function",
+    "16-tap, 16-bit signed FIR filter with a 16-entry coefficient register file"
+   ],
+   [
+    "Architecture",
+    "Tap delay line → 16 parallel 16 × 16 multipliers → registered products → four-stage pipelined adder tree; 36-bit output, 6-cycle latency"
+   ],
+   [
+    "Ports",
+    "77 — clk, rst_n, coef_we, coef_addr[3:0], coef_data[15:0], in_valid, x_in[15:0], out_valid, y_out[35:0]"
+   ],
+   [
+    "Clock",
+    "clk, 2.500 ns period — 400 MHz"
+   ],
+   [
+    "Flow",
+    "Genus iSpatial: syn_generic → create_floorplan → syn_map -physical → syn_opt -spatial; write_design -innovus hands the placed database to Innovus (read_db), with no netlist re-import"
+   ],
+   [
+    "Die size",
+    "327.80 × 328.38 µm"
+   ],
+   [
+    "Die area",
+    "107,643 µm²"
+   ],
+   [
+    "Core area",
+    "91,891 µm² — 177 rows of 1,518 sites"
+   ],
+   [
+    "Standard cells",
+    "26,476 — 64,020.43 µm²"
+   ],
+   [
+    "Sequential cells",
+    "1,536"
+   ],
+   [
+    "Filler cells",
+    "22,094"
+   ],
+   [
+    "Core utilisation",
+    "69.7 % (96.6 % with fillers)"
+   ],
+   [
+    "Analysis views",
+    "setup_ss (slow, rcworst) and hold_ff (fast, rcbest) throughout; typ_tt added at sign-off"
+   ],
+   [
+    "Setup WNS / TNS",
+    "+0.133 ns / 0.000 ns — 0 violating paths of 2,309"
+   ],
+   [
+    "Hold WNS / TNS",
+    "+0.012 ns / 0.000 ns — 0 violating paths"
+   ],
+   [
+    "Design-rule violations",
+    "0 max-transition, max-capacitance and max-fanout"
+   ],
+   [
+    "Clock tree (CCOpt)",
+    "1,536 sinks, 19 buffers (18 × CLKBUFX20, 1 × CLKBUFX12)"
+   ],
+   [
+    "Clock latency / skew",
+    "0.195–0.216 ns, 20 ps skew at the slow corner (target 50 ps); 9 ps at the fast corner"
+   ],
+   [
+    "Power grid",
+    "Metal9 / Metal8 core ring, Metal8 stripes 1.6 µm wide every 40 µm, Metal1 follow-pin rails"
+   ],
+   [
+    "Routed wirelength",
+    "311,101 µm on Metal1–Metal9, most of it on Metal2 and Metal3"
+   ],
+   [
+    "Nets",
+    "27,219"
+   ],
+   [
+    "Routing DRC",
+    "0 — Innovus check_drc"
+   ],
+   [
+    "Connectivity",
+    "No opens or problems — check_connectivity, signal and power nets"
+   ],
+   [
+    "Process antenna",
+    "0 violations"
+   ],
+   [
+    "Total power",
+    "29.88 mW — 19.52 mW internal, 10.35 mW switching, 3.0 µW leakage; vectorless (activity 0.2), slow corner 1.08 V"
+   ],
+   [
+    "Verification",
+    "Self-checking RTL testbench in VCS — 2,000 filter outputs match the reference model"
+   ],
+   [
+    "Sign-off scope",
+    "Timing from Innovus with integrated Quantus extraction. Tempus, standalone Quantus, Conformal LEC and PVS were not available, so there is no foundry-deck DRC/LVS or equivalence check"
+   ],
+   [
+    "GDS-II size",
+    "21.1 MB — routing and references to the gsclib045 cells, whose layouts are not in this kit installation"
+   ],
+   [
+    "Run date",
+    "2 October 2026"
+   ]
+  ],
+  "images": [
+   {
+    "src": "assets/img/cdn-fir16/layout.webp",
+    "cap": "Finished layout in Innovus — every layer, inside the Metal9 / Metal8 power ring"
+   },
+   {
+    "src": "assets/img/cdn-fir16/placement.webp",
+    "cap": "Placement — the 1,536 registers in orange; the grey clusters are the combinational logic, mostly the sixteen multipliers"
+   },
+   {
+    "src": "assets/img/cdn-fir16/clock.webp",
+    "cap": "Clock tree — clock nets in yellow, CCOpt buffers in red"
+   },
+   {
+    "src": "assets/img/cdn-fir16/power.webp",
+    "cap": "Power grid — core ring, Metal8 stripes and Metal1 rails"
+   },
+   {
+    "src": "assets/img/cdn-fir16/zoom.webp",
+    "cap": "Close-up of the lower-left corner, 50 × 40 µm — Metal1 VDD/VSS rails, a Metal8 stripe pair and filler cells"
+   }
+  ],
+  "searchText": "16-tap fir filter a 16-tap, 16-bit signed fir filter with programmable coefficients: a tap delay line feeds sixteen parallel multipliers, and a four-stage pipelined adder tree sums the registered products into a 36-bit result six cycles later. it is the reference design of the lab's cadence flow, a fusion compiler-style single-database flow built from genus ispatial and innovus. timing closes at every corner and all physical checks are clean. cadence genus 21.19 + innovus 21.19 cadence gpdk045 (generic 45 nm) 45 nm technology 45 nm — cadence gpdk045 generic pdk cell library gsclib045 — slow (1.08 v, 125 °c), typical (1.20 v, 25 °c) and fast (1.32 v, 0 °c) liberty extraction innovus integrated quantus with the gpdk045 qrc files — rcworst, typical, rcbest top module fir16 function 16-tap, 16-bit signed fir filter with a 16-entry coefficient register file architecture tap delay line → 16 parallel 16 × 16 multipliers → registered products → four-stage pipelined adder tree; 36-bit output, 6-cycle latency ports 77 — clk, rst_n, coef_we, coef_addr[3:0], coef_data[15:0], in_valid, x_in[15:0], out_valid, y_out[35:0] clock clk, 2.500 ns period — 400 mhz flow genus ispatial: syn_generic → create_floorplan → syn_map -physical → syn_opt -spatial; write_design -innovus hands the placed database to innovus (read_db), with no netlist re-import die size 327.80 × 328.38 µm die area 107,643 µm² core area 91,891 µm² — 177 rows of 1,518 sites standard cells 26,476 — 64,020.43 µm² sequential cells 1,536 filler cells 22,094 core utilisation 69.7 % (96.6 % with fillers) analysis views setup_ss (slow, rcworst) and hold_ff (fast, rcbest) throughout; typ_tt added at sign-off setup wns / tns +0.133 ns / 0.000 ns — 0 violating paths of 2,309 hold wns / tns +0.012 ns / 0.000 ns — 0 violating paths design-rule violations 0 max-transition, max-capacitance and max-fanout clock tree (ccopt) 1,536 sinks, 19 buffers (18 × clkbufx20, 1 × clkbufx12) clock latency / skew 0.195–0.216 ns, 20 ps skew at the slow corner (target 50 ps); 9 ps at the fast corner power grid metal9 / metal8 core ring, metal8 stripes 1.6 µm wide every 40 µm, metal1 follow-pin rails routed wirelength 311,101 µm on metal1–metal9, most of it on metal2 and metal3 nets 27,219 routing drc 0 — innovus check_drc connectivity no opens or problems — check_connectivity, signal and power nets process antenna 0 violations total power 29.88 mw — 19.52 mw internal, 10.35 mw switching, 3.0 µw leakage; vectorless (activity 0.2), slow corner 1.08 v verification self-checking rtl testbench in vcs — 2,000 filter outputs match the reference model sign-off scope timing from innovus with integrated quantus extraction. tempus, standalone quantus, conformal lec and pvs were not available, so there is no foundry-deck drc/lvs or equivalence check gds-ii size 21.1 mb — routing and references to the gsclib045 cells, whose layouts are not in this kit installation run date 2 october 2026"
+ },
+ {
   "family": "openlane",
   "familyLabel": "OpenLane",
   "tool": "OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",

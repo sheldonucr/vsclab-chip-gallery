@@ -38,6 +38,7 @@ them.
 | Yosys | Claire Xen / YosysHQ | ISC |
 | KLayout (used to render the GDS-II images) | Matthias Köfferlein | GPL-3.0 — tool only; rendering with it does not place its output under the GPL |
 | Synopsys Fusion Compiler, Design Compiler, IC Compiler II | Synopsys, Inc. | Commercial / university program license |
+| Cadence Genus, Innovus | Cadence Design Systems, Inc. | Commercial / university program license |
 
 ## Process design kits
 
@@ -48,6 +49,7 @@ them.
 | GF180MCU | 180 nm | GlobalFoundries PDK Authors, 2022 | Apache-2.0 |
 | SkyWater SKY130 | 130 nm | Google LLC / SkyWater Technology | Apache-2.0 |
 | **Synopsys SAED32/28 EDK** | 32 nm | Synopsys, Inc. | **Proprietary — university/EDK agreement. See the caution below.** |
+| **Cadence GPDK045 and gsclib045** | 45 nm (generic) | Cadence Design Systems, Inc. | **Proprietary — Cadence university program. See the caution below.** |
 
 ## Designs
 
@@ -88,21 +90,28 @@ authorship should be established from lab records before it is stated publicly.
 | Groq-style LPU accelerator (dual-port and single-port SRAM versions) | VSCLAB, UC Riverside — lab-authored RTL. The systolic matrix unit and vector unit are generated with Google XLS (Apache 2.0); SRAM macros from the SAED32 EDK (`saed32_sram_lp`) | Lab's own work; the images are CC BY 4.0 like the rest of the gallery. Macros: Synopsys EDK terms. The RTL is not part of this repository. |
 | **Arm Cortex-M0 DesignStart (`CORTEXM0DS`)** | Arm Limited | **Arm DesignStart license. See the caution below.** |
 
+### Cadence Innovus
+
+| Design | Origin | License |
+| --- | --- | --- |
+| 16-tap FIR filter (`fir16`) | VSCLAB, UC Riverside — lab-authored RTL, written as the reference design of the lab's Genus iSpatial + Innovus flow; cells from the GPDK045 `gsclib045` library | Lab's own work; the images are CC BY 4.0 like the rest of the gallery. Cells: Cadence GPDK045 terms. The RTL is not part of this repository. |
+
 ---
 
 ## Three items governed by separate agreements
 
 The terms for these three are set outside any of the source trees above, in
-signed agreements or in a copyleft license. Layouts built in SAED32 and with
+signed agreements or in a copyleft license. Layouts built in SAED32 or GPDK045 and with
 Cortex-M0 DesignStart appear routinely in published academic work; the specific
 terms should still be checked against the agreements themselves.
 
-**1. Synopsys SAED32/28 EDK.** The kit is distributed under a Synopsys
-university agreement. That agreement governs redistribution of the *kit* — the
-technology files, the NDM libraries, the SRAM macros — none of which is in this
-repository. What is here is images of designs implemented with it. Check your
-department's EDK agreement for any clause on publishing derived layout figures,
-and do not add GDS, LEF, LIB, NDM or `.tf` files from the kit to the repository.
+**1. Synopsys SAED32/28 EDK and Cadence GPDK045.** Each kit is distributed under
+its vendor's university agreement. That agreement governs redistribution of the
+*kit* — the technology files, the cell libraries, the SRAM macros, the QRC
+extraction files — none of which is in this repository. What is here is images
+of designs implemented with them. Check your department's agreements for any
+clause on publishing derived layout figures, and do not add GDS, LEF, LIB, NDM,
+`.tf` or QRC files from either kit to the repository.
 
 **2. Arm Cortex-M0 DesignStart.** The `CORTEXM0DS` core comes under an Arm
 licence with its own terms on use and publication, and "Arm" and "Cortex" are
@@ -134,4 +143,4 @@ kits themselves, which is why the list above is short.
 | A platform/PDK | `flow/platforms/<platform>/` — and the headers inside the LEF and Liberty files |
 | An ORFS design's RTL | `flow/designs/src/<design>/LICENSE` |
 | OpenROAD tools | `tools/<tool>/` or `tools/OpenROAD/src/<tool>/` |
-| SAED32 EDK, Arm DesignStart | Your institution's signed agreements — not in any of these trees |
+| SAED32 EDK, GPDK045, Arm DesignStart | Your institution's signed agreements — not in any of these trees |

@@ -1,8 +1,8 @@
 # The VLSI chips designed by VSCLAB @ UC Riverside
 
-A static gallery of the lab's physical designs — 36 designs across five technology nodes,
-hardened with Synopsys Fusion Compiler, OpenLane and the OpenROAD flow, with 282
-layout views.
+A static gallery of the lab's physical designs — 37 designs across five technology nodes,
+hardened with Synopsys Fusion Compiler, Cadence Genus and Innovus, OpenLane and the
+OpenROAD flow, with 287 layout views.
 
 ## Viewing it
 
@@ -33,14 +33,15 @@ tools/                the scripts that regenerate everything
 Each design folder holds one `.webp` per view, 1280 px on the long edge. That is what
 the repository ships. The KLayout renderings are produced as full-resolution PNGs first,
 but those are local intermediates and are gitignored — `tools/render_all_gds.sh`
-regenerates them from the GDS-II. The Synopsys and OpenLane originals are screenshots
-kept in the design directories, outside this repository.
+regenerates them from the GDS-II. The Synopsys, Cadence and OpenLane originals are
+screenshots kept in the design directories, outside this repository.
 
 ## Where the content comes from
 
 | Section | Source |
 | --- | --- |
 | Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports; and `dual_ram_project_icc` — a full RTL-to-GDSII run, read from `reports/*.rpt`, `outputs/dual_ram.def` and `outputs/dual_ram.sdc`, with the layout rendered from `outputs/dual_ram.gds`; and the two Groq-style LPU accelerators from `lpu/fc` and `lpu/fc_v2` — read the same way from `reports/07_signoff_*.rpt` and `outputs/`, with the GDS-II rendered in KLayout and the placement, power-mesh and clock-tree figures from `lpu/report_img` |
+| Cadence Innovus | `cadence_flow/runs/run2` on Bender — a Genus iSpatial → Innovus run on GPDK045, read from `reports/pnr` (the `time_design` summaries, `report_summary`, clock-tree, power and check reports) and the DIEAREA and ROW lines of `outputs/pnr/fir16.def`; the images are Innovus renderings of `fir16.final.db`, written with `gui_write_picture` |
 | OpenLane | `chip_design_work_desk/openlane_designs/*` — `config.json`, RTL and KLayout captures |
 | OpenROAD Flow Scripts | `OpenROAD-flow-scripts-Darwin/flow` — `results/`, `reports/` and `logs/` for each `<pdk>/<design>/base` run; the LeNet-5 and ResNet-20 accelerators from `htc-cnn-asic/v2/orfs/work`, and the Mini-Jalapeño tile and 4 × 4 chip from `mini_jalapeno/orfs/work` (flow variant `realram`), read the same way from their own work directories and flow variants (`EXTRA_ORFS` in `build_site.py`) |
 
@@ -85,7 +86,7 @@ repository, so regeneration only works on a machine that has them.
   copies the flow's report images and, when a `blockmap` rule set is named, draws a block
   map from the routed database with `tools/render_blockmap.py`.
 - **Anything else:** drop the images in `assets/img/<slug>/`, add a record to the
-  `synopsys` or `openlane` list in `build_site.py`, and re-run it.
+  `synopsys`, `cadence` or `openlane` list in `build_site.py`, and re-run it.
 
 ## License
 
@@ -104,7 +105,7 @@ Neither license reaches the underlying circuits, PDKs or tools — those belong 
 their authors and keep their own terms, several of which require attribution.
 **[`NOTICE.md`](NOTICE.md) records the origin and license of every design and
 PDK in the gallery**, and lists three whose terms are set by separate
-agreements: the Synopsys SAED32 EDK, the Arm Cortex-M0 DesignStart licence, and
+agreements: the Synopsys SAED32 and Cadence GPDK045 kits, the Arm Cortex-M0 DesignStart licence, and
 the LGPL status of the OpenCores Ethernet MAC.
 
 No PDK files, RTL, netlists or GDS-II are committed here — only rendered images
@@ -112,8 +113,9 @@ and the numbers read out of the tool reports.
 
 ## Technology notes
 
-ASAP7 is a predictive 7 nm FinFET kit, and FreePDK45/Nangate45 and the Synopsys
-SAED32 EDK are academic kits for research and teaching. SKY130 and GF180MCU are
+ASAP7 is a predictive 7 nm FinFET kit, and FreePDK45/Nangate45, the Synopsys
+SAED32 EDK and the Cadence GPDK045 generic kit are academic kits for research and
+teaching. SKY130 and GF180MCU are
 open-source PDKs for manufacturable foundry processes.
 
 The PDK for the Arm Cortex-M0 entry is not recorded in that design's source files.

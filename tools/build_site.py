@@ -846,6 +846,90 @@ synopsys = [
     [("gds.png", "GDS-II tape-out database, rendered in KLayout")]),
 ]
 
+# ------------------------------------------------------------------ Cadence
+# Designs from cadence_flow (Genus iSpatial -> Innovus). Figures are read from the run's
+# reports/pnr (time_design summaries, report_summary, clock_trees / skew_groups, power,
+# check_drc / check_connectivity / check_process_antenna) and outputs/pnr/<design>.def;
+# the images are Innovus GUI renderings written with gui_write_picture.
+CDN = dict(family="cadence", familyLabel="Cadence Innovus",
+           tool="Cadence Genus 21.19 + Innovus 21.19",
+           toolLine="Genus iSpatial physical-aware synthesis hands a placed database to Innovus "
+                    "for power grid, CTS, routing, post-route optimisation and sign-off timing",
+           pdkKey="gpdk045", pdkLabel="Cadence GPDK045 (generic 45 nm)", node="45 nm",
+           pdkNote="GPDK045 is Cadence's Generic Process Design Kit for 45 nm: a teaching and "
+                   "research kit that is not tied to a manufacturable foundry process. It has a "
+                   "nine-metal stack (Metal1–Metal9), the gsclib045 standard-cell library at slow, "
+                   "typical and fast corners, and Quantus QRC files for rcworst, typical and rcbest "
+                   "extraction. It is distributed through the Cadence university program.")
+
+def cdn(slug, name, blurb, head, specs, images):
+    r = dict(CDN); r.update(slug=slug, name=name, blurb=blurb, head=head,
+                            specs=[list(s) for s in specs], images=imgset(slug, images))
+    return r
+
+cadence = [
+ cdn("cdn-fir16", "16-tap FIR filter",
+    "A 16-tap, 16-bit signed FIR filter with programmable coefficients: a tap delay line feeds "
+    "sixteen parallel multipliers, and a four-stage pipelined adder tree sums the registered "
+    "products into a 36-bit result six cycles later. It is the reference design of the lab's "
+    "Cadence flow, a Fusion Compiler-style single-database flow built from Genus iSpatial and "
+    "Innovus. Timing closes at every corner and all physical checks are clean.",
+    [("Clock", "400 MHz"), ("Cells", "26,476"), ("Die", "328 × 328 µm")],
+    [("Technology", "45 nm — Cadence GPDK045 generic PDK"),
+     ("Cell library", "gsclib045 — slow (1.08 V, 125 °C), typical (1.20 V, 25 °C) and fast "
+                      "(1.32 V, 0 °C) Liberty"),
+     ("Extraction", "Innovus integrated Quantus with the GPDK045 QRC files — rcworst, typical, rcbest"),
+     ("Top module", "fir16"),
+     ("Function", "16-tap, 16-bit signed FIR filter with a 16-entry coefficient register file"),
+     ("Architecture", "Tap delay line → 16 parallel 16 × 16 multipliers → registered products → "
+                      "four-stage pipelined adder tree; 36-bit output, 6-cycle latency"),
+     ("Ports", "77 — clk, rst_n, coef_we, coef_addr[3:0], coef_data[15:0], in_valid, x_in[15:0], "
+               "out_valid, y_out[35:0]"),
+     ("Clock", "clk, 2.500 ns period — 400 MHz"),
+     ("Flow", "Genus iSpatial: syn_generic → create_floorplan → syn_map -physical → "
+              "syn_opt -spatial; write_design -innovus hands the placed database to Innovus "
+              "(read_db), with no netlist re-import"),
+     ("Die size", "327.80 × 328.38 µm"),
+     ("Die area", "107,643 µm²"),
+     ("Core area", "91,891 µm² — 177 rows of 1,518 sites"),
+     ("Standard cells", "26,476 — 64,020.43 µm²"),
+     ("Sequential cells", "1,536"),
+     ("Filler cells", "22,094"),
+     ("Core utilisation", "69.7 % (96.6 % with fillers)"),
+     ("Analysis views", "setup_ss (slow, rcworst) and hold_ff (fast, rcbest) throughout; "
+                        "typ_tt added at sign-off"),
+     ("Setup WNS / TNS", "+0.133 ns / 0.000 ns — 0 violating paths of 2,309"),
+     ("Hold WNS / TNS", "+0.012 ns / 0.000 ns — 0 violating paths"),
+     ("Design-rule violations", "0 max-transition, max-capacitance and max-fanout"),
+     ("Clock tree (CCOpt)", "1,536 sinks, 19 buffers (18 × CLKBUFX20, 1 × CLKBUFX12)"),
+     ("Clock latency / skew", "0.195–0.216 ns, 20 ps skew at the slow corner (target 50 ps); "
+                              "9 ps at the fast corner"),
+     ("Power grid", "Metal9 / Metal8 core ring, Metal8 stripes 1.6 µm wide every 40 µm, "
+                    "Metal1 follow-pin rails"),
+     ("Routed wirelength", "311,101 µm on Metal1–Metal9, most of it on Metal2 and Metal3"),
+     ("Nets", "27,219"),
+     ("Routing DRC", "0 — Innovus check_drc"),
+     ("Connectivity", "No opens or problems — check_connectivity, signal and power nets"),
+     ("Process antenna", "0 violations"),
+     ("Total power", "29.88 mW — 19.52 mW internal, 10.35 mW switching, 3.0 µW leakage; "
+                     "vectorless (activity 0.2), slow corner 1.08 V"),
+     ("Verification", "Self-checking RTL testbench in VCS — 2,000 filter outputs match the "
+                      "reference model"),
+     ("Sign-off scope", "Timing from Innovus with integrated Quantus extraction. Tempus, "
+                        "standalone Quantus, Conformal LEC and PVS were not available, so there "
+                        "is no foundry-deck DRC/LVS or equivalence check"),
+     ("GDS-II size", "21.1 MB — routing and references to the gsclib045 cells, whose layouts "
+                     "are not in this kit installation"),
+     ("Run date", "2 October 2026")],
+    [("layout.png", "Finished layout in Innovus — every layer, inside the Metal9 / Metal8 power ring"),
+     ("placement.png", "Placement — the 1,536 registers in orange; the grey clusters are the "
+                       "combinational logic, mostly the sixteen multipliers"),
+     ("clock.png", "Clock tree — clock nets in yellow, CCOpt buffers in red"),
+     ("power.png", "Power grid — core ring, Metal8 stripes and Metal1 rails"),
+     ("zoom.png", "Close-up of the lower-left corner, 50 × 40 µm — Metal1 VDD/VSS rails, a "
+                  "Metal8 stripe pair and filler cells")]),
+]
+
 OL = dict(family="openlane", familyLabel="OpenLane",
           tool="OpenLane (OpenROAD-based RTL-to-GDSII wrapper)",
           toolLine="OpenLane drives Yosys, OpenROAD, Magic and KLayout as one push-button flow",
@@ -965,7 +1049,7 @@ if "--list-extra" in sys.argv:
         print(e["slug"], os.path.join(b, "6_final.gds"), os.path.join(b, "6_final.odb"), e.get("blockmap", ""))
     sys.exit(0)
 
-designs = orfs_records() + synopsys + openlane
+designs = orfs_records() + synopsys + cadence + openlane
 
 for d in designs:
     d["searchText"] = " ".join([d["name"], d["blurb"], d["tool"], d["pdkLabel"], d["node"]] +
