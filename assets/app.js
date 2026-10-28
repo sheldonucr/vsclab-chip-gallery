@@ -6,17 +6,17 @@
 
   var FAMILIES = [
     { key: "all",      label: "All flows" },
-    { key: "openroad", label: "OpenROAD" },
     { key: "synopsys", label: "Synopsys" },
+    { key: "openroad", label: "OpenROAD" },
     { key: "cadence",  label: "Cadence" },
     { key: "openlane", label: "OpenLane" }
   ];
 
   var SECTIONS = [
-    { key: "OpenROAD Flow Scripts",
-      note: "Open-source RTL-to-GDSII across four technology nodes" },
     { key: "Synopsys Fusion Compiler",
       note: "Commercial RTL-to-GDSII on the Synopsys educational 32 nm kit" },
+    { key: "OpenROAD Flow Scripts",
+      note: "Open-source RTL-to-GDSII across four technology nodes" },
     { key: "Synopsys Design Compiler",
       note: "Logic synthesis reference flow" },
     { key: "Cadence Innovus",
@@ -75,7 +75,11 @@
       b.type = "button";
       b.setAttribute("aria-pressed", String(f.key === "all"));
       b.dataset.k = f.key;
-      b.addEventListener("click", function () { state.family = f.key; sync(); });
+      b.addEventListener("click", function () {
+        state.family = f.key;
+        if (!count(state.family, state.node)) state.node = "all";
+        sync();
+      });
       famBox.appendChild(b);
     });
 
@@ -90,7 +94,11 @@
       b.type = "button";
       b.setAttribute("aria-pressed", String(k === "all"));
       b.dataset.k = k;
-      b.addEventListener("click", function () { state.node = k; sync(); });
+      b.addEventListener("click", function () {
+        state.node = k;
+        if (!count(state.family, state.node)) state.family = "all";
+        sync();
+      });
       nodeBox.appendChild(b);
     });
 
@@ -100,22 +108,35 @@
     });
   }
 
+  /* Each chip's count follows the other filter and the search box, so a node
+     with no designs under the chosen flow (or vice versa) shows 0 and is disabled. */
   function sync() {
     ["#f-family", "#f-node"].forEach(function (sel, i) {
       var want = i === 0 ? state.family : state.node;
       Array.prototype.forEach.call($(sel).children, function (c) {
-        if (c.dataset && c.dataset.k) c.setAttribute("aria-pressed", String(c.dataset.k === want));
+        if (!c.dataset || !c.dataset.k) return;
+        var k = c.dataset.k;
+        var n = i === 0 ? count(k, state.node) : count(state.family, k);
+        c.querySelector(".c").textContent = n;
+        c.disabled = !n && k !== want;
+        c.setAttribute("aria-pressed", String(k === want));
       });
     });
     render();
   }
 
-  function matches(d) {
-    if (state.family !== "all" && d.family !== state.family) return false;
-    if (state.node !== "all" && d.node !== state.node) return false;
+  function count(family, node) {
+    return D.filter(function (d) { return matchesWith(d, family, node); }).length;
+  }
+
+  function matchesWith(d, family, node) {
+    if (family !== "all" && d.family !== family) return false;
+    if (node !== "all" && d.node !== node) return false;
     if (state.q && d.searchText.indexOf(state.q) === -1) return false;
     return true;
   }
+
+  function matches(d) { return matchesWith(d, state.family, state.node); }
 
   /* ---------------------------------------------------------- cards */
 

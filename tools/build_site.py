@@ -620,23 +620,23 @@ synopsys = [
      ("3D checks", "check3d 0 errors; physical check clean"),
      ("Die-to-die timing", "Setup +0.60 ns, hold +0.13 ns"),
      ("Static IR drop", "Compute die 7.8 mV, I/O die 2.0 mV, interposer 0.2 mV at 0.95 V"),
-     ("Thermal", "Spectral-Galerkin solver: ΔT 1.45 K on the compute die, 0.99 K on the I/O "
+     ("Thermal", "chipletTherm: ΔT 1.45 K on the compute die, 0.99 K on the I/O "
                  "die at 324 mW"),
      ("3DIC Compiler cross-check", "Bump positions match exactly; 87.2 mm route, LVS 0 / 0"),
      ("Total power", "314 mW compute die + 10.4 mW I/O die (Fusion Compiler, vectorless)"),
      ("GDS-II size", "168.8 MB compute die, 39.9 MB I/O die, 101.8 MB PE"),
      ("Run date", "22 October 2026")],
-    [("gds.png", "Compute die GDS-II — sixteen PE macros in a 4 × 4 grid, rendered in KLayout"),
-     ("pkg3d.png", "3D package — both chiplets face down on the Si interposer and ABF substrate "
+    [("pkg3d.png", "3D package — both chiplets face down on the Si interposer and ABF substrate "
                    "(z exaggerated × 2)"),
      ("pkg3d_exploded.png", "3D package, exploded — dies, 8,208 µbumps, interposer wiring, "
                             "960 TSVs and C4 bumps"),
+     ("gds.png", "Compute die GDS-II — sixteen PE macros in a 4 × 4 grid, rendered in KLayout"),
      ("pe.png", "PE hard macro (mtia_pe) — PicoRV32, DPE, FlashAttention and MoE units, 5 SRAMs"),
      ("io.png", "I/O die GDS-II — host core and 17 SRAM macros"),
      ("interposer.png", "Interposer routing from chipletstack — 138 nets on IM1 / IM3, "
                         "shields in grey"),
      ("interposer_3dic.png", "The same interposer routed by 3DIC Compiler, with VSS side shields"),
-     ("thermal.png", "Top-surface temperature from the Spectral-Galerkin thermal solver")]),
+     ("thermal.png", "Top-surface temperature from chipletTherm")]),
 
  fc("fc-rlpu3", "RISC hosts + LPU — 2.5D three-chiplet system",
     "The Groq-style LPU split out as a chiplet and paired with two RISC host chiplets on a "
@@ -671,17 +671,17 @@ synopsys = [
      ("3D checks", "check3d 0 errors"),
      ("Die-to-die timing", "PrimeTime: setup +1.52 ns, hold +0.46 ns"),
      ("Static IR drop", "Hosts 1.19 mV, LPU 0.51 mV"),
-     ("Thermal", "ΔT +0.84 K on the LPU, +0.63 K on the hosts at 14.8 mW"),
+     ("Thermal", "chipletTherm: ΔT +0.84 K on the LPU, +0.63 K on the hosts at 14.8 mW"),
      ("Electromigration", "Immortal at nominal current (EMspice 3D)"),
      ("3DIC Compiler cross-check", "35.1 mm route, 0 DRC; D2D setup +1.56 ns, hold +0.45 ns"),
      ("Total power", "14.8 mW — 2.54 + 9.68 + 2.54 mW (PrimeTime, vectorless)"),
      ("GDS-II size", "43.8 MB LPU die, 30.4 MB host die"),
      ("Run date", "8 October 2026")],
-    [("gds.png", "LPU chiplet GDS-II, rendered in KLayout"),
-     ("pkg3d.png", "3D package — host 0, LPU and host 1 face down on the Si interposer "
+    [("pkg3d.png", "3D package — host 0, LPU and host 1 face down on the Si interposer "
                    "(z exaggerated × 1.5)"),
      ("pkg3d_exploded.png", "3D package, exploded — dies, 663 µbumps, interposer wiring, "
                             "90 TSVs and C4 bumps"),
+     ("gds.png", "LPU chiplet GDS-II, rendered in KLayout"),
      ("host.png", "RISC host chiplet GDS-II (rhost_top)"),
      ("interposer.png", "Interposer routing from chipletstack — 106 nets on IM1 / IM3, "
                         "shields in grey"),
@@ -1166,7 +1166,7 @@ if "--list-extra" in sys.argv:
         print(e["slug"], os.path.join(b, "6_final.gds"), os.path.join(b, "6_final.odb"), e.get("blockmap", ""))
     sys.exit(0)
 
-designs = orfs_records() + synopsys + cadence + openlane
+designs = synopsys + orfs_records() + cadence + openlane
 
 for d in designs:
     d["searchText"] = " ".join([d["name"], d["blurb"], d["tool"], d["pdkLabel"], d["node"]] +
