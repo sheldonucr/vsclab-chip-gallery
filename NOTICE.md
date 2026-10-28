@@ -88,6 +88,8 @@ authorship should be established from lab records before it is stated publicly.
 | JPEG encoder | Same lineage | BSD-3-Clause-style, attribution required |
 | RISC core with embedded SRAM | Lab implementation; SRAM macros from the SAED32 EDK (`saed32_sram_lp`) | Design: confirm. Macros: Synopsys EDK terms |
 | Groq-style LPU accelerator (dual-port and single-port SRAM versions) | VSCLAB, UC Riverside — lab-authored RTL. The systolic matrix unit and vector unit are generated with Google XLS (Apache 2.0); SRAM macros from the SAED32 EDK (`saed32_sram_lp`) | Lab's own work; the images are CC BY 4.0 like the rest of the gallery. Macros: Synopsys EDK terms. The RTL is not part of this repository. |
+| MTIA-style inference accelerator, 2.5D (`mtia4`) | VSCLAB, UC Riverside — lab-authored accelerators, NoC and chiplet tops. Each PE and both dies use the **PicoRV32** RISC-V core, Copyright (C) 2015 - 2021 Claire Xenia Wolf <claire@yosyshq.com>; SRAM macros from the SAED32 EDK (`saed32_sram_lp`) | Lab design: CC BY 4.0 images like the rest of the gallery. PicoRV32: ISC — permission to use, copy, modify and distribute with the copyright notice retained; this row carries it. Macros: Synopsys EDK terms. The RTL is not part of this repository. |
+| RISC hosts + LPU, 2.5D (`rlpu3`) | VSCLAB, UC Riverside — the LPU chiplet as above; the host chiplets wrap the RISC core from the *RISC core with embedded SRAM* row (with two functional fixes); SRAM macros from the SAED32 EDK | As the LPU and RISC-core rows above. The RTL is not part of this repository. |
 | **Arm Cortex-M0 DesignStart (`CORTEXM0DS`)** | Arm Limited | **Arm DesignStart license. See the caution below.** |
 
 ### Cadence Innovus

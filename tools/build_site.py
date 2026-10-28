@@ -572,6 +572,123 @@ TECH = "saed32nm_1p9m.tf (1 poly, 9 metal), TLU+ Cmax / Cmin extraction models"
 SCEN = "func mode; corners ss_125c and ff_m40c (two scenarios)"
 
 synopsys = [
+ fc("fc-mtia4", "MTIA-style inference accelerator — 2.5D, compute + I/O chiplets",
+    "A two-chiplet inference accelerator in the style of Meta's MTIA family, on a CoWoS-S-like "
+    "silicon interposer. The 5.0 × 3.0 mm compute die tiles one hardened PE sixteen times on a "
+    "4 × 4 XY mesh; each PE is a PicoRV32 RISC-V core with an 8 × 8 int8 / MX4 (OCP MXFP4) "
+    "dot-product engine, a FlashAttention online-softmax unit and a mixture-of-experts router. "
+    "A separate I/O die holds the host core and the memory the firmware boots from. Both dies "
+    "sit face down on 8,208 µbumps at 45 µm pitch; the package was assembled twice, with the "
+    "lab's chipletstack flow and with 3DIC Compiler.",
+    [("Clock", "250 MHz"), ("Chiplets", "2 + Si interposer"), ("PEs", "16 × RISC-V")],
+    [("Technology", "32 nm — Synopsys SAED32/28 nm EDK"),
+     ("Technology file", TECH),
+     ("Cell libraries", LIBS),
+     ("Package", "2.5D, CoWoS-S-like: 7230 × 3120 µm Si interposer (IM1–IM4, 100 µm Si with TSVs) "
+                 "on an ABF substrate 100 µm larger on every side"),
+     ("Chiplets", "Compute die mtia_cmp_top 5040 × 3020 µm; I/O die mtia_io_top 1990 × 760 µm; "
+                  "both face down (MZ_MY)"),
+     ("Architecture", "4 × 4 PE grid on a 5-port XY mesh NoC (64-bit flits, credit flow control); "
+                      "PicoRV32 command processor, hub and DMA on the compute die; 32-bit D2D link "
+                      "with valid, last and credit each way"),
+     ("PE (mtia_pe hard macro)", "PicoRV32 RV32IMC; 2 KB IMEM and 8 KB DMEM; DPE 8 × 8 MAC array "
+                                 "for int8 and MX4 (E2M1 elements, E8M0 block scales); FlashAttention "
+                                 "engine; MoE top-k router with dispatch and weighted combine; "
+                                 "SiLU / GELU LUT"),
+     ("I/O die", "Host PicoRV32, 32 KB SRAM standing in for LPDDR, D2D link endpoint"),
+     ("RTL", "Lab-authored accelerators, NoC and tops; PicoRV32 core from YosysHQ (ISC); "
+             "verified bit-exact against a Python golden model"),
+     ("Kernels (cycles at 250 MHz)", "int8 GEMM 64³ 19,383; MX4 GEMM 18,343; FlashAttention "
+                                     "(2 heads, seq 64, d 32) 46,251; MoE-FFN (8 experts, top-2) 42,601"),
+     ("Clock", "clk, 4.000 ns period — 250 MHz"),
+     ("Modes / corners", "func mode; ss0p95v125c (setup) and ff1p16vn40c (hold)"),
+     ("PE macro", "1140 × 720 µm; 71,293 standard cells, 5 SRAM macros; setup WNS −0.10 ns, "
+                  "hold −0.00 ns; 19.25 mW"),
+     ("Compute die area", "15,220,800 µm² chip, 15,057,687.381 µm² core"),
+     ("Compute die cells", "18,658 standard cells (81,014.754 µm²); 16 PE macros "
+                           "(13,132,800 µm²); 3 SRAM macros (153,426.790 µm²)"),
+     ("Compute die timing", "Setup WNS / TNS −0.03 ns / −0.19 ns (19 endpoints); "
+                            "hold −0.00 ns (1 endpoint) after the hold ECO"),
+     ("Compute die clock tree", "27,574 sinks, 34 levels, 2,739 repeaters"),
+     ("Compute die wiring", "939,743.38 µm, 224,180 wires, 681,532 contacts"),
+     ("I/O die", "1,512,400 µm² chip; 12,993 standard cells, 17 SRAM macros (869,418.476 µm²); "
+                 "setup −0.06 ns, hold −0.00 ns; 942,353.07 µm of wire"),
+     ("Routing DRC / LVS", "0 / clean on the PE, the compute die and the I/O die"),
+     ("Interposer route (chipletstack)", "138 nets, 79.7 mm on IM1 / IM3, 0 DRC, "
+                                         "97 % ground-signal-ground shielding"),
+     ("Bumps", "8,208 µbumps at 45 µm pitch (105 signal per die); 960 C4 bumps and 960 TSVs"),
+     ("3D checks", "check3d 0 errors; physical check clean"),
+     ("Die-to-die timing", "Setup +0.60 ns, hold +0.13 ns"),
+     ("Static IR drop", "Compute die 7.8 mV, I/O die 2.0 mV, interposer 0.2 mV at 0.95 V"),
+     ("Thermal", "Spectral-Galerkin solver: ΔT 1.45 K on the compute die, 0.99 K on the I/O "
+                 "die at 324 mW"),
+     ("3DIC Compiler cross-check", "Bump positions match exactly; 87.2 mm route, LVS 0 / 0"),
+     ("Total power", "314 mW compute die + 10.4 mW I/O die (Fusion Compiler, vectorless)"),
+     ("GDS-II size", "168.8 MB compute die, 39.9 MB I/O die, 101.8 MB PE"),
+     ("Run date", "22 October 2026")],
+    [("gds.png", "Compute die GDS-II — sixteen PE macros in a 4 × 4 grid, rendered in KLayout"),
+     ("pkg3d.png", "3D package — both chiplets face down on the Si interposer and ABF substrate "
+                   "(z exaggerated × 2)"),
+     ("pkg3d_exploded.png", "3D package, exploded — dies, 8,208 µbumps, interposer wiring, "
+                            "960 TSVs and C4 bumps"),
+     ("pe.png", "PE hard macro (mtia_pe) — PicoRV32, DPE, FlashAttention and MoE units, 5 SRAMs"),
+     ("io.png", "I/O die GDS-II — host core and 17 SRAM macros"),
+     ("interposer.png", "Interposer routing from chipletstack — 138 nets on IM1 / IM3, "
+                        "shields in grey"),
+     ("interposer_3dic.png", "The same interposer routed by 3DIC Compiler, with VSS side shields"),
+     ("thermal.png", "Top-surface temperature from the Spectral-Galerkin thermal solver")]),
+
+ fc("fc-rlpu3", "RISC hosts + LPU — 2.5D three-chiplet system",
+    "The Groq-style LPU split out as a chiplet and paired with two RISC host chiplets on a "
+    "CoWoS-S-like silicon interposer. Host 0 loads the LPU program and weights and sequences "
+    "every inference; host 1 streams activations in and reads results back, each over a "
+    "narrow credit-based die-to-die link. All three dies were hardened in Fusion Compiler and "
+    "assembled twice, with the lab's chipletstack flow and with 3DIC Compiler.",
+    [("Clock", "200 MHz"), ("Chiplets", "3 + Si interposer"), ("Interposer", "2308 × 900 µm")],
+    [("Technology", "32 nm — Synopsys SAED32/28 nm EDK"),
+     ("Technology file", TECH),
+     ("Cell libraries", LIBS),
+     ("Package", "2.5D, CoWoS-S-like: 2307.5 × 900 µm Si interposer (IM1–IM4, 100 µm Si with TSVs) "
+                 "on an ABF substrate"),
+     ("Chiplets", "HOST0 and HOST1 rhost_top 620 × 800 µm (MZ_MY / MZ_MX); LPU lpu_chip_top "
+                  "767.5 × 606.1 µm (MZ_MY); all face down"),
+     ("Host chiplet", "Synopsys RISC_CORE (with two functional fixes), IMEM, DMEM, boot loader, "
+                      "coprocessor / DMA and a link port; 5 SRAM macros"),
+     ("LPU chiplet", "The single-port-SRAM LPU — 8 × 8 int8 systolic array, vector unit, "
+                     "static sequencer — with two link endpoints and a round-robin host port; "
+                     "18 SRAM macros"),
+     ("Clock", "clk, 5.000 ns period — 200 MHz"),
+     ("Host die", "496,000 µm²; 5,879 standard cells, 1,919 sequential; setup −0.01 ns, "
+                  "hold 0.00 ns; 275,542.59 µm of wire; 2.54 mW"),
+     ("Host clock tree", "1,861 sinks, 9 levels, 126 repeaters"),
+     ("LPU die", "465,167.329 µm²; 21,796 standard cells, 6,513 sequential; setup −0.02 ns "
+                 "(5 endpoints), hold −0.27 ns (373 endpoints, LPU-internal); "
+                 "1,339,802.82 µm of wire; 9.68 mW"),
+     ("LPU clock tree", "6,455 sinks, 15 levels, 1,202 repeaters"),
+     ("Interposer route (chipletstack)", "106 nets, 34.0 mm on IM1 / IM3, 0 DRC, "
+                                         "96 % ground-signal-ground shielding"),
+     ("Bumps", "663 µbumps at 45 µm pitch; 90 C4 bumps and 90 TSVs"),
+     ("3D checks", "check3d 0 errors"),
+     ("Die-to-die timing", "PrimeTime: setup +1.52 ns, hold +0.46 ns"),
+     ("Static IR drop", "Hosts 1.19 mV, LPU 0.51 mV"),
+     ("Thermal", "ΔT +0.84 K on the LPU, +0.63 K on the hosts at 14.8 mW"),
+     ("Electromigration", "Immortal at nominal current (EMspice 3D)"),
+     ("3DIC Compiler cross-check", "35.1 mm route, 0 DRC; D2D setup +1.56 ns, hold +0.45 ns"),
+     ("Total power", "14.8 mW — 2.54 + 9.68 + 2.54 mW (PrimeTime, vectorless)"),
+     ("GDS-II size", "43.8 MB LPU die, 30.4 MB host die"),
+     ("Run date", "8 October 2026")],
+    [("gds.png", "LPU chiplet GDS-II, rendered in KLayout"),
+     ("pkg3d.png", "3D package — host 0, LPU and host 1 face down on the Si interposer "
+                   "(z exaggerated × 1.5)"),
+     ("pkg3d_exploded.png", "3D package, exploded — dies, 663 µbumps, interposer wiring, "
+                            "90 TSVs and C4 bumps"),
+     ("host.png", "RISC host chiplet GDS-II (rhost_top)"),
+     ("interposer.png", "Interposer routing from chipletstack — 106 nets on IM1 / IM3, "
+                        "shields in grey"),
+     ("interposer_3dic.png", "The same interposer routed by 3DIC Compiler, with VSS side shields"),
+     ("bumps.png", "µbump plan — signal, power and ground bumps over the C4 / TSV grid"),
+     ("power.png", "Power density on the interposer, 20 µm bins")]),
+
  fc("fc-lpu-v2", "Groq-style LPU accelerator — compact, single-port SRAM",
     "The same LPU architecture rebuilt around single-port SRAM macros, which shrinks the die "
     "by 42 % to 0.41 mm². Nine macros sit above and nine below a 212 µm logic band holding the "

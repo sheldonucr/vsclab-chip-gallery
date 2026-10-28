@@ -1,8 +1,8 @@
 # The VLSI chips designed by VSCLAB @ UC Riverside
 
-A static gallery of the lab's physical designs — 37 designs across five technology nodes,
+A static gallery of the lab's physical designs — 39 designs across five technology nodes,
 hardened with Synopsys Fusion Compiler, Cadence Genus and Innovus, OpenLane and the
-OpenROAD flow, with 287 layout views.
+OpenROAD flow, with 303 layout views.
 
 ## Viewing it
 
@@ -40,7 +40,7 @@ screenshots kept in the design directories, outside this repository.
 
 | Section | Source |
 | --- | --- |
-| Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports; and `dual_ram_project_icc` — a full RTL-to-GDSII run, read from `reports/*.rpt`, `outputs/dual_ram.def` and `outputs/dual_ram.sdc`, with the layout rendered from `outputs/dual_ram.gds`; and the two Groq-style LPU accelerators from `lpu/fc` and `lpu/fc_v2` — read the same way from `reports/07_signoff_*.rpt` and `outputs/`, with the GDS-II rendered in KLayout and the placement, power-mesh and clock-tree figures from `lpu/report_img` |
+| Synopsys Fusion Compiler | `chip_design_work_desk/{RISC_core_fc, JEPG_encoder_fc, AES_cipher_fc, arm_core_April_2026}` — layout PNGs plus the `report_design` / `report_qor` summaries in the `.docx` design reports; and `dual_ram_project_icc` — a full RTL-to-GDSII run, read from `reports/*.rpt`, `outputs/dual_ram.def` and `outputs/dual_ram.sdc`, with the layout rendered from `outputs/dual_ram.gds`; and the two Groq-style LPU accelerators from `lpu/fc` and `lpu/fc_v2` — read the same way from `reports/07_signoff_*.rpt` and `outputs/`, with the GDS-II rendered in KLayout and the placement, power-mesh and clock-tree figures from `lpu/report_img`; and the two 2.5D chiplet systems — rlpu3 from `/fermi_data/stan/chiplet_impl` (die signoff reports, the chipletstack package run in `assembly/`, figures in `report/img`) and `/fermi_data/stan/chiplet_3dic` (the 3DIC Compiler re-assembly), and mtia4 from `/fermi_data/stan/mtia4` (`{pe,cmp,io}/reports`, `assembly/`, `3dic/`) — with the die GDS-II rendered in KLayout and the 3D package views rendered with three.js from the assembly's bump maps (`INTERPOSER_*.bmap`) and routed interposer DEF |
 | Cadence Innovus | `cadence_flow/runs/run2` on Bender — a Genus iSpatial → Innovus run on GPDK045, read from `reports/pnr` (the `time_design` summaries, `report_summary`, clock-tree, power and check reports) and the DIEAREA and ROW lines of `outputs/pnr/fir16.def`; the images are Innovus renderings of `fir16.final.db`, written with `gui_write_picture` |
 | OpenLane | `chip_design_work_desk/openlane_designs/*` — `config.json`, RTL and KLayout captures |
 | OpenROAD Flow Scripts | `OpenROAD-flow-scripts-Darwin/flow` — `results/`, `reports/` and `logs/` for each `<pdk>/<design>/base` run; the LeNet-5 and ResNet-20 accelerators from `htc-cnn-asic/v2/orfs/work`, and the Mini-Jalapeño tile and 4 × 4 chip from `mini_jalapeno/orfs/work` (flow variant `realram`), read the same way from their own work directories and flow variants (`EXTRA_ORFS` in `build_site.py`) |
